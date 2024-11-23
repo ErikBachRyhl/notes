@@ -1,0 +1,19 @@
+# Ignore directories and files
+/finished
+/Matematik
+/maths
+/research
+
+preamble_backup.tex
+
+# Ignore temporary latex stuff
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Ignore all .DS_Store files (common on macOS)
+.DS_Store

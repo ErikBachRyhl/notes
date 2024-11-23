@@ -1,0 +1,140 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../../preamble.tex}
+
+\graphicspath{ {./figs/} }
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\title{Special Relativity and Classical Field Theory}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Introduction}
+    \subsection{Intertial Reference Frames and Einstein's Basic Postulates}
+    \textbf{Definition:} An \textbf{Inertial Reference Frame (IRF)} is a frame of reference in which objects not subject to any forces move with uniform velocity in straight lines. 
+    
+    Einstein's basic postulates were the following: \begin{enumerate}
+        \item The laws of nature are the same in every inertial reference frame.
+        \item It is a law of nature that light travels with the speed of light, \(c\). 
+    \end{enumerate}
+
+    The first postulate makes sense on a logical level: why should one reference frame be valued higher than any other? Who's to say who's moving? Why should everything be with respect to something absolute?
+    
+    The second law seems reasonable once you think about what the contrary would look like: light consists of oscillating electric and magnetic fields - if the speed of light wasn't the same in every reference frame, then there could be a reference frame moving at the speed of light, and from that reference frame, one would see standing oscillating electric and magnetic fields. In many ways, that seems more absurd than the basic postulate above.
+
+    But as we'll find out, the consequences of the above two postulates taken to be true at the same time can seem quite absurd at first.
+
+    \subsection{Coordinate Transformations}
+    Let's imagine two observers, \(A\) and \(B\), moving relative to each other. If we consider the perspective from \(A\), we know that they will see observer \(B\) moving with some velocity \(v\) relative to them, and they can then describe the position of observer \(B\) with \begin{align*}
+        x = vt
+    \end{align*}
+    In \(A\)'s own \(IRF\), they describe their own position with \begin{align*}
+        x = 0\quad \text{and }\quad t = t
+    \end{align*}
+
+   The point which \(A\) labels as \(x = vt\) is the position of \(B\), which in \(B\)'s own IRF is the point \(x^{\prime} = 0\). We can think that if \(A\)  constantly ask \(B\) where they are in relation to themselves, we have to factor out the distance which \(A\) has seen \(B\) move relative to them. This also follows directly from the mathematics, since we at all times \(t\) have:
+   \begin{align*}
+    (x^{\prime} = 0) \land (x - vt = 0) \quad \implies\quad x^{\prime} = x - vt
+   \end{align*} 
+
+   Thus we now know how to describe the position of observer \(B\) both in observer \(A\)'s IRF and in observer \(B\)'s IRF. But this is the Newtonian picture, and it is wrong. 
+   
+   It is wrong because we will see that we can develop no notion of simultaneity for spacetime events with different coordinates - whether they be on the time axis \textit{or} any space axes. It is of course only this last part which completely messes with our intuition.
+
+   \subsection{Simultaneity and Measurements}
+   Before we can talk about how simultaneity and lengths change in special relativity, we need a solid understanding of what it means for two events to be simultaneous. 
+
+   We imagine the (famous) example of three clocks, \(A, B\) and \(C\), each equidistant from each other. We imagine that \(A\) and \(B\) have done their absolute best to sync up their clocks before they moved them apart. Then, they will at noon on both their clocks send a light signal towards \(C\), who is precisely miday between them. When the light from both clocks reaches \(C\), the observer there can let \(A\) and \(B\) know if they are in fact perfectly synced up, or by how much either of them should change their clock. Note that since the three clocks aren't moving relative to each other, they are in the same IRF, and this is of crucial importance. From this example, we make the following definiton:
+
+   \textbf{Definition:} Two events are understood as \textbf{simultaneous} in a given inertial reference frame if light signals emitted from the events, equidistant from a specific point in that frame, reach the point at the same time, as recorded by an observer at that point.
+
+   Next, we will define what it means to measure a length. When we measure the length of something, we are really, at one instant in our IRF, noting the coordinates of the end-points of that object. We therefore obtain the precise definition:
+
+   \textbf{Definition:} The \textbf{length} of an object in an IRF is the difference between the space coordinates at the ends of that object when measured at one instant in that same IRF. \textit{At one instant} essentially means along a line of simultaneity in a spacetime diagram. 
+
+   We would clasically think that \(t = t^{\prime}\) and that there was only one single line of simultaneity - the one for "universal time" and that this would be horisontal in \textit{all} IRFs. But this turns out to be wrong.
+
+   \subsection{The Line of Simultanueity}
+   Let's imagine four observers, \(A, B, C\) (IRF 1) and \(D\) (IRF 2). \(C\) is situated midway between \(A\) and \(B\), and they are of course all three moving with the same uniform velocity (IRF 1). At some point \(\mathcal{O}\) in spacetime, \(A\) passes \(D\) and they sync their clocks. Therefore, seen from \(D\), we can describe (in relativistic units) the positions of the three observers in IRF 1 as \begin{align*}
+    x_A &= vt\\
+    x_C &= vt + 1\\
+    x_B &= vt + 2
+   \end{align*}   
+
+   At the spacetime event \(\mathcal{O}\), \(A\) sends a beam of light towards \(C\).
+   
+   At the same exact moment in spacetime, \(C\) recieves another beam of light that was sent from \(B\). Since the setup of \(A, B\) and \(C\) precisely matches that which allows us to use our definition of simultaneity, then \(A, B\) and \(C\) (IRF 1) have to agree that these two beams of light \textit{must} have been sent at the same time towards \(C\). In IRF 1, these two spacetime events, \(A\) and \(B\) sending a beam of light towards \(C\), are simultaneous. No big deal there. But what does \(D\) (IRF 2) have to say about this? 
+
+   \(A\) and \(D\) decided, at the same point in space, that the time when \(A\) sent the beam of light should be recorded as \(t = 0\) and \(t^{\prime} = 0\) (they are synced at that point in \textit{spacetime}).
+
+   That "the light reaches \(C\)" means that their worldlines intersect. Thus we get the equation: \begin{align*}
+    x_C = vt + 1 = t \implies t_C = \frac{1}{1 - v}
+   \end{align*} 
+   which is the time recorded in \(D\)'s IRF (2).
+
+   In relativistic units, \(c = 1\) and thus the slope of a beam of light is always either \(45^\circ\) or \(- 45^\circ\) (the minus gives direction). In other terms, either \(x = t\) or \(x = -t\). Therefore, at this point, \begin{align*}
+    x_C = t_C = \frac{1}{1 - v}
+   \end{align*}
+   
+   Since \(B\) sent the beam of light in the opposite direction as \(A\) to hit \(C\), the slope of the lightbeam must be \(-c = -1\) such that \begin{align*}
+    x = -ct + constant \quad \implies \quad x + t = constant.
+   \end{align*}
+   Since any beam of light can be sent at any point in spacetime, we of course need to shift the line up or down \textit{by a constant} as seen above.
+   
+   We should therefore be able to draw a line with slope \(-t\) starting at the point \(C\) and figure out where it intersects the worldline of \(B\). This must be the spacetime event where (and when) the beam of light was sent from \(B\). Since \(x + t = constant\) we just need to figure out \(x + t\) at some point. We can of course just use the point \((x_C, t_C)\): \begin{align*}
+    x_C + t_C = \frac{2}{1 - v} = constant
+   \end{align*}
+   such that we get the equation for the beam of light \begin{align*}
+    x = \frac{2}{1 - v} - t
+   \end{align*} 
+   which intersects the worldline for \(x_B\) when \begin{align*}
+    \frac{2}{1 - v} - t = vt + 2 &\implies \frac{2}{1 - v} = t (1 + v) + 2\\
+    &\implies t_B = \frac{2 - 2(1 - v)}{1 - v^{2}} = \frac{2v}{1 - v^{2}}
+   \end{align*} 
+   such that \begin{align*}
+    x_B = \frac{2}{1 - v} - \frac{2v}{1 - v^{2}} = \frac{2 + 2v - 2v}{1 - v^{2} } = \frac{2}{1 - v^{2}}
+   \end{align*}
+   
+   We could have chosen any seperation between \(A, B\) and \(C\) in IRF 1, and this would linearly have moved these points (nothing non-linear has been going on). The line that passes from \(\mathcal{O}\) to the point in spacetime where light was sent from \(B\) has the slope \begin{align*}
+    \frac{t_B}{x_B} = v
+   \end{align*} 
+   And since zero seperation would make it intersect \(\mathcal{O}\), we get the equation for the simultaneity line \begin{align*}
+    t = vx
+   \end{align*}
+   The first and striking conclusion from this is that this as seen from IRF 2, the light was not sent from \(A\) and \(B\) at the same time, even though this is clearly the conclusion that the observers in IRF 1 agreed upon.   
+
+   We now have the position of a moving observer in both reference frames. In IRF 1 we have 
+   \begin{align*}
+    x = vt
+   \end{align*}
+   while in IRF 2 we have \begin{align*}
+    x^{\prime} = 0 = x - vt.
+   \end{align*}
+
+   And for time we get the line of simultaneity as seen from IRF 1 \begin{align*}
+    t = vx
+   \end{align*}
+   and from IRF 2 \begin{align*}
+    t^{\prime} = 0 = t - vx
+   \end{align*}
+
+   But how do we transform an arbritrary spacetime event as seen from one observer to the coordinates in a different IRF? We use the Lorentz Transformations: \begin{align*}
+    x ^{\prime} &= \frac{x - vt}{\sqrt{1 - v^{2}} }\\
+    t^{\prime} &= \frac{t - vx}{\sqrt{1 - v^{2}} }
+   \end{align*}
+   which for the observer (not an event) reduces to \begin{align*}
+    x^{\prime} &= 0\\
+    t^{\prime} &= 0
+   \end{align*}
+   as we'd hope. 
+
+   We could have gone through all these arguemnts symmetrically but with respect to the primed coordinates and \(v \to -v\) such that we also have \begin{align*}
+    x &= \frac{x^{\prime} + vt^{\prime} }{\sqrt{1 - v^{2}} }\\
+    t &= \frac{t^{\prime}  + vx^{\prime} }{\sqrt{1 - v^{2}} }
+   \end{align*} 
+   
+\end{document}

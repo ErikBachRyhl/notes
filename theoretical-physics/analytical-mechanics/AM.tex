@@ -1,0 +1,482 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../preamble.tex}
+
+\graphicspath{ {./figs/} }
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\title{Analytical Mechanics}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+    
+    \section{The variational approach to mechanics}
+    \subsection{Hamilton's principle and generalized coordinates}
+    \textit{\textbf{Hamilton's Principle:} The path traced out by a system in configuration space will be the one that makes the action stationary: \begin{align*}
+        \boxed{\delta S = \int_{t_i}^{t_f}dt\ \delta L(q, \dot{q}, t) = 0}
+    \end{align*}}
+
+    The number of \textbf{degrees of freedom} of a system is an intrinsic property of the system. To describe the evolution of each degree of freedom of the system, one uses \textbf{dynamical variables}, which are any variables that evolve in time and are able to be influenced by forces acting on the system. 
+    
+    The goal of physics can in many ways be boiled down to figuring out exactly \textit{how} the dynamical variables of the system will evolve in response to forces, such that the state of the system at any point in time can be calculated. 
+    
+    Since the number of degrees of freedom is an intrinsic property of the system, if there are \(N\) such degrees of freedom, one will always need \(N\) \textit{independent} dynamical variables to specify the state of the system. But other than the number of independent variables and the requirement that they be independent, the choice of these so called \textbf{generalized coordinates}, each denoted by \(q_k\), is completely arbitrary and may therefore be chosen to suit the problem at hand. Since the generalized coordinates are independent, they can also be \textit{varied} independently. If a set of coordinates chosen isn't independent, then there has to be some constraint relating them, and this can in principle be used to reduce the number of coordinates until it matches the number of degrees of freedom and the system and will therefore be generalized coordinates. Sometimes information about the constraint and its influence on the system is desired (such as a tension force), and one can then use the method of Lagrange multipliers to approach the problem. 
+    
+    \textbf{Configuration space} is the \(N\)-dimensional space spanned by the \(N\) independent generalized coordinates. As the system evolves, a curve will be traced out in configuration space. We can parameterise this evolution in time and to each point associate values of time. The reason that there can be more than one associated time to each point is that the curve may intersect itself at different points in time (for example if the system is periodic). Time is thus not a part of configuration space, but something we can parameterise it by, which will implicitly understood from now on. The action integral is therefore the line integral in configuration space with \(t\) being the independent variable (we say the curve is "parameterized by time"). 
+    
+    \subsection{Mathematical Interlude - Partial Derivatives vs. Total Derivatives}
+    A total derivative tells you how much a quantity changes, say \(f(u(t), v, t)\), with respect to some other quantity, say \(t\). In this case, the total derivative would be given by \begin{align*}
+        \frac{df}{dt} = \lim_{h \to 0} \frac{f(u(t + h), v, t + h) - f(u(t), v, t)}{h}
+    \end{align*}
+    where we see that everything which depends on \(t\) is incremented slightly.
+
+    When taking a partial derivative on the other hand, one keeps everything \textit{except} the variable in question \textit{constant}. In this case, that would mean \begin{align*}
+        \frac{\partial f}{\partial t} = \lim_{h \to 0} \frac{f(u(t), v, t + h) - f(u(t), v, t)}{h} 
+    \end{align*}
+    It seems odd that even though \(u\) depends on \(t\) we aren't incrementing it. But this is because we are really saying that, having labelled the third argument of our function \(t\), we would like to understand how the function changes only w.r.t.\ that argument. So really the partial derivative above can be understood as us computing \(\partial f / \partial f_{.3}\) where \(f_{.3}\) refers to the third argument of our function.
+
+    It would thus be more clear to think of \((u, v, t)\) as referring to the first, second and third argument of our function \(f\) respectively. Now we might want to evaluate that with \(u(t)\), that is with \(u\) being a path parameterised by \(t\), but that has nothing to do with the partial derivative. It will however affect the total derivative as seen with the chain rule \begin{align*}
+        \frac{df}{dt} = \frac{\partial f}{\partial u} \frac{du}{dt} + \frac{\partial f}{\partial v} \frac{dv}{dt} + \frac{\partial f}{\partial t} \frac{dt}{dt} = \frac{\partial f}{\partial u} \frac{du}{dt} + \frac{\partial f}{\partial t},
+    \end{align*}
+    since with a total derivative we need to take \textit{all} dependencies on \(t\) into account.
+
+    But if the function in question only depends on a single variable, say \(q(t)\), then we see from the definitions that the two types of derivatives are equal \begin{align*}
+        \frac{dq}{dt} = \lim_{h \to 0} \frac{q(t + h) - q(t)}{h} = \frac{\partial q}{\partial t} 
+    \end{align*}
+
+    Here is where it might become a bit confusing, because the above equality still holds if we for example had \(q(t) := g(u(t), v(t), t)\). Here, \(q(t)\) is the \textit{pullback} of the functions \(t\mapsto u(t), t\mapsto v(t)\) and \(t \mapsto t\). This is where we might think: "Hold on, this is just like the previous example with \(f(u(t), v, t)\) - the partial derivative can't be equal to the total, because in the former case, we shouldn't change anything that has to do with \(u\)!". This objection would have been correct if we had \(g = g(u(t), v, t)\), but then we would also need to write \(q = q(v, t)\) and it becomes clear how these situations differ: when all the arguments of a function is evaluated along a path parameterised by the \textit{same} variable, then we can consider it solely as a function of that variable, since we could substitute in the other arguments in terms of the variable. And when we consider a function of a single argument, then it is clear from the definitions that the partial and total derivatives \textit{have} to be the same.
+
+    Let's take an example. Let \(g(u, v, t) = 2u + tv\). If we then had \(u = u(t) = 2t^2\) and \(v = v(t) = t\), then we see that \begin{align*}
+        g(u, v, t) = g(u(t), v(t), t) = 4 t^2 + t^2 = 5t^2,
+    \end{align*}  
+    which is purely a function of \(t\) of course, hence it makes perfect sense to define \(q(t) \coloneqq g(u(t), v(t), t) = 5t^2\).
+
+    This illustrates why the term \textit{pullback} is also known as \textit{precomposition}: even when we did not know the look of \(u = u(t)\) and \(v = v(t)\), we know that when we compose them in the function \(g(u(t), v(t), t)\) we will end up with something depending solely on \(t\). We can therefore just jump ahead and define the \textit{precomposed} function \(q(t) \coloneqq g(u(t), v(t), t)\) which is then a function of a single variable.
+
+    We therefore conclude that we must have \begin{align*}
+        \frac{dq}{dt} = \frac{\partial q}{\partial t} = \frac{d}{dt}g(u(t), v(t), t) = \frac{\partial g}{\partial u} \frac{du}{dt} + \frac{\partial g}{\partial v}\frac{dv}{dt} + \frac{\partial g}{\partial t}
+    \end{align*}
+    
+    This can also be seen directly from the limit definitions. We have that 
+    \begin{align*}
+        \frac{\partial q}{\partial t} = \frac{dq}{dt} = \lim_{h \to 0} \frac{q(t + h) - q(t)}{h} 
+    \end{align*}
+    Let us write the first term as \begin{align*}
+        q(t + h) = g(u(t + h), v(t + h), t + h)
+    \end{align*}
+    which, when \(h\) is small, can be Taylor expanded to give \begin{align*}
+        g(u(t + h), v(t + h), t + h) = g(u(t), v(t), t) + \frac{\partial g}{\partial u} \frac{du}{dt}h + \frac{\partial g}{\partial v}\frac{dv}{dt}h + \frac{\partial g}{\partial t}h + O(h^{2})
+    \end{align*}
+    such that \begin{align*}
+        q(t + h) - q(t) = \left(\frac{\partial g}{\partial u} \frac{du}{dt} + \frac{\partial g}{\partial v}\frac{dv}{dt} + \frac{\partial g}{\partial t}\right)h + O(h^{2})
+    \end{align*}
+    which when substituted back into the limit gives \begin{align*}
+        \lim_{h \to 0} \frac{q(t + h) - q(t)}{h} &=
+        \lim_{h \to 0} \frac{1}{h}\left[\left(\frac{\partial g}{\partial u} \frac{du}{dt} + \frac{\partial g}{\partial v}\frac{dv}{dt} + \frac{\partial g}{\partial t}\right)h + O(h^{2})\right]\\
+        &= \frac{\partial g}{\partial u} \frac{du}{dt} + \frac{\partial g}{\partial v}\frac{dv}{dt} + \frac{\partial g}{\partial t} + \lim_{h \to 0} O(h)\\
+        &= \frac{\partial g}{\partial u} \frac{du}{dt} + \frac{\partial g}{\partial v}\frac{dv}{dt} + \frac{\partial g}{\partial t}
+    \end{align*}
+
+    So if you encounter velocity written as \(\partial_t q\) instead of \(dq / dt\), then it is implicitly understood that this because \(q = q(t)\) such that the partial and total derivatives are the same. And as we have seen with the idea of precomposition (pullback), this does not exclude the possibility that the position might depend on other functions itself, such as acceleration, but it \textit{does} require that any functional dependencies can be parameterised by time.
+
+    \subsection{The Calculus of Variations}
+    \subsubsection{The Functional}
+    In the most general sense of the word, a \textit{functional} is a function of a function. Let's consider an example. Say we have \begin{align*}
+        (u, v, w) \mapsto f(u, v, w)
+    \end{align*}
+    and we were to let \begin{align*}
+        x \mapsto u \coloneqq \phi (x),\quad
+        x \mapsto v \coloneqq \psi (x),\quad
+        x \mapsto w \coloneqq \chi (x)
+    \end{align*}
+
+    As discussed above, we could then just as well write \begin{align*}
+        \Phi (x) = f(\phi (x), \psi (x), \chi (x)),
+    \end{align*}
+    where the mathematical term for this identification is the \textit{pullback} of \(f\) by the functions \(\phi, \psi\) and \(\chi\). \(\Phi (x)\) can be integrated along the independent variable \(x\) (a line integral) \begin{align*}
+        F \coloneqq \int _a ^b \Phi (x)\ dx
+    \end{align*}
+    \(F\) is now a function of a function and thus an example of a functional. We see that \(F\) indeed depends on the three paths traced out by \(\phi(x), \psi(x) \) and \(\chi(x)\) since the value of \(\Phi (x)\) does so, and we should formally write \(F = F[\phi, \psi, \chi]\), where the square brackets are used to denote that \(F\) depends on functions, not just variables.
+    
+    But in the case of calculus of variations, we will instead \begin{align*}
+        \phi (x) = x,\quad
+        \psi (x) = y(x),\quad
+        \chi (x) = \frac{dy(x)}{dx} \equiv y^{\prime}(x)
+    \end{align*}
+    which means that instead of being able to construct a pullback \(\Phi (x)\), we would have
+    \begin{align*}
+        f(\phi(x), \psi (x), \chi (x)) = f(y, y^{\prime}(x), x)
+    \end{align*}
+    and therefore \begin{align*}
+        F \coloneqq \int_a ^b f(y, y^{\prime}(x), x)\ dx
+    \end{align*}
+    But since \(y: [a, b] \to \mathbb{R}\) is a \textit{single} function, we can consider the functional \(F\) to depend solely on the single path traced out by \(y(x)\) and properties of this path (such as its first derivative). Though not strictly the same, this is similar to the previous idea of a pullback, where dependence on a single variable through certain paths can be "pulled back" along those paths to give the dependence solely in terms of a single independent variable. In this case, we instead have an example of dependence on a single path and properties of this path. And just like with a pullback, from now on we will indicate the dependence on a single path by just writing \(F[y]\).
+
+    \subsubsection{Stationary Values and Variations}
+
+    Now that notation is out of the way, we can address the main goal of the calculus of varations: to find a path \(y(x)\) which makes the functional stationary. Just like how in ordinary calculus having a stationary point implies that a small deviation from that point won't change the value of the function \textit{to within first order}, which is just another way of saying that the derivative w.r.t.\ the independent variable is zero at that point, so too will making the functional stationary imply that a small deviation from the stationary path won't change the value of the functional to within first order. Since the functional depends on an entire function, we will use the concept of a \textit{variation} to find this stationary point, and a stationary point implies that the first order variation of the functional disappears.
+
+    For this problem to be well defined though, we of course have to impose some constraints. One natural constraint which has been implicit so far is that out of all the infinite different paths we could consider, they all share the same start- and endpoints. This means that we do not consider varying the independent parameter \(x\) - we want all of our paths to start at \(x = a\) and end at \(x = b\), and we consider the integration interval to be an inherent part of the problem. Another constraint, which has been implicit in the definition of \(f\), is that we require \(y(x)\) to have a well defined first derivative on the integration interval \(x \in [a, b]\). Another constraint often imposed, which we will require too, is that all the paths considered has to have a well defined second derivative too on the entire interval as well. Intuitively, this just means that we want all of our paths to be smooth. The reason for this requirement is based on physical grounds and will be justified later.
+
+    Now that we have a well-defined problem, let's solve it!
+
+    Imagine we start with some trial path \(\overline{y}(x)\) between the endpoints \(x = a\) and \(x = b\). It is quite unlikely that this trial path will do the job of making the integral \(F[y]\) stationary, but we can figure out which path will if we analyse how the integral changes as we vary our trial path. 
+    
+    Now, what does it actually mean mathematically to vary a path? Well, we could imagine that we go along the trial path \(\overline{y}(x)\) between the endpoints \(x = a\) and \(x = b\) and change the value by a very small amount. It seems like a daunting task to change infinitely many points by an infinitesimal amount, but if we think about it, this really just corresponds to adding a function to our current path - and we can just multiply it by an infinitesimal parameter that goes toward zero to make sure that the variation is as small as we like. Our new, varied path \(y(x)\) will therefore be given by
+    \begin{align*}
+        y(x) = \overline{y}(x) + \epsilon \eta (x)
+    \end{align*}
+    where \(\eta(x)\) is this "background function" and \(\epsilon\) is the infinitesimal parameter (something we can "tune"). We define the variation as the difference between the varied and the unvaried path
+     \begin{align*}
+        \delta y(x) \equiv y(x) - \overline{y}(x) = \epsilon \eta (x)
+    \end{align*}
+    where it is implicit that \(\epsilon\) is an infinitesimal quantity. Obviously, the constraints on our path places constraints on \(\eta (x)\) - if the new path is to be smooth throughout the integration interval, then \(\eta (x)\) needs to be as well (actually, it just needs to be continuous and differentiable; the second derivative need not exist throughout the range). Otherwise things would break down once we try to compute the first derivative of our new, varied path \(y(x)\). The constraint that we do not wish to vary the end points means that any variation there has to vanish \begin{align*}
+        \delta y(a) = \delta y(b) = 0
+    \end{align*} 
+    such that the endpoints for all paths are the same \begin{align*}
+        y(a) = \overline{y}(a) + \delta y(a) = \overline{y}(a)
+    \end{align*}
+    and the same for \(y(b)\). The fact that we do not consider variations of the independent variable, just means that we have \begin{align*}
+        \delta x = 0
+    \end{align*}
+    everywhere.
+    
+    Since \(y^{\prime} (x) = dy / dx\), we see that varying the path varies the derivative as well of course 
+    \begin{align*}
+        y^{\prime} (x) = \frac{dy}{dx} = \frac{d}{dx} \left( \overline{y}(x) + \delta y(x) \right) = \overline{y}^{\prime} (x) + \epsilon \eta^{\prime}(x) \equiv \overline{y}^{\prime} (x) + \delta y^{\prime} (x)
+    \end{align*} 
+    where the last equality is again giving us the definition that \(\delta y^{\prime} (x) \equiv y^{\prime} (x) - \overline{y}^{\prime} (x) = \epsilon \eta ^{\prime} (x)\). It is also clear from these definitions that \begin{align*}
+        \delta y^{\prime} (x) = \epsilon \eta ^{\prime} (x) = \frac{d}{dx}\left( \epsilon \eta (x) \right) = \frac{d}{dx}\left( \delta y(x) \right) 
+    \end{align*}
+    We see that we can always interchange a variation and a derivative. But it is also seen that this identity crucially requires differentiability of both our path and the variation \(\eta(x)\). 
+
+    What happens to a function \(f(y(x), y^{\prime}(x), x)\) when we vary some of its arguments? Since the variation is always understood to be small, we can use a Taylor expansion to find that \begin{align*}
+        f(y(x) + \delta y(x), y^{\prime} (x) + \delta y^{\prime} (x), x) = f(y(x), y^{\prime} (x), x) + \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime} } \delta y^{\prime} (x) + O(\epsilon^{2}),
+    \end{align*}
+    and since \(\epsilon\) is infinitesimal (approaches zero), we can in general throw away the higher order terms. Just like with the variation of a function with a single argument, we will define the variation of a function with multiple arguments as the difference between the varied and the unvaried function, which in this case becomes \begin{align*}
+        \delta f(y(x), y^{\prime} (x), x) \equiv f(y(x) + \delta y(x), y^{\prime} (x) + \delta y^{\prime} (x), x) - f(y(x), y^{\prime} (x), x) = \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime} } \delta y^{\prime} (x)
+    \end{align*}
+    We see that a variation is quite similar to a differential, in that both concepts represent an infinitesimal change, but it is important to distinguish them: A differential \(dy\) refers to the change in \(y(x)\) as the result of a change in the independent variable by an amount \(dx\). In other words, it is a measure of how \(y\) changes as a function of a change in \(x\). 
+    
+    A \textit{variation} on the other hand gives you an entirely new function \(y(x) + \delta y(x)\) differing from the old by an \textit{arbitrary} infinitesimal amount \(\epsilon \eta(x)\) at each point \(x \in [a, b]\). When doing a variation we are essentially introducing a new test function which we use to examine the behaviour of the functional.
+    
+    So, whereas with a differential change we track how a function \(y(x)\) changes locally with a small change in \(x\), when doing a variation we are changing the entire function all along the range \(x \in [a, b]\) completely independently of any value or change in \(x\).  
+    
+    We see that integration and variation can be interchanged as well
+    \begin{align*}
+        \delta \int_a^b f(y(x), y^{\prime} (x), x)\ dx &= \int_a ^b f(y(x) + \delta y(x), y^{\prime} (x) + \delta y^{\prime} (x), x) \ dx - \int_a ^b f(y(x), y^{\prime} (x), x)\\
+        &= \int_a ^b \left[ f(y(x) + \delta y(x), y^{\prime} (x) + \delta y^{\prime} (x), x) - f(y(x), y^{\prime} (x), x)\right]\ dx\\
+        &= \int _a ^b \delta f(y(x), y^{\prime} (x), x)\ dx
+    \end{align*}
+
+    \subsubsection{Making the functional stationary}
+    Making \(\delta F = 0\) is actually pretty straightforward. \begin{align*}
+        0 = \delta F[y] &= \delta \int_a ^b f(y(x), y^{\prime} (x), x) \ dx \\
+        &= \int_a ^b \delta f(y(x), y^{\prime} (x), x)\ dx\\
+        &= \int _a ^b f(y(x) + \delta y(x), y^{\prime} (x) + \delta y^{\prime} (x), x) - f(y(x), y^{\prime} (x), x)\ dx\\
+        &= \int_a ^b \left[ \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime} }\delta y^{\prime} \right]dx
+    \end{align*} 
+    And since \begin{align*}
+        \delta y^{\prime} (x) = \frac{d}{dx}\left(\delta y(x)\right)
+    \end{align*}
+    we can integrate the second term by parts to get \begin{align*}
+        \int_a ^b \left[ \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime} }\delta y^{\prime} \right]dx = \left[\frac{\partial f}{\partial y^{\prime} }\delta y(x)\right]_{x = a}^{x = b} + \int _a ^b \left[ \frac{\partial f}{\partial y}- \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}}\right)\right]\delta y\  dx
+    \end{align*}
+    and since we have \begin{align*}
+        \delta y (a) = \delta y (b) = 0
+    \end{align*}
+    we end up with 
+    \begin{align*}
+        \delta F[y] = \int _a ^b \left[ \frac{\partial f}{\partial y}- \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}}\right)\right]\delta y\  dx = 0
+    \end{align*}
+
+    Since, as discussed, a variation \(\delta y\) can be completely arbitrary along the entire interval \(x \in [a, b]\) (apart from the also mentioned constraints of regularity), we conclude that if the above equality has to hold for all such arbitrary variations, it must be because 
+    \begin{align*}
+        \frac{\partial f}{\partial y}- \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}}\right) = 0
+    \end{align*}
+    This is the differential equation which has to be satisfied for the functional to be stationary. The extension to multiple variables is straightforward. 
+
+    \subsection{The Calculus of Variations Revisited}
+    The above walkthrough was to say the least a bit unformal, and important points were glossed over. \href{https://www.youtube.com/watch?v=VCHFCXgYdvY&list=PL2ym2L69yzkamORF9DGWRhE9qUnb0_-6H&index=1&t=230s&ab_channel=GoodVibrationswithFreeball}{This video} is very clear, and I will try to do a more formal derivation based on that here.
+
+    Suppose we wish to extremise a functional of the following type \begin{align*}
+        I = \int_{x_1} ^{x_2} F\left[x, y(x), y^{\prime}(x)\right]dx
+    \end{align*}
+
+    The functional here is prototypical: it is a sum of contributions from a function evaluated at every point along the independent variable \(x\) - in other words, the value of the integral \(I\) depends on the details of the entire path \(y(x)\) (and its role in \(F\)).
+    
+    We see that this problem is of a fundamental different nature than typical extremal problems in ordinary calculus: In ordinary calculus, we have a function \(y(x)\) dependent on a single variable \(x\). In the calculus of variations, we have a functional \(I\) dependent on a function \(y\), which in this case depends on the independent variable \(x\).     
+
+    The goal of the extremisation will often be to minimize the integral (which is really just a sum), but it could also be a maximisation problem. Sometimes the path which makes the functional stationary might be at a saddle point in function space. With regards to Hamilton's principle, this most often doesn't matter. Mathematics wise, just like in ordinary calculus, we would have to examine the sign of the second derivative to determine the type of stationary/extremal point. 
+
+    But what derivative are we even supposed to look at? To find the extremal points in ordinary calculus, we will typically change the independent variable by a small amount \(dx\) and investigate the resulting behaviour in our dependent function, given by \(f(x + dx) - f(x)\). Since our differential change in the independent variable is infinitesimal (approaching zero), we can Taylor-expand the change in the dependent function \begin{align*}
+        f(x + dx) = f(x) + \frac{\partial f}{\partial x}dx + O(dx^{2})
+    \end{align*}
+    Since the slope of the function must change signs at an extremal point (it curves), and since the function is continuous, due to the intermediate value theorem we conclude that the slope at an extremal point has to be zero: the function approximately looks like a horizontal line. We therefore see that the necessary condition for having an extremal point is that \begin{align*}
+        \frac{\partial f}{\partial x} = 0,
+    \end{align*}
+    or equivalently that \begin{align*}
+        f(x + dx) = f(x) + O(dx^{2})
+    \end{align*}
+    We say that the difference in the function and its nearby values disappear to within first order infinitesimals, which here is just the term \begin{align*}
+        \frac{\partial f}{\partial x}dx
+    \end{align*}
+    As a side note, if we let the difference approach zero, we can neglect the higher order terms and we get the differential \begin{align*}
+        df = \frac{\partial f}{\partial x}dx
+    \end{align*}
+    The reason partial differentation is used here is that it generalises to functions of multiple variables. It is of course just equal to the total differential if the function only depends on a single variable.
+
+    So when we differentiate, we are looking at how a function changes w.r.t.\ a small change in the dependent variable. Since we are now working with a functional dependent on a function, we can imagine that the analogue would be looking at how the functional changes w.r.t.\ a small change in the entire function.
+    
+    But since we are looking at continuous paths, we need to change infinitude of points at once? How can we achieve this? Well, just like we would change a number by adding a number to it, we can of course change a function by adding another function \(\eta(x)\)  to it. And since we want this change in the entire function to be small, we will multiply it by a number \(\epsilon\) we imagine to be infinitesimal. We call \(\eta(x)\) "the shape function" and we require that it is at least \(C^2(x_1, x_2)\), and that \(\eta(x_1) = \eta(x_2) = 0\), since we want our integration endpoints to be fixed, as they are a geometric constraint on the problem itself. But other than this, \(\eta(x)\) can be completely arbitrary. 
+
+    Let us imagine that we have indeed found the right path \(y(x)\) which extremises our integral. Let us now figure out how that integral behaves when we do infinitesimal variations around that extremal path. We thus introduce a varied path \begin{align*}
+        \overline{y}(x) = y(x) + \epsilon \eta (x)
+    \end{align*}
+    which again can be completely arbitrary, except for our requirements of starting at \(x_1\) and ending at \(x_2\) while being continuous throughout the second derivative. Note that we immediately see that \begin{align*}
+        \overline{y}^{\prime} (x) = y^{\prime} (x) + \epsilon\eta^{\prime}(x)
+    \end{align*}
+
+    We call the term \begin{align*}
+        \epsilon \eta(x)
+    \end{align*}
+    the \textit{variation} in \(y(x)\).
+    
+    Again, we wish to analyze how the functional changes due to this varied path, just like we would analyze how a function changes due to a "varied" independent variable. With the case of a function as we've found, the change to the first order disappears. Similarly, we would expect that to be the case for an extremal point of the functional. It is impossible to visualise the infinite-dimensional function space, but if we were to plot the value of the functional as the dependent variable with the paths being the independent "variables", so too would we expect the graph to look like a straight line when we zoom in enough around the extremal point. We would therefore expect the first order variation to disappear for an extremal point as well. So let's compare the difference in the functional for the infinitesimally varied and the unvaried paths \begin{align*}
+        I[\overline{y}] - I[y] &= \int_{x_1}^{x_2} F \left[ x, y(x) + \epsilon \eta (x), y^{\prime} (x) + \epsilon \eta ^{\prime} (x) \right]dx - \int_{x_1}^{x_2} F \left[ x, y(x), y^{\prime} (x) \right]dx \\
+        &= \int_{x_1}^{x_2} F \left[ x, y(x) + \epsilon \eta (x), y^{\prime} (x) + \epsilon \eta ^{\prime} (x) \right] - F \left[ x, y(x), y^{\prime} (x) \right] dx\\
+    \end{align*}
+    since \(\epsilon \) is small, we Taylor-expand \begin{align*}
+        I[\overline{y}] - I[y] = \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y}\epsilon \eta(x) + \frac{\partial F}{\partial y^{\prime} }\epsilon \eta^{\prime}(x) + O(\epsilon^{2})\right) dx
+    \end{align*} 
+    We see that if we divide by \(\epsilon\) and let it go towards zero, we formally get \begin{align*}
+        \lim_{\epsilon \to 0} \frac{I[\overline{y}] - I[y]}{\epsilon} &= \lim_{\epsilon \to 0} \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} \eta(x) + \frac{\partial F}{\partial y^{\prime} }\eta^{\prime}(x) + O(\epsilon)\right) dx\\
+        &= \lim_{\epsilon \to 0} \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} \eta(x) + \frac{\partial F}{\partial y^{\prime} }\eta^{\prime}(x)\right) dx + \lim_{\epsilon \to 0} \int_{x_1}^{x_2} O(\epsilon) dx \\
+        &= \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} \eta(x) + \frac{\partial F}{\partial y^{\prime} }\eta^{\prime}(x)\right) dx
+    \end{align*} 
+
+    Now as we've discussed, we expect that this first order difference between the functional of the varied and unvaried path at an extremal point is zero. We thus get our necessary condition in mathematical terms \begin{align*}
+        0 = \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} \eta(x) + \frac{\partial F}{\partial y^{\prime} }\eta^{\prime}(x)\right) dx
+    \end{align*}
+    This is known as the weak-form of the first variation, and with partial integration we can turn it into the strong form which we recognize:
+    \begin{align*}
+        0 = \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} + \frac{d}{dx} \left(\frac{\partial F}{\partial y^{\prime} } \right)\right)\eta(x) dx
+    \end{align*}
+    where we once again invoke the fundamental lemma of the calculus of variations and conclude that since \(\eta(x)\) is completely arbitrary, the term in the parantheses must be zero. We have thus arrived at the Euler-Lagrange equation again \begin{align*}
+        \frac{\partial F}{\partial y} + \frac{d}{dx} \left(\frac{\partial F}{\partial y^{\prime} } \right) = 0
+    \end{align*}
+
+    This is thus the necessary condition for an extremal point. To determine the nature of the stationary point, we would have to examine the second variation.
+
+    Here's another way to approach the same idea. When we are looking into the difference between the varied and unvaried paths and their role on the functional, what are we actually varying? And here comes the crucial point: Since \(y(x)\) is the actual extremising path, it has been chosen - it is now \textit{a constant}. And so too is the shape function \(\eta (x)\) - we chose it (almost) arbitrarily, but we \textit{have} chosen it. The thing which we are in fact varying is the infinitesimal parameter \(\epsilon\), and what we have done above is in effect to differentiate the functional w.r.t. to \(\epsilon\). And since the rest of the terms are constant, we are actually taking a total derivative. The condition for an extremal path is thus that 
+    \begin{align*}
+        \frac{dI}{d\epsilon }\biggr|_{\epsilon = 0} = 0
+    \end{align*} 
+    where we evaluate this at \(\epsilon = 0\) because we wish to understand how the functional changes as the variation approaches zero. Evaluating the derivative we get
+    \begin{align*}
+        \frac{dI[\overline{y}]}{d\epsilon }\biggr|_{\epsilon = 0} &= \frac{d}{d\epsilon } \left( \int_{x_1}^{x_2} F \left[ x, \overline{y}(x), \overline{y}^{\prime} (x) \right] dx \right)\biggr|_{\epsilon = 0}\\
+        &= \int _{x_1}^{x_2} \frac{d}{d\epsilon } \left( F \left[ x, \overline{y}(x), \overline{y}^{\prime} (x) \right] \right)\biggr|_{\epsilon = 0} dx \\
+    \end{align*}
+    where we could use Leibniz' rule since only the integrand depends on \(\epsilon\). This gives us \begin{align*}
+        \frac{dI[\overline{y}]}{d\epsilon }\biggr|_{\epsilon = 0} &= \int _{x_1}^{x_2} \left( \frac{\partial F}{\partial x} \frac{\partial x}{\partial \epsilon } + \frac{\partial F}{\partial \overline{y}}\frac{\partial \overline{y}}{\partial \epsilon } + \frac{\partial F}{\partial \overline{y}^{\prime} } \frac{\partial \overline{y}^{\prime} }{\partial \epsilon }\right)\biggr|_{\epsilon = 0} dx\\
+        &= \int _{x_1}^{x_2} \left(\frac{\partial F}{\partial \overline{y}}\eta(x) + \frac{\partial F}{\partial \overline{y}^{\prime} } \eta^{\prime} (x)\right)\biggr|_{\epsilon = 0} dx
+    \end{align*}  
+    and this is where it becomes particularly elegant, because what happens to \(\overline{y}(x)\) when we evaluate it at \(\epsilon  = 0\)? It's just becomes our original, extremising path! We have just arrived at the same equation and we conclude that \begin{align*}
+        \frac{dI[\overline{y}]}{d\epsilon }\biggr|_{\epsilon = 0} = \int _{x_1}^{x_2} \left(\frac{\partial F}{\partial y}\eta(x) + \frac{\partial F}{\partial y^{\prime}} \eta^{\prime} (x)\right) dx,
+    \end{align*}
+    from where we again know exactly 
+
+    Equivalently, we could view this as a definition of what it means to take the derivative of a functional
+    \begin{align*}
+        \frac{dI[\overline{y}]}{d\epsilon }\biggr|_{\epsilon = 0} = \lim_{\epsilon \to 0} \frac{I[\overline{y}] - I[y]}{\epsilon} =  \int _{x_1}^{x_2} \left(\frac{\partial F}{\partial y}\eta(x) + \frac{\partial F}{\partial y^{\prime}} \eta^{\prime} (x)\right) dx
+    \end{align*}
+
+
+    \subsubsection{The Delta Operator}
+    By reintroducing the \(\delta\)-operator, we can once more go through the derivation and see how the two approaches differs. Once again we define \begin{align*}
+        \delta y = \overline{y}(x) - y(x) = \epsilon \eta (x)
+    \end{align*} 
+    from which it follows that both differentation and integration commute with the \(\delta\)-operator. Again, the most important distinction to make between a differential change \(dy\) and a variation \(\delta y\) is that the differential change is a consequence of a differential change in the independent variable 
+    \begin{align*}
+        dy = f(x + dx) - f(x)
+    \end{align*}
+    whereas the \(\delta\)-operation takes place at a single \(x\)-value and is completely arbitrary at that point. There is no change in the independent variable \(x\), and we are changing \(y\) at \textit{each} point along the entire path \begin{align*}
+        \delta y(x) = \epsilon \eta (x).
+    \end{align*}
+    As we can see, \textit{there is no \(+ dx\)-term}
+    
+    Let us once again evaluate \begin{align*}
+        I[\overline{y}] - I[y] \equiv \delta I &= \int _{x_1}^{x_2} \left( F(x, y(x) + \delta y, y^{\prime} (x) + \delta y^{\prime} (x)) - F(x, y(x), y^{\prime} (x)) \right)dx\\
+        &= \int _{x_1}^{x_2} \left( \frac{\partial F}{\partial y} \delta y + \frac{\partial F}{\partial y^{\prime} } \delta y^{\prime} + O(\delta^2) \right) dx
+    \end{align*}
+    where the part \begin{align*}
+        \delta^{(1)} F = \frac{\partial F}{\partial y} \delta y + \frac{\partial F}{\partial y^{\prime} } \delta y^{\prime}
+    \end{align*}
+    is the \textit{first variation} of \(F\) while \begin{align*}
+        \delta ^{(t)}F = F(x, y(x) + \delta y, y^{\prime} (x) + \delta y^{\prime} (x)) - F(x, y(x), y^{\prime} (x)) = \delta^{(1)} F + O({\delta ^{2}})
+    \end{align*}  
+    is the \textit{total variation} of \(F\). 
+
+    Once again by integration by parts we get \begin{align*}
+        \delta^{(t)} I = \int_{x_1}^{x_2} \left( \frac{\partial F}{\partial y} + \frac{d}{dx}\left(\frac{\partial F}{\partial y^{\prime} }\right)\right)\delta y\ dx + O(\delta^2) = 0 
+    \end{align*}
+
+    Since we have still kept the higher order terms \(O(\delta^{2})\), we cannot immediately conclude that the terms inside the parantheses in the integrand is zero. But there is a subtle argument that makes it the case: Infinitesimally close to the extremal path, we expect \(I\) to retain its sign. That is, whatever the value of the integral, if we vary it infinitesimally, we still expect it to have the same sign. But say \(I\) is positive and we choose \(\delta y\) to be negative, how can we then be sure that the sign won't change? That can only be the case if this arbitrary variation of the path \(\delta y\) doesn't have any significant effect on the value of \(I\). And this in turn implies that the expression within the parantheses, which is the first variation \(\delta ^{(1)}I\) and in this case so happens to be the Euler-Lagrange equation, must indeed be zero. We have again arrived at the result \begin{align*}
+        \frac{\partial F}{\partial y} + \frac{d}{dx}\left( \frac{\partial F}{\partial y^{\prime} }  \right) = 0
+    \end{align*}
+    which also means that the condition for an extremum is that \begin{align*}
+        \delta^{(t)} I = 0 + O(\delta ^{2} )
+    \end{align*}
+
+    Furthermore, since \(\delta y = \epsilon \eta(x)\), comparing these two derivations we see that \begin{align*}
+        \frac{\delta ^{(1)} I}{\epsilon} = \frac{dI[\overline{y}]}{d\epsilon }\biggr|_{\epsilon = 0} 
+    \end{align*}
+    which means that setting either the first variation or the derivative equal to zero is equivalent.
+
+    \subsection{Examples of The Calculus of Variations}
+    \subsubsection{Geodesics}
+    A geodesic is the shortest path between two paths in curved space. As a warm up, let's consider the shortest path between two points in the plane, but let us solve it in polar coordinates.
+
+    \paragraph{Hand \& Finch, Problem 2.1}
+    \textit{Using plane polar coordinates and the variational calculus, find the minimum distance (i.e., the equation of the straight line) from the origin to the point (1, 1)}
+
+    We wish to extremise the integral \begin{align*}
+        s[y] = \int_{(0, 1)} ^{(1, 1)} ds
+    \end{align*}
+
+    The differential path length element is given by \begin{align*}
+        ds = \sqrt{dx^{2}  + dy^{2} } = dx\sqrt{1 + \left( \frac{dy}{dx} \right)^{2}} 
+    \end{align*}
+
+    In plane polar coordinates, we have that \begin{align*}
+        &x = r \cos \theta \implies dx = -r \sin \theta d \theta + \cos \theta dr\\
+        &y = r \sin \theta \implies dy = r\cos \theta d \theta + \sin \theta d r
+    \end{align*}
+    such that \begin{align*}
+        ds = \sqrt{dr ^{2} + (r d \theta )^{2}} 
+    \end{align*}
+    If we assume that \(r\) is the independent parameter, we get \begin{align*}
+        ds = dr\sqrt{1 + r^{2} \left( \frac{d \theta }{d r} \right)^{2}} 
+    \end{align*}
+    Clearly, the integration must then be from \(r = 0\) to \(r = 1\) such that the integral becomes \begin{align*}
+        s[y] = \int_{0}^1 dr \sqrt{1 + r^{2} \left( \frac{d \theta }{d r} \right)^{2}} 
+    \end{align*} 
+
+    Identifying
+    \begin{align*}
+        F = \sqrt{1 + r^{2} \left( \frac{d \theta }{d r} \right)^{2}} 
+    \end{align*}
+    to match the form of the functional we have solved in general, we can use the Euler-Lagrange equation and find that \begin{align*}
+        \frac{\partial F}{\partial \theta } = 0 = \frac{d}{dr }\left( \frac{\partial F}{\partial \left( \frac{d \theta }{dr} \right) }  \right) = \frac{d}{d r }\left( \frac{r^{2} \frac{d \theta }{dr}}{\sqrt{1 + r^{2} \left( \frac{d \theta }{dr} \right)^{2}}}\right)
+    \end{align*}
+    This means that \begin{align*}
+        \frac{r^{2} \frac{d \theta }{dr}}{\sqrt{1 + r^{2} \left( \frac{d \theta }{dr} \right)^{2}}} = a
+    \end{align*}
+    for some constant \(a\). Or that \begin{align*}
+        r^{2} = a \sqrt{r^{2} + \left(\frac{d \theta }{dr} \right)^{-2}}  \implies  d \theta = \frac{a dr}{\pm \sqrt{\frac{r^4}{a^{2}} - r^{2}}} = \pm \frac{a dr}{r\sqrt{r^2 - a^{2}}}
+    \end{align*}
+    which seems like a nasty integral, but it is solvable.
+
+    \subsection{The Lagrangian and the action}
+    Let's make the change of variables \begin{align*}
+        &x \mapsto t\\
+        &y \mapsto q\\
+        &f \mapsto L(q, \dot{q}, t)
+    \end{align*}
+    where \(\dot{q} = dq / dt\), and \(L(q, \dot{q}, t)\) is the Lagrangian. Our functional then becomes the \textit{action} \begin{align*}
+        S[q] = \int_{t_i}^{t_f} dt\ L(q(t), \dot{q} (t), t)
+    \end{align*} and making it stationary, we get the Euler-Lagrange equation \begin{align*}
+        \frac{\partial L}{\partial q}- \frac{d}{dx}\left( \frac{\partial L}{\partial \dot{q}}\right) = 0
+    \end{align*} 
+
+    \subsubsection{Independence of \(q(t)\) and \(\dot{q}(t)\)}
+    A subtle point, which might cause confusion, is how we seemingly varied both \(y(x)\) and \(y^{\prime}(x)\) independently in the function \(f\) above. This only gets more confusing when thinking about \(q(t)\) (position) and \(\dot{q} (t)\) (velocity), since we know from a physical standpoint that these quantities aren't unrelated. How can we justify this independence, when we know that the shape of the path influences the slope?
+
+    The explanation is quite simple really, and it all comes down to the difference between varying the arguments of the Lagrangian vs. varying the path in the functional. As mathematical objects, \(q(t)\) (position) and \(\dot{q} (t)\) (velocity) truly are independent objects - at any \textit{single} point in space, we could imagine attaching any value for \(\dot{q}(t)\). There is no explicit dependence between position and velocity. Consider the analogy that if you took a picture of a ball, such that you have a definite position, the ball could have had any velocity at the time the picture was taken. It is not determined from where it is placed in the picture.
+    
+    In fancy language, we say that for each point on the differentiable manifold \(M\), which is configuration space (the space spanned by the \(q\)'s), one can choose to associate any point in the \textit{independent} space called the tangent space \(T\) (which is spanned by the associated \(\dot{q}\)'s). A point \((q, \dot{q})\) on the tangent bundle \(TM\) is thus given by specifying the coordinates along two mathematically truly \textit{independent} set of axes.
+    
+    And this exactly how the Lagrangian treats position and velocity. The value of the Lagrangian, \(L(q, \dot{q}, t)\), is at any \textit{instant} \(t_0\) a function of the all the \textit{instantaneous} generalized coordinates, \(q(t_0)\), the \textit{instantaneous} generalized velocities \(\dot{q}(t_0)\) and sometimes explicitly the time, \(t_0\). For each possible such triplet of \textit{numbers}, the Lagrangian will take on some associated value, independent of the past \(t < t_0\) and of the future \(t > t_0\). It is simply a function of three quantities which are considered independent; thus we could have written \(L(\alpha, \beta, \gamma)\), and we'd have no trouble with agreeing that \(\alpha\) and \(\beta\) are independent w.r.t.\ the Lagrangian. In terms of the fancy maths language, the Lagrangian is just a map from the tangent bundle \(TM\) to the real numbers. It doesn't care about the interpretations of position and velocity, it is just a function. 
+    
+    And since \(q(t)\) and \(\dot{q}(t)\) are independent at any instant, we can of course \textit{vary} them independently too w.r.t.\ the Lagrangian (remember that a variation \(\delta q(t)\) can be totally arbitrary at any value \(t\) and does not imply a change \(dt\) - the varied paths are completely new functions).
+
+    But the action (and the functional in the previous section) is a function of the path \textit{as a whole}. And when considering the path parameterised by \(t\), of course a variation in the path induces a variation in the velocity. We are, after all, changing the slope as we change the shape. In fact we've already showed how \(\delta \dot{q} (t) = (d / dt)\delta q(t)\). This physical perspective of varying the path and the velocity is also the reason why we require the existence of the second derivative throughout the integration interval - we don't want the velocity to change discontinously, since this would indicate an infinite acceleration at that point.
+    
+    As we also showed, when we wish to vary the functional \begin{align*}
+        \delta S[q] = \delta \int _{t_i}^{t_f} dt\ L(q(t), \dot{q}(t), t)
+    \end{align*}
+    this will be the same as varying the integrand \begin{align*}
+        \delta S[q] = \int _{t_i}^{t_f} dt\ \delta L(q(t), \dot{q}(t), t)
+    \end{align*}
+    and \textit{now} we are just varying the Lagrangian. And again, when doing so, \(q(t)\) and \(\dot{q}(t)\) truly are considered independent. Not even that they are both parameterised by \(t\) need place any constraints on their independence - they could be completely unrelated. But when we then expand this variation within the integral in powers of \(\delta q\) and \(\delta \dot{q} \)  
+    \begin{align*}
+        \delta S[q] = \int _{t_i}^{t_f} dt \left[ \frac{\partial L}{\partial q}\delta q(t) + \frac{\partial L}{\partial \dot{q} }\delta \dot{q}(t) \right] 
+    \end{align*}
+    we see that we no longer consider the varation in \(q(t)\) to be independent from the variation in \(\dot{q} (t)\). This is because that when integrating the contributions from the Lagrangian over the continuous interval \(t \in [t_i, t_f]\), we are no longer giving instantaneous, disparate "inputs" to the Lagrangian, but considering the path and its properties as a whole. And with regards to the whole path, we have imposed some regularity requirements (differentiability and existence of the second derivative), which indeed means that the variations can no longer be considered independent. Just like with the ball analogy, we can think of the action functional as a video of the balls trajectory - it would certainly appear strange if the ball started teleporting with completely unrelated velocities between each frame in the video. We can utilize these constraints, which imply the identity \(\delta \dot{q} (t) = (d / dt)\delta q(t)\), and integrate by parts to write our now constrained functional variation of the Lagrangian in terms of variations in the path only \begin{align*}
+        \delta S[q] = \int _{t_i}^{t_f} dt \left[ \frac{\partial L}{\partial q} - \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q} } \right)\right] \delta q
+    \end{align*}
+    which with the fundamental lemma of the calculus of variations gives us the Euler-Lagrange equations
+    \begin{align*}
+        \frac{\partial L}{\partial q} - \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q} } \right)
+    \end{align*}
+
+    It is thus a fine distinction: At any \textit{instant}, \(q(t)\) and \(\dot{q}(t)\) truly are independent, and specifying one doesn't give you the other; with respect to the Lagrangian, they are thus treated as independent variables just as they are independent as mathematical objects. When considering the action functional however, which depends on the \textit{whole} path, we impose some regularity constraints (differentiability and existence of the second derivative) on the possible paths we wish to consider in configuration space (which stem from physical considerations and makes the problem interesting). We can say that the regularity conditions imply that \(\dot{q}(t) = dq(t) / dt\), or equivalently, that we are constraining ourselves to consider only the paths for which \(\dot{q} (t) = dq(t) / dt\). This then further implies the identity \(\delta \dot{q} (t) = (d / dt)\delta q(t)\), and as such we can no longer vary the path and the velocity independently. If we didn't require differentiability of the path, then we'd have no constraints on the types of variations we could make, and we could indeed still vary \(q(t)\) and \(\dot{q} (t)\) completely independently, but this wouldn't be very interesting in the context of physics of course. We can therefore say that the distinction lies between the mathematical independence of \(q(t)\) and \(\dot{q} (t)\) and the physical dependence between them on the paths we consider.   
+
+    In fact, we can think of the constraint \(\dot{q} = dq/ dt\) as the second equation in Lagrangian mechanics as the parallel to the definiton (which can really be thought of as a requirement) that \(p = \partial L / \partial \dot{q}\).
+
+    \subsection{Differential Equations and Boundary Conditions}
+    After having obtained the equations of motion from the Euler-Lagrange equations, we do not have a unique solution. We can attribute this to the fact that throughout the variation of the path, we are at freedom to vary both \(q(t)\) and \(\dot{q} (t)\) (except at the endpoints, which ensures the variational problem is well-posed). To obtain a unique solution, we therefore need to state the complete state of the system at one point in time after obtaining the general equations of motion by making the action stationary, so that we can actually figure out how the system will evolve. Intuitively, one can say that the equations of motion tell us where the system will go, but we need to specify where we begin. This is because the equations of motion are second-order differential equations describing how each generalized coordinate will accelerate under the influence of forces. This means that two \textit{boundary conditions}, which we'll denote by \(q(t_0)\) and \(\dot{q}(t_0)\), need to be specified to obtain a unique solution. This need for boundary conditions can also be seen from the general Taylor expansion of \(q(t)\) \begin{align*}
+        q(t) = q(t_0) + t\dot{q}(t_0) + \frac{1}{2} t^{2} \ddot{q}(t_0) + \cdots 
+    \end{align*} 
+    The equation of motion (a second-order differential equation) will give us \(\ddot{q}(t)\) as a function of \(q(t)\) and \(\dot{q}(t)\). So once we specify \(q(t_0)\) and \(\dot{q} (t_0)\) we can use that second-order differential equation to get \(\ddot{q}(t_0)\). We can then subsequently differentiate that equation to get the third derivative at \(t_0\), etc., thus "assembling" the Taylor expansion and therefore getting \(q(t)\) for all \(t\).
+    
+    Summing up the main idea of analytical mechanics: For \(N\) degrees of freedom, we need \(N\) dynamical variables to describe the evolution of the system. According to Hamilton's principle, we make the action stationary to find the equations of motion for the system, which will be second-order differential equation for each dynamical variable describing how it evolves under the influence of forces. We will thus also need to specify \(2N\) boundary conditions which describe the complete configuration of the system at one point in time (its position and instantaneous velocity) such that we obtain a unique solution for the problem at hand. 
+
+    \subsection{Lagrange's Equation in Multiple Independent Variables}
+    Say we have a path which is a function of two \textit{independent} variables \(y = y(x, t)\). We define \(\mathcal{L} \) to be a function like the Lagrangian, which treats the following as independent \begin{align*}
+        \mathcal{L} = \mathcal{L} \left(y(x,t), \frac{\partial y}{\partial x}, \frac{\partial y}{\partial t}, x, t\right).
+    \end{align*}
+    The action then becomes a double integral \begin{align*}
+        S = \iint \mathcal{L} \left(y(x,t), \frac{\partial y}{\partial x}, \frac{\partial y}{\partial t}, x, t\right) dx dt
+    \end{align*}
+    with the usual condition of vanishing variation at the boundaries. 
+    To extremise it, we again imagine that we have found the correct path, and that we introduce a small variation in the independent variables around this path
+    \begin{align*}
+        y(x, t) = \overline{y}(x, t) + \epsilon \eta(x, t)
+    \end{align*}
+    as such, we find that \begin{align*}
+        \delta \mathcal{L} \left(y(x,t), \frac{\partial y}{\partial x}, \frac{\partial y}{\partial t}, x, t\right) = \frac{\partial \mathcal{L}}{\partial y} \delta y + \frac{\partial \mathcal{L}}{\partial \left( \frac{\partial y}{\partial x}  \right)}\frac{\partial (\delta y)}{\partial x} + \frac{\partial \mathcal{L}}{\partial \left( \frac{\partial y}{\partial t}  \right)}\frac{\partial (\delta y)}{\partial t} 
+    \end{align*}
+
+    Since \(x\) and \(t\) are independent, we have that \begin{align*}
+        \frac{\partial}{\partial x} = \frac{d}{dx} 
+    \end{align*} 
+    and \begin{align*}
+        \frac{\partial }{\partial t} = \frac{d}{dt} 
+    \end{align*}
+    such that we can use total derivatives to account for \(x\) and \(t\) being dependent on further quantities (except for each other of course). Thus we get the integral \begin{align*}
+        \delta S = \iint dx dt \left[ \frac{\partial \mathcal{L}}{\partial y} \delta y + \frac{\partial \mathcal{L}}{\partial \left( \frac{d y}{d x}  \right)}\frac{d (\delta y)}{d x} + \frac{\partial \mathcal{L}}{\partial \left( \frac{d y}{d t}  \right)}\frac{d (\delta y)}{d t}  \right].
+    \end{align*} 
+    With integration by parts and using Fubini's theorem (interchanging order of integration), which is valid since we assume our functions to be continous and have no singularities, we find that \(\delta S = 0\) gives us the differential condition
+      \begin{align*}
+        \frac{\partial \mathcal{L} }{\partial y} - \frac{d}{d x}\left( \frac{\partial \mathcal{L} }{\partial \left( \frac{d y}{d x}  \right) }  \right) - \frac{d}{d t}\left( \frac{\partial \mathcal{L} }{\partial \left( \frac{d y}{d t}  \right) }  \right) = 0
+    \end{align*}
+
+    \textbf{Hand \& Finch} reads as follows \begin{align*}
+        \frac{\partial \mathcal{L} }{\partial y} - \frac{\partial}{\partial x}\left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial x}  \right) }  \right) - \frac{\partial}{\partial t}\left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial t}  \right) }  \right) = 0
+    \end{align*}
+    and it is seen that it differs by total and partial derivatives, which is attributable to the fact that Hand \& Finch assumes that \(x\) and \(t\) do not depend on anything. Goldstein's approach is thus more general. You can also see their derivation which uses derivatives instead of the delta operator.
+    
+    When going through Hand \& Finch's approach, we of course obtain integrals of the form \begin{align*}
+        \int_{x_1}^{x_2} \frac{\partial}{\partial x} \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial x}  \right) } \delta y \right)  dx = \left[ \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial x}  \right) } \delta y \right]_{x_1}^{x_2}
+    \end{align*}
+    It worried me at first to integrate this as above, since the fundamental theorem of calculus is a statement about total derivatives, not partial ones. But the partial derivative is just saying "keep everything other than \(x\) constant, and then act as if you take the total derivative". The partial derivative is just a function of \(x\) only, along a slice of the multidimensional space. Thus it behaves exactly like a total derivative along the direction of \(x\). The only difference between the above integral and one with a total derivative is that for an indefinite integral, any constants of integrations could have been functions of the other independent variables in the problem like so \begin{align*}
+        \int \frac{\partial}{\partial x} \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial x}  \right) } \delta y \right)  dx = \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial y}{\partial x}  \right) } \delta y + C\left(y(t), \frac{\partial y}{\partial x}, \frac{\partial y}{\partial t}, t\right)
+    \end{align*}
+    where \(y(t)\) is meant to represent any parts of the path only dependent on \(t\). I don't know if that is rigorous notation or if there are pathological examples, but if one just thinks about "reversing" partial differentation, any such terms would have disappeard when doing the partial differentation, and thus have to be "put back in". 
+
+    Even though the constants are functions, they are constants, and as such they disappear when doing the definite integral. And we do not need to specify at which values of the other independent variables that we are doing this integration of the partial derivative, since \(\delta y\) disappears at the boundaries anyway.
+\end{document}

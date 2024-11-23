@@ -1,0 +1,142 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../../preamble.tex}
+
+\graphicspath{ {./figs/} {./figs/talks/what-is-a-topological-insulator}}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\title{Topological Insulators}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{An unprecise introduction}
+    \subsection{What is an insulator?}
+    On the most general level, an insulator is something that does not transmit current. In other words, it can be seen as the opposite of a conductor.
+    
+    But it is of course not as simple as that, because we can have things that are insulating sometimes and conducting at other times. Very superficially, a semiconductor is an example of something that is conducting at finite temperatures while insulating at zero temperature.
+
+    The unwillingnes of an insulator to conduct electricity, which really means that it doesn't like electrons moving about, is a quantum mechanical effect. 
+
+    \subsection{Band Structure and the Fermi Level: How Topology Enters the Picture}
+    Quantum mechanically, an atom has multiple spin orbitals and even different kinds (\(s, p, d\) and \(f\) orbitals). Since electrons are leptons, which means that they are spin-\(1/2\) fermions, they obey the \href{https://en.wikipedia.org/wiki/Pauli_exclusion_principle}{Pauli exclusion principle}, which says that two fermions cannot share the same four quantum numbers simultaneously. If two electrons are in the same orbital, this would mean that they share three out of four quantum numbers. The only one left is the spin, and thus two electrons cannot have the same spin if they occupy the same orbital. And since the only two possible spins for an electron is \(\pm 1 / 2\), we conclude that each orbital can host one spin-up electron and one spin-down electron simultaneously.
+
+    This is the case for a single atom. But if we put two atoms with only one electron in the relevant orbital (is it just "the outer" that matters, and what does that even mean?) very closely together, the configurations can "hybridize" and make combined states. Some of these will have more delocalized electrons which lower the free energy. I don't know why or how this works, but that's the gist. Take a look at the energy levels at the bottom of figure \ref{fig:electron-bonding-energy}.
+
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.9\textwidth]{hybrid-1.png}
+            \caption{Two-atom hybridisation}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.9\textwidth]{hybrid-2.png}
+            \caption{Four-atom hybridisation}
+        \end{subfigure}
+        \caption{Energy levels of electron bonding. Credit to talk: \href{https://www.youtube.com/watch?v=YwaF5IC8eBY&ab_channel=KavliInstituteforTheoreticalPhysics}{What is a topological insulator?} - Jennifer Cano}
+        \label{fig:electron-bonding-energy}
+    \end{figure}
+
+    If we plot the possible energy levels of the system, as the number of closely packed atoms increases, we see the pattern shown in figure \ref{fig:discrete-band-structure}. In the limit, we analytically get a cosine curve (such as with the number of atoms being on the order of \(10^{23} \)). This continuous approximation to the discrete energy levels in the limit is known as the material's \textit{band structure}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{discrete-band-structure.png}
+        \caption{Approximating the discrete band-structure in a crystal we get a continuous line. This is known as the band structure of the material.}
+        \label{fig:discrete-band-structure}
+    \end{figure}
+
+    For real world materials, we get multiple bands from multiple different orbitals, and the result can be quite complex as seen in figure \ref{fig:band-structure-example}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{band-structure-example.png}
+        \caption{An abstract example of band structures from multiple orbitals as well as a real-world example from graphene.}
+        \label{fig:band-structure-example}
+    \end{figure}
+
+    This quantum mechanical view of a material and its band structure allows for a much more precise statement of what an insulator is compared to a conductor (metal). If we draw a horisontal line on the orbital-energy graph, we know that for each energy level, two electrons can in principle occupy it (spin-up and spin-down). 
+    
+    If we then have an atomic structure where an orbital is only half full, then there will be 
+
+    interpret figure \ref{fig:metal-vs-insulator}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{metal-vs-insulator.png}
+        \caption{}
+        \label{fig:metal-vs-insulator}
+    \end{figure}
+
+
+
+
+    \subsection{Berry Curvature and The Chern Number}
+    \subsection{Prediction of the Existence of Gapless Edge States}
+    \subsection{Realisations and Possible Interesting Applications}
+    \section{Interlude - Basic Quantum Mechanics}
+    \subsection{The Schrödinger Equation}
+    \subsection{The Hamiltonian of a Quantum Mechanical System}
+    \subsection{Pauli Spin Matrices}
+    \subsection{Spin-Orbit Coupling and its Hamiltonian}
+    \subsection{The Bloch Sphere}
+    \subsection{Berry Curvature and The Chern Number Revisited}
+    \section{Interlude - Floquet Theory}
+    \subsection{Floquet's Theorem}
+    \subsection{The Hill Equation and Mathieu's Equation}
+    \subsection{Kapitza's Pendulum}
+    \subsubsection{Kapitza's Pendulum with Lagrangian Mechanics}
+    \subsubsection{Kapitza's Pendulum with Floquet Theory}
+    \section{Floquet Engineering - Putting It All Together}
+    \subsection{How does Floquet Theory Enter the Picture?}
+    \subsection{An Effective Hamiltonian}
+    \subsection{Quasienergies}
+    \subsection{Floquet-Bloch States}
+    \subsection{Current Research and Open Problems}
+    \subsubsection{Notes from talk: \href{https://www.youtube.com/watch?v=YwaF5IC8eBY&ab_channel=KavliInstituteforTheoreticalPhysics}{What is a topological insulator?} - Jennifer Cano}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{top-cantor-magnet.png}
+        \caption{Image taken from the talk. A topological insulator is conducting on the surface, but insulating in the bulk.}
+        \label{fig:top-cantor-magnet}
+    \end{figure}
+    Thought from Figure \ref{fig:top-cantor-magnet}: When cutting a topological insulator in half, the two new surfaces that was previously in the bulk will become conducting surfaces while the bulk still remains insulating. This is just how you can't split a magnet to get two monopoles. But the diagram of the bar magnets reminds me of a Cantor set - in the limit of splitting the bar magnet, we would get a string of magnetic dipoles spanning the original length. Depending on how we achieve this Cantor set, the spacing will be different. What will the field be from this string of dipoles? Does it depend on the Cantor set spacing? Is it invariant and perfectly "approximated" by the field of the original magnet? And once this has been investigated, how does it compare to the properties that a string of infinitely thin topological insulators would have? Can it be analysed the same way?
+
+    \section{Unstructured topics}
+    \subsection{Dirac Cone}
+    
+    \section{Topological Physics at the Light-Matter Interface}
+    \subsection{From the talk}
+    Notes for the talk "\href{https://www.youtube.com/watch?v=LjHlAO46i0c&t=0s&ab_channel=AspenPhysics}{Topological Physics at the Light-Matter Interface}" by Professor Gil Refael.
+
+    Keywords mentioned
+    \begin{enumerate}
+        \item Spin-orbit coupling
+        \item Bloch Sphere
+        \item Spinor Space
+        \item Winding \(g_{\mathbf{p}}\) 
+        \item Excitons
+        \item Topolariton
+        \item Hybridize
+        \item Time-reversal symmetry (and breaking)
+        \item "Having a periodic drive is like adding an extra dimension to the system" - How should this be understood? How does this relate to Floquet theory and how it is used to make a time-dependent Hamiltonian into an effective time-independent Hamiltonian. Is it like saying that time is usually a dimension which configuration space can be parameterised by and you get a curve with each point along the curve having a point in time (or multiple) associated with it, but then when this curve is periodic, you essentially have a "geometrical shape" traced out again and again, which can then be viewed as the shape in itself without time associated with it - that is, a static picture, where you incoorperate the time axis as an extra dimension where each point in configuration space has infinitely many associated time points, but since it is mod-\(2\pi\) you can associate a "unique" point along the time axis which maps to a unique point on the "geometrical shape". That is, an extra dimension!
+        \item BHZ band structure
+        \item Pertubative and non-pertubative
+    \end{enumerate}
+
+    \subsection{Paper: "Floquet Topological Insulator in Semiconductor Quantum Wells"}
+    \begin{enumerate}
+        \item Brillouin Zone
+        \item 
+    \end{enumerate}
+    
+\end{document}
