@@ -43,4 +43,36 @@
     \subsubsection{The Electromotive Force}
     \subsubsection{Faraday's Law}
     \subsubsection{Overview and What's Next}
+
+    \section{Electromagnetism 2}
+    \subsection{Conservation theorems}
+
+    \textbf{Poynting's vector} 
+    \begin{align*}
+        \frac{dW}{dt} = \int_V d \tau \mathbf{E} \cdot \mathbf{J} &= \int_V d \tau \mathbf{E} \cdot \left( \frac{1}{\mu_0} \nabla \times \mathbf{B} - \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}\right) \\
+        &= \int _V d \tau \left( \frac{1}{\mu _0} E_i \epsilon_{ijk} \partial_j B_k - \frac{\epsilon_0}{2} \frac{\partial E^{2} }{\partial t} \right) \\
+        &= \int _V d \tau \left( \frac{1}{\mu _0}E_i\epsilon _{jki}\partial _j B_k  -  \frac{\epsilon_0}{2} \frac{\partial E^{2} }{\partial t}\right) \\
+        &= \int _V d \tau \left( \frac{1}{\mu _0}\epsilon _{jki} \partial _j B_k E_i - \frac{1}{\mu _0} \epsilon_{jki} B_k\partial_j E_i - \frac{1}{\mu _0}  -  \frac{\epsilon_0}{2} \frac{\partial E^{2} }{\partial t}\right)\\
+        &= \int _V d \tau \left( \frac{1}{\mu _0} \nabla \cdot (\mathbf{B} \times \mathbf{E}) + \frac{1}{\mu _0} \mathbf{B}\cdot (\nabla \times \mathbf{E})  -  \frac{\epsilon_0}{2} \frac{\partial E^{2} }{\partial t}\right)\\
+        &= \int _V d \tau \left( \frac{1}{\mu _0} \nabla \cdot (\mathbf{B} \times \mathbf{E}) - \frac{1}{2\mu _0} \frac{\partial B^{2} }{\partial t}   -  \frac{\epsilon_0}{2} \frac{\partial E^{2} }{\partial t}\right)\\
+        &= - \frac{d}{dt} \int_V d \tau \left( \frac{1}{2\mu _0} B^{2} + \frac{\epsilon_0}{2} E^{2}  \right) - \frac{1}{\mu _0}\oint_S \left(\mathbf{E} \times \mathbf{B} \right)  \cdot d \mathbf{a}
+    \end{align*}
+    The integrand in the first term if the total electromagnetic field energy per unit volume \begin{align*}
+        u \equiv \frac{1}{2 \mu _0} B^{2}  + \frac{\epsilon_0}{2} E^{2} 
+    \end{align*}
+    and the second term is called \textbf{Poynting's vector} \begin{align*}
+        \boxed{\mathbf{S} \equiv \frac{1}{\mu_0} \left(\mathbf{E} \times \mathbf{B} \right)}
+    \end{align*} 
+
+    If there are no charges in the volume we are considering, then there is nothing to do work on, and hence \(dW / dt = 0\). Then 
+    \begin{align*}
+        \frac{d}{dt} \int_V d \tau \left( \frac{1}{2\mu _0} B^{2} + \frac{\epsilon_0}{2} E^{2}  \right) = - \int_V d \tau \left(\nabla \cdot \mathbf{S}\right) \implies \frac{\partial u}{\partial t} + \nabla \cdot \mathbf{S} = 0
+    \end{align*}
+    Thus the \textbf{continuity equation for energy in the fields} reads \begin{align*}
+        \boxed{\frac{\partial u}{\partial t} + \nabla \cdot \mathbf{S} = 0} 
+    \end{align*}
+    which clearly shows that \(\mathbf{S}\) can be interpreted as energy flux of the fields through a given surface. The fact that it also is this way for non-closed surfaces is directly seen from the differential version of the continuity equation above, and it is thanks to the divergence theorem that we get the local differential version independent of surfaces.
+    
+    \newpage
+    \input{exercises.tex}
 \end{document}
