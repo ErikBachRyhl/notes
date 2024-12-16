@@ -3,19 +3,73 @@
 \subsection*{Resource: Geometrical Anatomy of Physics}
 \subsection*{Topics Covered}
 \begin{itemize}
-    \item Maps and bijections
+    \item Space
     \item Maps
     \item Domain
     \item Codomain
     \item Image
     \item Preimage
+    \item Bijection
+    \item Inverse
     \item Equivalence Relation
     \item Equivalence Class
+    \item Quotient Space
+    \item What amplitudes are
+    \item What a Positive Grassmannian is
 \end{itemize}
 
 \subsection*{Key Insights}
-\subsubsection*{Definitions} 
-\subsubsection*{Theorems}
+\subsubsection*{Definitions from Schuller's lecture series} 
+\begin{deff}
+    A \textbf{space} is a set with some underlying structure. We often study structure-preserving maps between such spaces.
+\end{deff}
+\begin{deff}
+    A \textbf{map} is a relation between to sets. More formally, we can write that given two sets \(A\) and \(B\), a map \(\phi : A \to B\) is a relation such that for each element \(a \in A\) there exists exactly one element \(b \in B\) such that \(\phi (a , b)\). We write that \(a \mapsto \phi(a)\).   
+\end{deff}
+\begin{deff}
+    Here, \(A\) is the \textbf{domain} and \(B\) is the \textbf{codomain}. The codomain is also called the target.
+\end{deff}
+\begin{deff}
+    The \textbf{image} of a set \(C \subseteq A\) under a map \(\phi\)  is the set one gets, which will be a subset of (or equal to) the codomain, by collecting everything that \(\phi \)  maps to when applied to \(C\). We write \(\phi (C) \equiv \rm{im}_\phi(C) \coloneqq \left\{ \phi (c)\ |\ c \in C \right\}\). 
+\end{deff}
+\begin{deff}
+    The \textbf{preimage} is the set, which will be a subset of (or equal to) the domain, one gets by considering which elements in the domain one has to apply \(\phi \) to to get certain elements in the codomain. Let for example \(V \subseteq B\), then \(\rm{preim}_{\phi}(V) \coloneqq \left\{ a \in A\ | \  \phi (a) \in V\right\}  \)
+\end{deff}
+\begin{rem}
+    The inverse is only defined for bijections, but the preimage is defined for all maps, and we will often meet it in topology! I was confused at first as to why we know that \(\text{preim}_{\phi }(B) = A\) without requiring surjectiveness, but this is because when we write \(\phi : A \to B\) we are already stating that \(\phi \) is applied to, or at least makes sense to apply to, all of \(A\). Now the image might not be all of \(B\) (it just "lives" in \(B\)), but the preimage of \(B\) is the set of all of the values in the domain which under the map \(\phi\) ends up in \(B\) - but that is of course all of \(A\), since from the definition, applying \(\phi\) to any element in \(A\) it will end up \(B\).     
+\end{rem}
+    \begin{deff}
+        A map is \textbf{surjective} if \(\phi (A) \equiv \text{im}_{\phi }(A) = B\) - that is, if all of \(B\) is "hit" by applying \(\phi \) to all of \(A\). A map is \textbf{injective} if for \(a_1, a_2 \in A\) we have that \(\phi (a_1) = \phi (a_2) \implies a_1 = a_2\). 
+        
+        The most important notion: A map is called \textbf{bijective} if it is both surjective and injective. 
+\end{deff}
+\begin{deff}
+    When a map is bijective, then a unique \textbf{inverse} exists. This is the map such that \(\phi^{-1}  \circ \phi^ = \rm{id}_A\) while \(\phi \circ \phi ^{-1} = \rm{id}_B\). In other words, it "undoes" a mapping. Reading \(\circ\) as "after" helps to learn the order of application.    
+\end{deff}
+\begin{rem}
+    Generically, if there exists one bijection between sets, then there exists many. A bijection is just a "pairing up" of elements - if you can come up with one way, then you can certainly come up with many (unless you try to design a counterexample I guess).
+\end{rem}
+\begin{deff}
+    If there exists any bijection between two sets \(A\) and \(B\) then we say that they are (set-theoretically) isomorphic ("of the same shape"). We write \(A \cong_{set}  B\).   
+\end{deff}
+\begin{deff}
+    An \textbf{equivalence relation} is any relation between elements in a set which is both \textit{reflexive}, \textit{symmetric} and \textit{transative}. Letting \(\sim\) denote the relation, we write these as \begin{align*}
+        &a \sim a\quad \text{(reflexive)}\\
+        &a \sim b \iff b \sim a\quad \text{(symmetric)}\\
+        &a \sim b \wedge b \sim c \implies a \sim c\quad \text{(transative)}
+    \end{align*} 
+    We denote all of the elements of \(A\) which are equivalent to some \(m \in A\) under the given equivalence relation as \([m] \coloneqq \left\{ n \in A\ | \ n \sim m \right\} \).
+\end{deff}
+\begin{rem}
+    I am very proud since I was able to prove the following: \begin{enumerate}[label=\roman*)]
+        \item \(a \in [m] \implies [a] = [m]\)
+        \item Either \([a] = [m]\) or \([a] \cap [m] = \emptyset \) 
+    \end{enumerate}
+    The first of these results imply that any member of an equivalence class equally well represents the whole class. The second one implies that an equivalence relation completely splits the set \(A\) into disjoint equivalence classes - we say that it "partitions" the set. 
+\end{rem}
+\begin{deff}
+    The set of all equivalence classes formed by applying the equivalence relation \(\sim\) to the set \(A\) is called the \textbf{quotient space} and is written as \(A\setminus\sim\). Intuitively, the quotient space is what you get when you sort your large set \(A\) into smaller sets by using some rules defined by the given equivalence relation. Examples of an equivalence relation is modulo divison by some prime number. One can then take say the quotient space \(\mathbb{Z} \setminus \rm{mod}\ p\).
+\end{deff}
 \subsubsection*{Takeaways}
 A map \(\phi : A \to B\) applies, by definition, to \textbf{all} elements in the domain \(A\). This crucially does not necessarily mean that all elements in \(B\) has a corresponding element in \(A\) under this map; this property is exactly \textit{surjectivity}. 
 
@@ -29,13 +83,21 @@ where for some \(V \subseteq B\) we define the preimage as \begin{align*}
     \text{preim}_{\phi}(V) = \left\{ a \in A\ |\ \phi (a) \in V \right\}  
 \end{align*} 
 
+\subsubsection*{Amplitudes and the positive Grassmannian}
+Studying amplitudes is about studying what we expect to happen when fundamental particles interact at very high energies, like when being smashed into each other at the LHC. Physicists then calculate the probabilities related with the particle scattering in different directions with different energies and momenta. These probabilites are precisely the "amplitudes" in "scattering" and "scattering amplitudes". The reason why this is interesting is because if we want to know if our theory is right - or if we want to know precisely when and where it is not - then we need to have very precise expectations from experiments such that we know when they deviate. 
+
+Studying amplitudes is therefore very much at the heart of our most fundamental understanding of nature, and it actually sounds really exciting.
+
+The Grassmannian is a way to group and classify subspaces embedded in larger spaces. For example, \(\rm{Gr}(k, d)\) is the collection of all \(k\)-dimensional subspaces going through the origin in the larger \(d\)-dimensional space. I think. The positive Grassmannian is the subspace of the Grassmannian which only has positive minors along (\textred{all or certain}) axes. I think minors are subdeterminants or something? I'm note sure. But the intuition is that if we are considering the space of all lines in 3D going through the origin \(\rm{Gr}(1, 3)\), then the positive Grassmannian would be only the lines with positive slope. The Grassmannian kind of "keeps track" of all these distinct geometric objects (lines with different slopes and directions) by only having them as points. The full Grassmannian just discussed would uniquely identify each point on the upper hemisphere with a line (expect for lines going through the "equator" in the \((x, y)\)-plane, if the hemisphere is formed by cutting a sphere in two in the \((x,y)\)-plane).
+
+Apparently, great advances were made in calculating scattering amplitudes by using the positive Grassmannian. And this was just around 10 years ago - so it is still relatively new!. Calculating these amplitudes was (and probably still is) usually is done by adding hundreds of Feynman diagrams for even the simplest calculations - and many thousands for a bit more interesting interactions. And most of these terms sum to zero or something very concise, which is very difficult to understand from the size of the sum. In other words, a lot of redundancies are inherent in the Feynman diagram way of calculating scattering amplitudes, and people are working on more direct ways of doing it since there must be a reason for why many answers come out so beautiful and concise even though the actual calculation is the most messy thing ever.
+
 \subsection*{Problems Attempted}
 \begin{enumerate}
-    \item \textit{Problem statement or reference.}
-    \item \textit{Solution (include partial work if needed).}
+    \item Proving the statements regarding equivalence classes (huge victory!)
 \end{enumerate}
 
 \subsection*{Follow-Up Questions}
 \begin{itemize}
-    \item \textit{Write down any gaps in understanding or questions to revisit.}
+    \item Do a short write up of the proofs above. Remind yourself of the general proof-technique to use if one wants to show a "either - or" statement. Reminder: show \(p \implies \neg q\) because then \(\neg(\neg q) \implies \neg p\) (through contrapositive) which is the same as \(q \implies \neg p\). 
 \end{itemize}
