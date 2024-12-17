@@ -1,0 +1,84 @@
+\section{Session Date: 17th December, 2024}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Maxwell's equations in terms of potentials only
+    \item Gauge Transformations
+    \item 4-vector notation
+    \item d'Alembert operator
+    \item Retarded potentials
+\end{itemize}
+
+\subsection*{Key Insights}
+\subsubsection*{Derivation Recap}
+\begin{enumerate}[label=\roman*]
+    \item) $\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$
+    \item) $\nabla \cdot \mathbf{B} = 0$
+    \item) $\nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t}$
+    \item) $\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon _0 \frac{\partial \mathbf{E}}{\partial t}$
+\end{enumerate}
+
+ii) allows us to write \begin{align*}
+    \boxed{\mathbf{B} = \nabla \times \mathbf{A}}
+\end{align*}since the divergence of any curl is zero. This allows us to write \begin{align*}
+    \nabla \times \mathbf{E} &= - \nabla \times \frac{\partial \mathbf{A}}{\partial t} \\
+    &\implies \nabla \times \left( \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}  \right) = 0
+\end{align*}
+
+And since the curl of any gradient is zero too, we know that we can write the above as the (negative) gradient of a potential too:
+\begin{align*}
+    - \nabla V = \mathbf{E} +\frac{\partial \mathbf{A}}{\partial t}
+\end{align*}
+or \begin{align*}
+    \boxed{\mathbf{E} = -\nabla V - \frac{\partial \mathbf{A}}{\partial t}}
+\end{align*}
+such that Gauss' law becomes \begin{align*}
+    \nabla \cdot \left( -\nabla V - \frac{\partial \mathbf{A}}{\partial t}  \right) = - \nabla^{2} V - \nabla \cdot \frac{\partial \mathbf{A}}{\partial t} = \frac{\rho}{\epsilon _0}\\
+    \implies \nabla ^{2} V + \nabla \cdot \frac{\partial \mathbf{A}}{\partial t} = -\rho  /\epsilon_0
+\end{align*}
+
+In the static case (\(\partial _t \mathbf{A} = 0\) ) this reduces to Laplace's equation \begin{align*}
+    \nabla ^{2} V = - \frac{\rho}{\epsilon _0}
+\end{align*}
+
+We can also rewrite the Ampére-Maxwell law, keeping the source on the right and moving anything else (the fields or potentials) to the left: \begin{align*}
+    \nabla \times \mathbf{B} - \frac{1}{c^{2}} \frac{\partial \mathbf{E}}{\partial t} = \mu _0 \mathbf{J}
+\end{align*}
+which in terms of the potentials gives \begin{align*}
+    &\nabla \times \left( \nabla \times \mathbf{A}\right) - \frac{1}{c^{2} } \frac{\partial}{\partial t} \left( -\nabla V - \frac{\partial \mathbf{A}}{\partial t}  \right)  = \mu _0 \mathbf{J}\\
+    =\ &\nabla (\nabla \cdot \mathbf{A}) - \nabla ^{2} \mathbf{A} + \frac{1}{c^{2}}\nabla \left( \frac{\partial V}{\partial t}  \right) + \frac{1}{c^{2}}\frac{\partial^{2} \mathbf{A}}{\partial t^{2} } \\
+    =\ &\nabla \left( \nabla \cdot \mathbf{A} + \frac{1}{c^{2} } \frac{\partial V}{\partial t} \right) - \left( \nabla ^{2} - \frac{1}{c^{2}} \frac{\partial^{2} }{\partial t^{2} }  \right)\mathbf{A}
+\end{align*}
+Defining the d'Alembertian as \begin{align*}
+    \square^{2} \equiv \nabla ^{2} - \frac{1}{c^{2} }\frac{\partial ^{2}}{\partial t^{2} }  
+\end{align*}
+and letting \begin{align*}
+    L \equiv \nabla \cdot \mathbf{A} + \frac{1}{c^{2} } \frac{\partial V}{\partial t} 
+\end{align*}
+we can succintly write the Ampére-Maxwell law as: \begin{align*}
+    \boxed{\square^{2} \mathbf{A} - \nabla L = - \mu _0 \mathbf{J}}
+\end{align*}
+
+Notice how we can use this in Gauss' law: \begin{align*}
+    &\nabla ^{2} V + \nabla \cdot \frac{\partial \mathbf{A}}{\partial t} = -\rho  /\epsilon_0\\
+    \implies &\nabla ^{2} V - \frac{1}{c^{2} }\frac{\partial^{2}  V}{\partial t^{2} }  + \frac{\partial }{\partial t}\left( \nabla \cdot \mathbf{A} + \frac{1}{c^{2} }\frac{\partial V}{\partial t}  \right)   = -\rho  /\epsilon_0\\
+    =\ & \boxed{\square^{2}V + \frac{\partial L}{\partial t} = - \rho /\epsilon _0}
+\end{align*}
+
+Such that Maxwell's equation in terms of potentials become 
+
+
+
+\subsection*{Follow-Up Questions}
+\begin{itemize}
+    \item How come the retarded potential formulation is not equivalent to putting a heaviside inside the integration.
+    \item Why will you get all modes below the cutoff frequency inside wave guides?
+    \item Show what Gauge invariance means
+    \item Do an example from the blackboar
+    \item Rederive boundary conditions for the fields (both free and in matter)
+    \item Learn more about the 4-vector formulation and how \(g_{\mu \nu}\) can "raise or lower indecies"
+    \item Lorentz tansformationts as rotations in 4-space (Mogen's notes)
+    \item Coloumb Gauge (\(\nabla \cdot \mathbf{A}\) )
+    \item Lorenz Gauge (\(L = 0\))
+    \item Walk through the full retarded potential derivation.  
+\end{itemize}
