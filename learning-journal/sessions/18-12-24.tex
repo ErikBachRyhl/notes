@@ -1,0 +1,28 @@
+\section{Session Date: 17th December, 2024}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\paragraph{Cool way to do propagation of errors}
+Variance is equal to \(\sigma^{2}\). If our function is \begin{align*}
+    f = xy
+\end{align*}
+the law of propagation of errors gives \begin{align*}
+    V(f) &= \frac{\partial f}{\partial x}V(x) + \frac{\partial f}{\partial y} V(y)\\
+    &= y V(x) + xV(y)\\
+\end{align*}
+such that \begin{align*}
+    \left( \frac{\sigma _f}{f} \right)^{2} = \left( \frac{\sigma_x}{x} \right) ^{2} + \left( \frac{\sigma _y}{y} \right) ^{2} 
+\end{align*}
+which also works for fractions.
+
+\paragraph{Understood how we can conclude that the \(\mathbf{E}\) and \(\mathbf{B}\) fields are in phase for monochromatic plane waves.}
+We derive that \begin{align*}
+    k(\tilde{E}_0)_x &= \omega (\tilde{B}_0)_y\\
+    -k(\tilde{E}_0)_y &= \omega (\tilde{B}_0)_x
+\end{align*}
+But since \(k\) and \(\omega \) are real, the only way that these scalings can hold all along the wave, then the waves have to hit zero and peak at the same time, which means that they are in phase! Since we from above have the neat writing that \begin{align*}
+    \tilde{\mathbf{B}}_0 = \frac{k}{\omega} (\hat{z} \times \tilde{\mathbf{E}}_0) = \frac{1}{c}(\hat{z} \times \tilde{\mathbf{E}}_0)
+\end{align*}
+taking the modulus we get that \begin{align*}
+    B_0 = \frac{k}{\omega }E_0 = \frac{1}{c} E_0
+\end{align*}
+even for the real wave.
