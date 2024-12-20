@@ -1,0 +1,36 @@
+\section{Session Date: 20th December, 2024}
+\subsection*{Main Topic: Green's Functions}
+\subsection*{Resource: Mathemaniac and Andrew Dotson YouTube Videos}
+\subsection*{Topics Covered}
+\paragraph{Green's Functions}
+Only had time to learn a little bit about Green's functions from a high level perspective. The main idea is that given a (inhomogenous) differential equation \begin{align*}
+    \mathcal{L} u(x) = f(x)
+\end{align*}
+where \(\mathcal{L} \) is a linear operator, we find a function, the Green's function, which satisfies \begin{align*}
+    \mathcal{L} G(x, x^{\prime}) = \delta (x - x^{\prime})
+\end{align*} 
+such that \begin{align*}
+    &f(x) \mathcal{L} G(x, x^{\prime} ) = f(x) \delta (x - x^{\prime} )\\
+    &\implies \mathcal{L} \left( f(x) G(x, x^{\prime} )\right) = f(x) \delta (x - x^{\prime} )
+\end{align*}
+where I guess the linear operator above is w.r.t.\ \(x^{\prime} \) such that we can move \(f(x)\) inside. Integrating both sides, we get \begin{align*}
+    \int \mathcal{L}  f(x) G(x, x^{\prime} ) dx^{\prime} = \int f(x) \delta (x - x^{\prime} ) dx^{\prime} = f(x)
+\end{align*} 
+and since \(\mathbf{L}\) is a linear operator, we can pull it out of the integral \begin{align*}
+    \mathcal{L} \left( \int  f(x) G(x, x^{\prime} ) dx^{\prime} \right) = f(x)
+\end{align*} 
+where comparison with the original DE shows that we have in fact found the solution! \begin{align*}
+    u(x) = \int f(x) G(x, x^{\prime} ) dx^{\prime} 
+\end{align*}
+
+The equation which the Green's function satisfies \begin{align*}
+    \mathcal{L} G(x, x^{\prime}) = \delta (x - x^{\prime})
+\end{align*} 
+shows how the Green's function can be intuitively thought of as the system's response to a single pulse-like pertubation. And since the operator is linear, the total response to the driving force \(f(x)\) can be found by "adding up" weighted pulse values which in combination give the total pertubation \(f(x)\). 
+
+I think this is the main idea anyway. I am looking forward to seeing its connection to scatteing. 
+
+\subsection*{Follow-Up Questions}
+\begin{itemize}
+    \item \textred{Walk through Mathemaniac derivation again. Read Dotson's resource from Arizona state. Do the Mathemaniac problem.}
+\end{itemize}
