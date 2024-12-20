@@ -1,0 +1,45 @@
+\section{Session Date: 14th December, 2024}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Potential formulation
+    \item Gauge Transformations
+\end{itemize}
+
+\subsection*{Key Insights}
+\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+\subsubsection*{Definitions} 
+\subsubsection*{Theorems}
+\subsubsection*{Takeaways}
+
+\subsection*{Problems Attempted}
+\paragraph{10.3 in Griffiths} was about finding the fields \textit{and} sources given \(V(\mathbf{r}, t)\) and \(\mathbf{A}(\mathbf{r}, t)\). I immediately recognized that the electric field found corresponded to a point charge (at the origin), while the magnetic field was zero. I then began using the potential formulation to find the sources by using the d'Alembertian etc., but this was of course silly, it simply follows that if \(\mathbf{B} = \mathbf{0}\) everywhere, then \(\mathbf{J} = \mathbf{0}\) everywhere too, while for a point charge \(\rho = q \delta ^3 (\mathbf{r})\). I then saw how a simple gauge transformation changed the funny potentials into what we'd expect to have for a point charge at the origin and no magnetic fields.
+
+\paragraph{10.4 in Griffiths} was given a "wave" potential. Derived the fields. If they were to satisfy Maxwell's equation in vacuum, we need to have the condition that \(k^{2} = \mu _0 \epsilon _0 \omega ^{2} \) or equivalently, \(v = c = \frac{\omega}{k}\). Thus, for the given potential, the electromagnetic fields (which we could see satisfy the wave equation and are thus "waves") simply \textit{have} to propagate at the speed of light to satisfy Maxwell's equations, which we know from experiments that all electric and magnetic fields do. This might not be a suprise since we found that with the way that the electromagnetic fields satisfy the wave equation, they must have a speed of \(c\) \begin{align*}
+        \nabla ^{2} \mathbf{E} = \mu _0 \epsilon _0 \frac{\partial^{2}  \mathbf{E}}{\partial t^{2} },\qquad \nabla ^{2} \mathbf{B} = \mu _0 \epsilon _0 \frac{\partial^{2}  \mathbf{B}}{\partial t^{2} }
+    \end{align*}   
+
+\paragraph{9.30 in Griffiths} was about figuring out a specific frequency range if one only wanted to excite a single \(TE\)-mode. When solving the original wave guide problem, we found that \begin{align*}
+    k_x = \frac{m \pi}{a}, \quad m \in \mathbb{Z}\setminus{0} 
+\end{align*}  
+(or something similar). This lead to a derivation of the cutoff frequency. As long as the driving frequency is above the cutof frequency, then waves can propagate. But since the wave equation is linear, any sum of possible waves will also satisfy the equations. Thus we expect the solution of the wave propagating in the wave guide to be a sum of all the waves which has a \(k\) corresponding to a cutoff-frequency below the current driving frequency. Or something like that. It is the idea anyway. So we found the frequency gap between the two \(TE\)-modes with the lowest cutoff-frequency, since this is the range where only 1 is excited. If we pass the threshold, then 2 will be excited and so forth up to an infinitude, I guess? Except for energy considerations.
+
+\paragraph{9.31 in Griffiths} was about showing how the velocity of the wave for mode \(TE_{mn}\) is in fact the group velocity. This was a very calculation dense task, and I did not succeed. I do need to practice calculations, but this will be practiced just by doing \textit{more} exercises. But a few takeaways from the exercise are listed here: \textred{Review these ideas. Prob 9.12 f.eks.}.why we might want \begin{align*}
+    v = \frac{\int d \mathbf{a} \cdot \langle \mathbf{S} \rangle }{\int \langle u \rangle d \tau}
+\end{align*}
+and not just \begin{align*}
+    v = \frac{\mathbf{S}}{u}
+\end{align*}
+
+\paragraph{9.42 in Griffiths} was about finding the \(\omega_{lmn}\) frequency in a closed "wave box". This was a very difficult exercise for me, but also very instructive in systematically applying boundary conditions and attacking the problem. Go through this problem in depth. Start with Maxwell's equations and get an inhomogenous Laplacian for the electric field (three equations). Then, use an ansatz of a separable solution in each coordinate. Find a solution to these. Apply boundary conditions systematically to remove constants. Use the final solution to determine \(\omega_{lmn} \). \textred{Review} 
+
+\subsection*{Follow-Up Questions}
+\begin{itemize}
+    \item Why do we have to change \(V\) and \(\mathbf{A}\) simultaneously to have a proper Gauge transformation? Try to write out the potential formulation of Maxwell's equations and walk through the conditions imposed by the look of the Gauge Transformation. What happens if you only shift say \(V\). What about only shifting \(\mathbf{A}\)? 
+    \item Why might we want \begin{align*}
+        v = \frac{\int d \mathbf{a} \cdot \langle \mathbf{S} \rangle }{\int \langle u \rangle d \tau}
+    \end{align*}
+    and not just \begin{align*}
+        v = \frac{\mathbf{S}}{u}
+    \end{align*}. Maybe it makes sense that a group velocity is determined from the average of these quantitites. But does that mean that 
+\end{itemize}
