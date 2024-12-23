@@ -1,0 +1,45 @@
+\section{Session Date: 22nd December, 2024}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item \textit{List key topics or subtopics here.} 
+\end{itemize}
+
+\subsection*{Key Insights}
+\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+\subsubsection*{Definitions} 
+\paragraph{A derivation of mutual inductance} \begin{align*}
+    \mathbf{B}_1 = \frac{\mu_0}{ 4 \pi } \oint \frac{d \mathbf{I}_1 \times \hatgriffr}{\griffr[2]^2} = \frac{\mu_0 I_1}{4 \pi } \oint \frac{d \mathbf{l}_1 \times \hatgriffr }{\griffr[2] ^{2} }
+\end{align*}
+such that \begin{align*}
+    \Phi _2 = \int \mathbf{B}_1 \cdot d \mathbf{a}_2 = \int \left( \nabla \times \mathbf{A_1} \right) \cdot d \mathbf{a}_2 = \oint \mathbf{A}_1 \cdot d \mathbf{l}_2
+\end{align*}
+\begin{align*}
+    \nabla \times \mathbf{A}_1 = \mathbf{B}_1 \implies \oint \mathbf{A}_1 \cdot d \mathbf{l}_1 = \int \mathbf{B}_1 \cdot d \mathbf{a}_1
+\end{align*}
+Not the correct path. The thing to notice is that with the Coloumb Gauge, \(\nabla \cdot \mathbf{A} = \mathbf{0}\) such that \begin{align*}
+    \nabla \times \left( \nabla \times \mathbf{A} \right) = \nabla ^{2} \mathbf{A} = - \mu _0 \mathbf{J}
+\end{align*} 
+in the quasi-static approximation. But this is just Laplace's equation with a source in three dimensions. Thus, we immediately know the solution: \begin{align*}
+    \mathbf{A}(\mathbf{r}) = \frac{\mu _0}{4 \pi } \int \frac{\mathbf{J}(\mathbf{r}^{\prime})}{\griffr[2] } d \tau ^{\prime} 
+\end{align*}
+
+Putting this into the equation above for \(\Phi _2\) we get \begin{align*}
+    \Phi_2 = \frac{\mu _0 I_1}{4 \pi }\oint \left( \oint \frac{d \mathbf{l}_1}{\griffr[2] } \right) \cdot d \mathbf{l}_2 = \frac{\mu _0 I_1}{4 \pi } \oint\oint \frac{d \mathbf{l}_1 \cdot d \mathbf{l}_2}{\griffr[2] } = M_{12} I_1 
+\end{align*}
+where \(M_{12} = M_{21} \equiv M\) is  \begin{align*}
+    \boxed{M = \frac{\mu _0}{4 \pi } \oint\oint \frac{d \mathbf{l}_1 \cdot d \mathbf{l}_2}{\griffr[2] }}
+\end{align*}
+\subsubsection*{Theorems}
+\subsubsection*{Takeaways}
+
+\subsection*{Problems Attempted}
+\begin{enumerate}
+    \item \textit{Problem statement or reference.}
+    \item \textit{Solution (include partial work if needed).}
+\end{enumerate}
+
+\subsection*{Follow-Up Questions}
+\begin{itemize}
+    \item \textit{Write down any gaps in understanding or questions to revisit.}
+\end{itemize}

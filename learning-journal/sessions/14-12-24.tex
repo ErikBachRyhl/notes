@@ -84,20 +84,23 @@ where for some \(V \subseteq B\) we define the preimage as \begin{align*}
 \end{align*} 
 
 \subsubsection*{Amplitudes and the positive Grassmannian}
-Studying amplitudes is about studying what we expect to happen when fundamental particles interact at very high energies, like when being smashed into each other at the LHC. Physicists then calculate the probabilities related with the particle scattering in different directions with different energies and momenta. These probabilites are precisely the "amplitudes" in "scattering" and "scattering amplitudes". The reason why this is interesting is because if we want to know if our theory is right - or if we want to know precisely when and where it is not - then we need to have very precise expectations from experiments such that we know when they deviate. 
+Studying \textbf{amplitudes}  is about studying what we expect to happen when fundamental particles interact at very high energies, like when being smashed into each other at the LHC. Physicists then calculate the probabilities related with the particle scattering in different directions with different energies and momenta. These probabilites are precisely the "amplitudes" in "scattering" and "scattering amplitudes". The reason why this is interesting is because if we want to know if our theory is right - or if we want to know precisely when and where it is not - then we need to have very precise expectations from experiments such that we know when they deviate. 
 
 Studying amplitudes is therefore very much at the heart of our most fundamental understanding of nature, and it actually sounds really exciting.
 
-The Grassmannian is a way to group and classify subspaces embedded in larger spaces. For example, \(\rm{Gr}(k, d)\) is the collection of all \(k\)-dimensional subspaces going through the origin in the larger \(d\)-dimensional space. I think. The positive Grassmannian is the subspace of the Grassmannian which only has positive minors along (\textred{all or certain}) axes. I think minors are subdeterminants or something? I'm note sure. But the intuition is that if we are considering the space of all lines in 3D going through the origin \(\rm{Gr}(1, 3)\), then the positive Grassmannian would be only the lines with positive slope. The Grassmannian kind of "keeps track" of all these distinct geometric objects (lines with different slopes and directions) by only having them as points. The full Grassmannian just discussed would uniquely identify each point on the upper hemisphere with a line (expect for lines going through the "equator" in the \((x, y)\)-plane, if the hemisphere is formed by cutting a sphere in two in the \((x,y)\)-plane).
+The \textbf{Grassmannian} is a way to group and classify subspaces embedded in larger spaces. For example, \(\rm{Gr}(k, d)\) is the collection of all \(k\)-dimensional subspaces going through the origin in the larger \(d\)-dimensional space. I think. The positive Grassmannian is the subspace of the Grassmannian which only has non-zero minors (the determinant of a square sub-matrix (removing row \(i\) and column \(j\) for example)) along all axes. But the intuition is that if we are considering the space of all lines in 3D going through the origin \(\rm{Gr}(1, 3)\), then the positive Grassmannian would be only the lines with positive slope. The Grassmannian kind of "keeps track" of all these distinct geometric objects (lines with different slopes and directions) by only having them as points. The full Grassmannian just discussed would uniquely identify each point on the upper hemisphere with a line (expect for lines going through the "equator" in the \((x, y)\)-plane, if the hemisphere is formed by cutting a sphere in two in the \((x,y)\)-plane).
 
-Apparently, great advances were made in calculating scattering amplitudes by using the positive Grassmannian. And this was just around 10 years ago - so it is still relatively new!. Calculating these amplitudes was (and probably still is) usually is done by adding hundreds of Feynman diagrams for even the simplest calculations - and many thousands for a bit more interesting interactions. And most of these terms sum to zero or something very concise, which is very difficult to understand from the size of the sum. In other words, a lot of redundancies are inherent in the Feynman diagram way of calculating scattering amplitudes, and people are working on more direct ways of doing it since there must be a reason for why many answers come out so beautiful and concise even though the actual calculation is the most messy thing ever.
+Apparently, great advances were made in calculating scattering amplitudes by using the positive Grassmannian. And this was just around 10 years ago - so it is still relatively new! Calculating these amplitudes was (and probably still is) usually is done by adding hundreds of Feynman diagrams for even the simplest calculations - and many thousands for a bit more interesting interactions. And most of these terms sum to zero or something very concise, which is very difficult to understand from the size of the sum. In other words, a lot of redundancies are inherent in the Feynman diagram way of calculating scattering amplitudes, and people are working on more direct ways of doing it since there must be a reason for why many answers come out so beautiful and concise even though the actual calculation is the most messy thing ever.
+
+\textbf{Update}: Quanta Magazine lists advances in amplituhedron-approach as one of the three biggest breakthroughs in physics in 2024. So the approach might still be and become more relevant, even though many people still find it esoteric. 
+
+\paragraph{Mathematical takeaway: Proving and "either - or" statement}
+Show \(p \implies \neg q\) because then \(\neg(\neg q) \implies \neg p\) (through contrapositive) which is the same as \(q \implies \neg p\). 
 
 \subsection*{Problems Attempted}
-\begin{enumerate}
-    \item Proving the statements regarding equivalence classes (huge victory!)
+\textbf{Proving the statements regarding equivalence classes (huge victory!)}
+Given a set \(M\) and an equivalence relation \(\sim\), the following holds  
+\begin{enumerate}[label=\roman*)]
+    \item If \(a \in [m]\) then \([a] = [m]\)
+    \item Either \([a] = [m]\) or \([a] \cap [m] = \emptyset\)    
 \end{enumerate}
-
-\subsection*{Follow-Up Questions}
-\begin{itemize}
-    \item Do a short write up of the proofs above. Remind yourself of the general proof-technique to use if one wants to show a "either - or" statement. Reminder: show \(p \implies \neg q\) because then \(\neg(\neg q) \implies \neg p\) (through contrapositive) which is the same as \(q \implies \neg p\). 
-\end{itemize}

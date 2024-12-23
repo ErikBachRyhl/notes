@@ -17,15 +17,16 @@
     \item) $\nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t}$
     \item) $\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon _0 \frac{\partial \mathbf{E}}{\partial t}$
 \end{enumerate}
+In electrostatics, we had \(\nabla \times \mathbf{E} = \mathbf{0}\) which allowed us to write \(\mathbf{E} = - \nabla V\). But in electrodynamics, the curl of \(\mathbf{E}\) isn't zero. But we can still get to a potential formulation:  
 
-ii) allows us to write \begin{align*}
+ii) still allows us to write \begin{align*}
     \boxed{\mathbf{B} = \nabla \times \mathbf{A}}
 \end{align*}since the divergence of any curl is zero. This allows us to write \begin{align*}
     \nabla \times \mathbf{E} &= - \nabla \times \frac{\partial \mathbf{A}}{\partial t} \\
     &\implies \nabla \times \left( \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}  \right) = 0
 \end{align*}
 
-And since the curl of any gradient is zero too, we know that we can write the above as the (negative) gradient of a potential too:
+And \textit{now}, since the curl of any gradient is zero too, we know that we can write the above as the (negative) gradient of a potential too:
 \begin{align*}
     - \nabla V = \mathbf{E} +\frac{\partial \mathbf{A}}{\partial t}
 \end{align*}
@@ -71,14 +72,5 @@ Such that Maxwell's equation in terms of potentials become
 
 \subsection*{Follow-Up Questions}
 \begin{itemize}
-    \item How come the retarded potential formulation is not equivalent to putting a heaviside inside the integration.
-    \item Why will you get all modes below the cutoff frequency inside wave guides?
-    \item Show what Gauge invariance means
-    \item Do an example from the blackboar
-    \item Rederive boundary conditions for the fields (both free and in matter)
-    \item Learn more about the 4-vector formulation and how \(g_{\mu \nu}\) can "raise or lower indecies"
-    \item Lorentz tansformationts as rotations in 4-space (Mogen's notes)
-    \item Coloumb Gauge (\(\nabla \cdot \mathbf{A}\) )
-    \item Lorenz Gauge (\(L = 0\))
-    \item Walk through the full retarded potential derivation.  
+    \item Why will you get all modes above the cutoff frequency inside wave guides? \textbf{Answer}: We show mathematically that the most general solution includes all frequencies of \(\omega = m \pi / a\) with \(m \in \mathbb{Z} \) or something. So I guess there's no reason to assume that they shouldn't be there, since they can? Still, a vague answer.
 \end{itemize}

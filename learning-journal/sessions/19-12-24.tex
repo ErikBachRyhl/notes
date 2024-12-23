@@ -7,11 +7,6 @@
 \end{itemize}
 
 \subsection*{Key Insights}
-\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
-\subsubsection*{Definitions} 
-\subsubsection*{Theorems}
-\subsubsection*{Takeaways}
-
 \subsection*{Problems Attempted}
 \paragraph{10.3 in Griffiths} was about finding the fields \textit{and} sources given \(V(\mathbf{r}, t)\) and \(\mathbf{A}(\mathbf{r}, t)\). I immediately recognized that the electric field found corresponded to a point charge (at the origin), while the magnetic field was zero. I then began using the potential formulation to find the sources by using the d'Alembertian etc., but this was of course silly, it simply follows that if \(\mathbf{B} = \mathbf{0}\) everywhere, then \(\mathbf{J} = \mathbf{0}\) everywhere too, while for a point charge \(\rho = q \delta ^3 (\mathbf{r})\). I then saw how a simple gauge transformation changed the funny potentials into what we'd expect to have for a point charge at the origin and no magnetic fields.
 
@@ -24,22 +19,171 @@
 \end{align*}  
 (or something similar). This lead to a derivation of the cutoff frequency. As long as the driving frequency is above the cutof frequency, then waves can propagate. But since the wave equation is linear, any sum of possible waves will also satisfy the equations. Thus we expect the solution of the wave propagating in the wave guide to be a sum of all the waves which has a \(k\) corresponding to a cutoff-frequency below the current driving frequency. Or something like that. It is the idea anyway. So we found the frequency gap between the two \(TE\)-modes with the lowest cutoff-frequency, since this is the range where only 1 is excited. If we pass the threshold, then 2 will be excited and so forth up to an infinitude, I guess? Except for energy considerations.
 
-\paragraph{9.31 in Griffiths} was about showing how the velocity of the wave for mode \(TE_{mn}\) is in fact the group velocity. This was a very calculation dense task, and I did not succeed. I do need to practice calculations, but this will be practiced just by doing \textit{more} exercises. But a few takeaways from the exercise are listed here: \textred{Review these ideas. Prob 9.12 f.eks.}.why we might want \begin{align*}
+\paragraph{9.31 in Griffiths} was about showing how the velocity of the wave for mode \(TE_{mn}\) is in fact the group velocity. This was a very calculation dense task, and I did not succeed. I do need to practice calculations, but this will be practiced just by doing \textit{more} exercises. But a few takeaways from the exercise are listed here. But first a question: 
+Why might want  \begin{align*}
     v = \frac{\int d \mathbf{a} \cdot \langle \mathbf{S} \rangle }{\int \langle u \rangle d \tau}
 \end{align*}
 and not just \begin{align*}
     v = \frac{\mathbf{S}}{u}
 \end{align*}
+\textbf{Answer:} The waves travelling down the wave guide will in general not be homogenous! To satisfy the boundary conditions, we had to start with the form \begin{align*}
+    \mathbf{\tilde{E}}(x, y, z, t) = \tilde{\mathbf{E}}_0(x, y)e^{i(kz - \omega t)} 
+\end{align*} 
+where we see that the amplitude indeed depends on \(x\) and \(y\). The same goes for the \(\mathbf{B}\)-field. 
 
-\paragraph{9.42 in Griffiths} was about finding the \(\omega_{lmn}\) frequency in a closed "wave box". This was a very difficult exercise for me, but also very instructive in systematically applying boundary conditions and attacking the problem. Go through this problem in depth. Start with Maxwell's equations and get an inhomogenous Laplacian for the electric field (three equations). Then, use an ansatz of a separable solution in each coordinate. Find a solution to these. Apply boundary conditions systematically to remove constants. Use the final solution to determine \(\omega_{lmn} \). \textred{Review} 
+Thus, calculating \(v = \mathbf{S} / u\) at different points throughout the wave guide we'll get a distribution of speeds, not the same result. But we want the speed at which energy propagates down the wave guide (imagine wave packets carrying energy, enveloped by the group velocity wave). Thus we average out all of these variations to get a more sensible measure of energy propagation.
 
-\subsection*{Follow-Up Questions}
-\begin{itemize}
-    \item Why do we have to change \(V\) and \(\mathbf{A}\) simultaneously to have a proper Gauge transformation? Try to write out the potential formulation of Maxwell's equations and walk through the conditions imposed by the look of the Gauge Transformation. What happens if you only shift say \(V\). What about only shifting \(\mathbf{A}\)? 
-    \item Why might we want \begin{align*}
-        v = \frac{\int d \mathbf{a} \cdot \langle \mathbf{S} \rangle }{\int \langle u \rangle d \tau}
-    \end{align*}
-    and not just \begin{align*}
-        v = \frac{\mathbf{S}}{u}
-    \end{align*}. Maybe it makes sense that a group velocity is determined from the average of these quantitites. But does that mean that 
-\end{itemize}
+By the way: \begin{align*}
+    \int_0 ^{a} \sin ^{2} \left(\frac{m \pi x}{a}\right)dx = \frac{a}{m \pi } \int_0 ^{m \pi } \sin ^{2} (u) du
+\end{align*}
+But the period of \(\sin ^{2} \) or \(\cos ^{2} \) is not \(2\pi \), but only \(\pi \). So we're really just summing up \(m\) copies of the same integral, as seen from the boundary: \begin{align*}
+    \frac{a}{m \pi } \int_0 ^{m \pi } \sin ^{2} (u) du = \frac{a}{\pi } \int_0 ^{\pi } \sin ^{2} (u) du = \frac{a}{2 \pi } \int_0 ^\pi \left( \sin ^{2} (u) + \cos ^{2} (u) \right)du = \frac{a}{2} 
+\end{align*} 
+Thus, we get that \begin{align*}
+    \boxed{\int_0 ^a \sin ^{2} \left( \frac{m \pi  x}{a} \right) dx = \int_0 ^a \cos ^{2} \left( \frac{m \pi  x}{a} \right) dx = \frac{a}{2}}
+\end{align*}
+\paragraph{9.12 in Griffiths} Suppose \(f(\mathbf{r}, t) = A \cos (\mathbf{k} \cdot \mathbf{r} - \omega t + \delta _a)\) while \(g(\mathbf{r}, t) = B \cos (\mathbf{k}\cdot \mathbf{r} - \omega t + \delta_b)\). Let's consider \begin{align*}
+    \langle fg \rangle = AB \int_0 ^T dt \left( \cos (\mathbf{k}\cdot \mathbf{r} - \omega t + \delta _a)\cos (\mathbf{k}\cdot \mathbf{r} - \omega t + \delta _b) \right) 
+\end{align*}
+\begin{align*}
+    \cos (u + \delta _a)\cos (u + \delta _b) &= \left[ \cos (u)\cos (\delta_a) - \sin (u)\sin (\delta _a) \right]\left[ \cos (u)\cos (\delta _b) - \sin (u)\sin (\delta _b) \right]\\
+    &= \cos ^{2} (u)\cos(\delta _a)\cos (\delta _b) + \sin ^{2} (u)\sin (\delta _a)\sin (\delta _b) \\
+    &\quad - \sin (u)\cos (u)\sin (\delta _a)\cos (\delta _b) - \cos (u)\sin (u)\cos (\delta _a)\sin (\delta _b)  
+\end{align*}
+where \(u = \mathbf{k}\cdot \mathbf{r} - \omega t\). Thus we get \begin{align*}
+    \langle fg \rangle = AB \Big( \cos(\delta _a)\cos (\delta _b) &\int_0 ^T \cos ^{2} (\mathbf{k}\cdot \mathbf{r} - \omega t) dt \\
+    + \sin(\delta _a)\sin (\delta _b) &\int_0 ^T \sin ^{2} (\mathbf{k}\cdot \mathbf{r} - \omega t) dt\Big) = \frac{1}{2} AB \cos (\delta_a - \delta _b)
+\end{align*} 
+
+Letting \begin{align*}
+    &\tilde{f} = A e^{i(\mathbf{k}\cdot \mathbf{r} - \omega t + \delta _a)}\\
+    &\tilde{g} = B e^{i(\mathbf{k}\cdot \mathbf{r} - \omega t + \delta _b)}\\
+\end{align*}
+we get that \begin{align*}
+    \frac{1}{2} \Re  (\tilde{f}\tilde{g}^{\ast} ) = \frac{1}{2}AB \Re \left( e^{i(\delta _a - \delta _b)} \right) = \frac{1}{2}AB \cos (\delta _a - \delta _b)
+\end{align*}
+such that we have the identity \begin{align*}
+    \boxed{\langle fg \rangle = \frac{1}{2} \Re (\tilde{f}\tilde{g}^{\ast} )}
+\end{align*}
+for waves with same \(\mathbf{k}\) and \(\omega \). 
+
+\paragraph{9.42 in Griffiths} was about finding the \(\omega_{lmn}\) frequency in a closed "wave box" for TE and TM modes. Let's denote the axis \(x_1, x_2\) and \(x_3\). They resonant cavity has walls at \(0\) and \(d_1, d_2\) and \(d_3\) respectively.
+
+\textbf{Outline:} First we start with Maxwell's equations and get an inhomogenous Laplacian for the electric field (three equations). 
+
+At the boundaries of the box, the electric field has to die off, since it is a conducting box. Instead of assuming that the wave is travelling in some direction, like with a wave guide, we just assume the very general form: \begin{align*}
+    \tilde{\mathbf{E}}(x_1, x_2, x_3, t) = \tilde{\mathbf{E}}_{0}(x_1, x_2, x_3) e^{-i \omega t} \\
+    \tilde{\mathbf{B}}(x_1, x_2, x_3, t) = \tilde{\mathbf{B}}_{0}(x_1, x_2, x_3) e^{-i \omega t} 
+\end{align*}
+The waves will be complex for the next while, but I won't write any tildes to save time.
+
+\begin{align*}
+    \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} = i \omega \mathbf{B}\\
+    &\implies \mathbf{B} = -\frac{i}{\omega } \nabla \times \mathbf{E}
+\end{align*}
+But since the waves are in phase, we can cancel them. We rearrange such that \begin{align*}
+    \nabla \times \mathbf{B}_0 = -\frac{i}{\omega } \nabla \times \left( \nabla \times \mathbf{E}_0 \right) = -\frac{i}{\omega } \left[\nabla (\nabla \cdot \mathbf{E}_0) - \nabla ^{2} \mathbf{E}_0\right]
+\end{align*}
+Since no charges are in the box, we have \begin{align*}
+    \nabla \cdot \mathbf{E} = \nabla \cdot \mathbf{E}_0 =  0
+\end{align*} 
+such that \begin{align*}
+    \nabla \times \mathbf{B} = \frac{i}{\omega } \nabla ^{2} \mathbf{E}
+\end{align*}
+But we also have that \begin{align*}
+    \nabla \times \mathbf{B}_0 = \frac{1}{c^{2} }\frac{\partial \mathbf{E}_0}{\partial t} =  -i \frac{\omega}{c^{2} } \mathbf{E}_0
+\end{align*}
+which means we arrive at three Poisson's equations \begin{align*}
+    \boxed{\nabla ^{2} \mathbf{E}_0 = -\frac{\omega^{2}}{c^{2} } \mathbf{E}_0}
+\end{align*}
+one in each component \begin{align*}
+    \nabla ^{2} E_{0i} = -\frac{\omega^{2}}{c^{2} } E_{0i}  
+\end{align*}
+
+Then, use an ansatz of a separable solution in each coordinate. Find a solution to these:
+
+We assume that the solution to the PDE is seperable in each coordinate:
+\begin{align*}
+    E_{0i}  = f_1(x_1) f_2(x_2)f_3(x_3)
+\end{align*}
+such that plugging it in we get that \begin{align*}
+    f_2 f_3 \partial_1 f_1 + f_1 f_3 \partial_2 f_2 + f_1 f_2 \partial_3 f_3 = -\frac{\omega^{2}}{c^{2} } f_1 f_2 f_3 
+\end{align*}
+or dividing by \(E_{0i} = f_1 f_2 f_3\) we get \begin{align*}
+    \frac{1}{f_1}\partial_1 f_1 + \frac{1}{f_2} \partial_2 f_2 + \frac{1}{f_3}\partial_3 f_3 = -\frac{\omega^{2}}{c^{2} }
+\end{align*}
+which is separated. \textred{Now here comes an important argument}: If this is indeed the form of the solution, then each of the terms on the left hand side \textit{has} to be a constant. Since the right hand side is a constant, and since the equality has to hold at all times, it has to be that way. Otherwise we could imagine keeping say \(f_1\) and \(f_2\) constant and only wiggling \(f_3\). Since the equality isn't allowed to change then, then it must be because \((1 / f_3)\partial _3 f_3 \) is a constant itself. This argument can be repeated for any of the directions, and it is the reason why assuming separability of the solutions is so powerful when it works. Since all of the terms are constants themselves, we get three equations which we know the solution to (harmonic oscillator, which is why we just call the constant \(-k^{2} \) from the outset):
+\begin{align*}
+    \boxed{\partial _j f_j = -k^{2}_jf_j \implies f_j = C_j \cos (k_j x_j) + S_j \sin (k_j x_j)}
+\end{align*}
+Thus in each coordinate the electric field assumes the form \begin{align*}
+    E_{0i} = \prod_{j = 1}^3 \left[ C_j \cos (k_j x_j) + S_j \sin (k_j x_j) \right]  
+\end{align*}
+
+We also have a condition on the \(k_j\) which is that \begin{align*}
+    \sum_{j} k^{2} _j = \frac{\omega^{2}}{c^{2} } 
+\end{align*} 
+
+Apply boundary conditions systematically to remove constants:
+
+We know that \(\mathbf{E}_0^{\parallel} = \mathbf{0}\) at all the boundaries of the cavity, since the parallel components of the electric field are continuous across any surface. 
+
+Let's imagine that we fix \(x_1 = 0\). Then \(x_2\) and \(x_3\) can still vary, but at all points along that surface we need the parallel components of the \(\mathbf{E}\)-field to go to zero. But the parallel components are exactly \(x_2\) and \(x_3\). The same goes for all three surfaces at both \(x_i = 0\) or \(x_i = d_i\). Thus \begin{align*}
+    E_{0j}\bigr|_{x_i = 0} = E_{0j}\bigr|_{x_i = d_i} = 0, \qquad (i \neq j)\\
+\end{align*}
+Notice that we can only say for sure that any components \textit{not} in the same direction as the normal to the surface have to go to zero, since these are the parallel ones. The normal components can have a discontinuity and need not be the same across a surface.
+
+We have that \begin{align*}
+    E_{0j}\bigr|_{x_i = 0} &= C_i \prod_{k \neq i} \left[ C_k \cos (k_k x_k) + S_k \sin (k_k x_k) \right] = 0 \\
+    &\implies C_i = 0
+\end{align*} 
+while we then have left that \begin{align*}
+    E_{0j}\bigr|_{x_i = d_i} &= S_i \sin (k_i d_i) \prod_{k \neq i}\left[ C_k \cos (k_k x_k) + S_k \sin (k_k x_k) \right] = 0\\
+    &\implies k_i = \frac{m \pi }{d_i}, \qquad m \in \mathbb{Z} 
+\end{align*}
+But since there are two surfaces where \(i \neq j\) such that we need the right hand side to be zero, we see that the general form takes the form 
+\begin{align*}
+    E_{0i} = \left( C^{\prime}_i \cos (k_i x_i) + S^{\prime}_i \sin(k_i x_i)  \right)\sin (k_j x_j) \sin (k_k x_k)  
+\end{align*} 
+where \(i,j,k\) are all different. An example might do good:
+\begin{align*}
+    E_{01} = \left[ C^{\prime}_1 \cos (k_1 x_1) + S^{\prime} _1 \sin (k_1 x_1) \right]\sin (k_2 x_2) \sin (k_3 x_3)  
+\end{align*} 
+We can get even more informtation by noting that \begin{align*}
+    \nabla \cdot \mathbf{E}_0 = 0
+\end{align*}
+everywhere. This is in general equal to \begin{align*}
+   \nabla \cdot \mathbf{E}_0 = &k_{1}\left[ -C^{\prime} _1 \sin (k_1 x_1) + S^{\prime} _1 \cos (k_1 x_1) \right] \sin (k_2 x_2) \sin (k_3 x_3)\\
+    + &k_2 \left[ -C^{\prime} _2 \sin (k_2 x_2) + S^{\prime} _2 \cos (k_2 x_2) \right] \sin (k_1 x_1) \sin (k_3 x_3)\\
+    + &k_3 \left[ -C^{\prime} _3 \sin (k_3 x_3) + S^{\prime} _3 \cos (k_3 x_3) \right] \sin (k_1 x_1) \sin (k_2 x_2)\\
+\end{align*}
+such that \begin{align*}
+    \nabla \cdot \mathbf{E}_0 \bigr|_{x_i = 0} = k_i S^{\prime} _i \sin (k_j x_j)\sin (k_k x_k) = 0 \implies S^{\prime} _i = 0
+\end{align*}
+while \begin{align*}
+    \nabla \cdot \mathbf{E}_0 \bigr|_{x_i = d_i} = -k_iC^{\prime} _i \sin (k_i d_i) \sin (k_j x_j) \sin (k_k x_k) = 0 \implies k_i = \frac{n_i \pi }{d_i}
+\end{align*}
+for \(n_i \in \mathbb{Z}\).
+
+We know have a solution: \begin{align*}
+    E_{01} = A \cos (k_1 x_1) \sin (k_2 x_2) \sin (k_3 x_3)
+\end{align*}
+
+Use the final solution to determine \(\omega_{lmn} \): 
+Since we have the condition that \begin{align*}
+    \sum_{i} k^{2} _i = \frac{\omega^{2}}{c^{2} }   
+\end{align*}
+we get that \begin{align*}
+    \omega = c \sqrt{\left( \frac{n_1 \pi }{d_1} \right)^{2} + \left( \frac{n_2 \pi }{d_2} \right)^{2} + \left( \frac{n_3 \pi }{d_3} \right)^{2}} 
+\end{align*}
+or equivalently, \begin{align*}
+    \omega_{lmn}  = c \pi \sqrt{\left( \frac{l}{d} \right)^{2} + \left( \frac{m }{a} \right)^{2} + \left( \frac{n}{b} \right)^{2}}
+\end{align*}
+We now have everything to put together the electric field. We have already used that the magnetic field is in phase with the electric field, so it has the same \(\omega_{lmn}\). We could go through some similar arguments but use \begin{align*}
+    B^\perp = 0
+\end{align*} 
+instead, to get the coefficients of the magnetic field. Ohh! We also have that \begin{align*}
+    \mathbf{B} = - \frac{i}{\omega } \nabla \times \mathbf{E}
+\end{align*}, so we should be able to get this now actually. We also assumed that the \(k\)'s are the same between \(E_{0x}, E_{0y}\) and \(E_{0z} \) from the beginning. It turns out to be true, but wasn't justified very well. There is more to be said for the problem. But the takeaway is this:
+
+With an inhomogenous Poisson's equation equal to a constant term, one can sometimes assume seperability of solutions! Also, everything followed just from boundary conditions and Maxwell's equations. As everything should. 

@@ -7,25 +7,24 @@
 \end{itemize}
 
 \subsection*{Key Insights}
-\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
-\subsubsection*{Definitions} 
-\subsubsection*{Theorems}
-\subsubsection*{Takeaways}
-\textit{The Classical Electron Radius}: What it is and how to calculate it. \textred{What assumption in the calculation makes it so wrong?}
+\paragraph{The Classical Electron Radius} is the radius one gets if setting the rest mass of the electron equal to the energy stored in the electric field outside that same radius. 
 
-When doing the assignment we also found that the closer you integrate both the electric field and the magnetic field to the electric charge and the magnetig dipole respectively, the more energy you find - and this goes towards infinity as the integration approaches all space (by making the excempt sphere around the mono/dipole smaller). Take the electric point charge. This infinite energy makes sense since we can imagine that we take the total charge of the point charge and split it up into smaller, less charged point particles. Now, gathering those point particles in the same point to get the total charge would require us to work an infinite amount against the fields, since the strength of the field becomes infinite as the point charges go to sit on top of each other. The same principle applies with the magnetic dipole. Given a perfect magnetic dipole \(\mathbf{m} = I \int d \mathbf{a}\), we see that we need an infinite amound of current to get a finite \(m\) since \(\int d \mathbf{a}\) is zero for a perfect dipole. But running an infinite current also requires an infinite amount of energy. So that divergence makes sense from Maxwell's theories as well. 
+\textbf{What assumption in the calculation makes it so wrong?}
+
+The assumption being made here is that an electron is a finitely sized, spherically, uniformly charged object. That is simply not the case, and high-energy scattering finds that it behaves like a point-particle down to \(10^{-18}\). One needs QED and renormalization as well as effective field theories to properly explain the behaviour of the electron. A problem that arises with the finite size is that there is no explanation for why the energy doesn't radiate. At the scale of the supposed radius, quantum effects are significant and the electron's energy should fluctuate and self-interact with the field, I think. One can use the \textbf{Compton Wavelength} to get a feel for when quantum effects become significant: \begin{align*}
+    \lambda _c = \frac{h}{m_e c^{2} } \approx 2.43 \cdot 10^{-12}\ \rm{m}
+\end{align*}  
+\paragraph{Infinity of a point particle} 
+The problem with a point particle in classical electrodynamics is infinities. When doing the assignment we also found that the closer you integrate both the electric field and the magnetic field to the electric charge and the magnetig dipole respectively, the more energy you find - and this goes towards infinity as the integration approaches all space (by making the excempt sphere around the mono/dipole smaller). Take the electric point charge. This infinite energy makes sense since we can imagine that we take the total charge of the point charge and split it up into smaller, less charged point particles. Now, gathering those point particles in the same point to get the total charge would require us to work an infinite amount against the fields, since the strength of the field becomes infinite as the point charges go to sit on top of each other. The same principle applies with the magnetic dipole. Given a perfect magnetic dipole \(\mathbf{m} = I \int d \mathbf{a}\), we see that we need an infinite amound of current to get a finite \(m\) since \(\int d \mathbf{a}\) is zero for a perfect dipole. But running an infinite current also requires an infinite amount of energy. So this divergence of energy makes sense from Maxwell's theories as well. 
 
 \subsection*{Problems Attempted}
 \begin{enumerate}
     \item Calculating the "classical electron radius"
-    \item \textred{Outline the method here}
-    \item \textred{Remind yourself why it makes sense that the energy stored in the fields explode as you integrate closer and closer to either the elecric charge or the magnetic dipole (something about putting together the total charge of one chareg)}
 \end{enumerate}
 
 \subsection*{Follow-Up Questions}
 \begin{itemize}
-    \item Why do we expect Hamilton's principle to work for scalar fields in arbritrary dimensions? We know that it works well in 3 dimensions because we can do experiments - but is it a leap of faith to do it in higher dimensions, or do we have some clue to its validity even in higher dimensions? What if the look of the least action principle is a special case in 3D, and there is a more general mathematical principle - a geometry maybe - which underlies the whole thing in arbritrary \(D\)-dimensional space? 
-    \item When is the Fourier Transform a smart thing to use? I remember Brian said something about that an instinctive response when seeing a function \(f(r_i - r_j)\) should be to Fourier Transform. How come? Are there other "forms" of functions where it immediately simplifies the problem (most of the time). What is \(k\)-space, and why does the Fourier Transform take us there? 
+    \item Why do we expect Hamilton's principle to work for scalar fields in arbritrary dimensions? We know that it works well in 3 dimensions because we can do experiments - but is it a leap of faith to do it in higher dimensions, or do we have some clue to its validity even in higher dimensions? What if the look of the least action principle is a special case in 3D, and there is a more general mathematical principle - a geometry maybe - which underlies the whole thing in arbritrary \(D\)-dimensional space?
     
-    Also, look at the picture you took of the blackboard last week when Jens Paaske wrote something about Fourier Transforming a single wave packet. Try it out for yourself with the normal distribution as the wave. Here you of course have to figure out how to write it "as a wave" (problably just replace \(x\) with \(x - vt\)) as well as how to integrate it properly. Exciting!
+    \textbf{Answer:} All of the general results shown from the least action principle (Noether's theorem, path integral formulation) are not sensitive to the dimensionality of the problem. There seems to be nothing special about the principle's application in 3D. Once setting up the fields and a Lagrangian density, a stationary action results in a \textit{local} differential equation which motion must conform to. There is so much more to be said about all of these things, but it will have to wait.
 \end{itemize}
