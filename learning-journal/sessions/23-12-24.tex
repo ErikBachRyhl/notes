@@ -1,13 +1,35 @@
 \section{Session Date: 23rd December, 2024}
-\subsection*{Main Topic: Electromagnetism, Calculus of Variations, Fourier Transform}
-\subsection*{Resource: Griffiths, Hand \& Finch, YT}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Resource: Griffiths}
 \subsection*{Topics Covered}
 \begin{itemize}
-    \item \textit{List key topics or subtopics here.} 
+    \item Gauge Transformations
 \end{itemize}
 
 \subsection*{Key Insights}
-\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+\paragraph{Derivation of Gauge Transformations}
+We have the potential formulation of Maxwell's equations:
+\begin{align*}
+    &\mathbf{E} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} \\
+    &\mathbf{B} = \nabla \times \mathbf{A}
+\end{align*}
+which also gave us \begin{align*}
+    &\square ^{2} V + \frac{\partial L}{\partial t} =  -\frac{\rho}{\epsilon _0}\\
+    &\square ^{2} \mathbf{A} - \nabla L = -\mu _0 \mathbf{J}
+\end{align*}
+But what happens if we were to change the potentials? Does that always change the fields? Nope. Potentials are mathematical constructs and we see that we have some freedom. So long as we arrive at the same fields from our potential formulation, then the gauge transformed potentials are just as good. 
+
+Since the curl of a gradient is always zero, we know that we can always do \begin{align*}
+    \mathbf{A}^{\prime} = \mathbf{A} + \nabla \alpha
+\end{align*}
+which gives the same potential! We also wish to be able to shift \(V\) \begin{align*}
+    V^{\prime} = V + \beta 
+\end{align*}
+If we just let \(V \to V^{\prime} \) we get that \begin{align*}
+    \mathbf{E^{\prime} } = - \nabla V^{\prime} - \frac{\partial \mathbf{A}}{\partial t} = -\nabla V - \nabla \beta - \frac{\partial \mathbf{A}}{\partial t} 
+\end{align*}
+So what if we impose that \(\beta = \beta (t)\) only, with no position dependence? Well then the gradient is certainly 0 and we get the same electric field with \(\mathbf{E}^{\prime} = \mathbf{E}\). So why can't we just do this? \textit{We can, in fact!} But it imposes no condition on \(\beta (t)\), and we are none the wiser. There will still be an infinite family of solutions due to the gauge freedom. Only shifting one of the potentials imposes no conditions. But we want a unique solution from a mathematical point of view, since it makes the PDE problem well posed (in combination with boundary conditions anyway). So what is this combined gauge transformation, which provides the extra equation which is the constraint that fixes our potentials and makes them unique?
+
 \subsubsection*{Definitions} 
 \subsubsection*{Theorems}
 \subsubsection*{Takeaways}
@@ -25,12 +47,12 @@
     Also, look at the picture you took of the blackboard last week when Jens Paaske wrote something about Fourier Transforming a single wave packet. Try it out for yourself with the normal distribution as the wave. Here you of course have to figure out how to write it "as a wave" (problably just replace \(x\) with \(x - vt\)) as well as how to integrate it properly. Exciting!
     \item How come the retarded potential formulation is not equivalent to putting a heaviside inside the integration.
     \item Show what Gauge invariance means
+    \item Coloumb Gauge (\(\nabla \cdot \mathbf{A}\) )
     \item Lorenz Gauge (\(L = 0\))
+    \item Why do we have to change \(V\) and \(\mathbf{A}\) simultaneously to have a proper Gauge transformation? Try to write out the potential formulation of Maxwell's equations and walk through the conditions imposed by the look of the Gauge Transformation. What happens if you only shift say \(V\). What about only shifting \(\mathbf{A}\)? 
     \item Walk through the full retarded potential derivation.
     \item Rederive boundary conditions for the fields (both free and in matter)
     \item Learn more about the 4-vector formulation and how \(g_{\mu \nu}\) can "raise or lower indecies"
     \item Lorentz tansformationts as rotations in 4-space (Mogen's notes)
-    \item Coloumb Gauge (\(\nabla \cdot \mathbf{A}\) )
     \item \textred{Walk through Mathemaniac derivation again. Read Dotson's resource from Arizona state. Do the Mathemaniac problem.}
-    \item Why do we have to change \(V\) and \(\mathbf{A}\) simultaneously to have a proper Gauge transformation? Try to write out the potential formulation of Maxwell's equations and walk through the conditions imposed by the look of the Gauge Transformation. What happens if you only shift say \(V\). What about only shifting \(\mathbf{A}\)? 
 \end{itemize}
