@@ -17,39 +17,117 @@ which also gave us \begin{align*}
     &\square ^{2} V + \frac{\partial L}{\partial t} =  -\frac{\rho}{\epsilon _0}\\
     &\square ^{2} \mathbf{A} - \nabla L = -\mu _0 \mathbf{J}
 \end{align*}
-But what happens if we were to change the potentials? Does that always change the fields? Nope. Potentials are mathematical constructs and we see that we have some freedom. So long as we arrive at the same fields from our potential formulation, then the gauge transformed potentials are just as good. 
-
-Since the curl of a gradient is always zero, we know that we can always do \begin{align*}
-    \mathbf{A}^{\prime} = \mathbf{A} + \nabla \alpha
+But what happens if we were to change the potentials? Does that always change the fields? Nope. Potentials are mathematical constructs and we see that we have some freedom. So long as we arrive at the same fields from our potential formulation, then the gauge transformed potentials are just as good. So what happens if we want \begin{align*}
+    \mathbf{A}^{\prime}  = \mathbf{A} + \boldsymbol{\alpha} = \mathbf{A}
+\end{align*}
+Since the curl of a gradient of a scalar is always zero, we know that we can always let \(\boldsymbol{\alpha}  = \nabla \lambda \) \begin{align*}
+    \mathbf{A}^{\prime} = \mathbf{A} + \nabla \lambda 
 \end{align*}
 which gives the same potential! We also wish to be able to shift \(V\) \begin{align*}
     V^{\prime} = V + \beta 
 \end{align*}
-If we just let \(V \to V^{\prime} \) we get that \begin{align*}
+What happens to the electric field if we just transform \(V \to V^{\prime} \) without touching the vector potential. Then we get that \begin{align*}
     \mathbf{E^{\prime} } = - \nabla V^{\prime} - \frac{\partial \mathbf{A}}{\partial t} = -\nabla V - \nabla \beta - \frac{\partial \mathbf{A}}{\partial t} 
 \end{align*}
-So what if we impose that \(\beta = \beta (t)\) only, with no position dependence? Well then the gradient is certainly 0 and we get the same electric field with \(\mathbf{E}^{\prime} = \mathbf{E}\). So why can't we just do this? \textit{We can, in fact!} But it imposes no condition on \(\beta (t)\), and we are none the wiser. There will still be an infinite family of solutions due to the gauge freedom. Only shifting one of the potentials imposes no conditions. But we want a unique solution from a mathematical point of view, since it makes the PDE problem well posed (in combination with boundary conditions anyway). So what is this combined gauge transformation, which provides the extra equation which is the constraint that fixes our potentials and makes them unique?
+So what if we impose that \(\beta = \beta (t)\) only, with no position dependence? Well then the gradient is certainly zero and we get the same electric field with \(\mathbf{E}^{\prime} = \mathbf{E}\). But Griffiths mentions that we always gauge transform both the electric potential and the vector potential at the same time. But why? Why can't we just do this single transformation of the electric potential? \textit{We can, in fact!} But it imposes no condition on \(\beta (t)\), and we are none the wiser. There will still be an infinite family of solutions due to the gauge freedom, since there are of course infinitely many functions which only depend on time. 
+
+Only shifting one of the potentials imposes no conditions on that shift. But we want a unique solution from a mathematical point of view, since it makes the PDE problem well posed (if we combine it with boundary conditions anyway). "Well-posed" typically means \textit{unique} and continously dependent on the sources and boundary conditions. So what is this combined gauge transformation, which provides the extra equation which is the constraint that fixes our potentials and makes them unique?
+
+If we look at the modified electric field where we transform both \(V\) and \(\mathbf{A}\) at the same time, we get the following: \begin{align*}
+    \mathbf{E}^{\prime} = -\nabla V^{\prime} - \frac{\partial \mathbf{A}^{\prime} }{\partial t} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} - \nabla \left( \beta + \frac{\partial \lambda}{\partial t}  \right) 
+\end{align*}  
+
+If this is to be equal to \(\mathbf{E}\) we require that \begin{align*}
+    \nabla \left( \beta + \frac{\partial \lambda }{\partial t} \right) = 0
+\end{align*}
+\textbf{But if the gradient of something is always zero, then it is \textit{independent} of position}. Therefore the term in parantheses can only depend on time: \begin{align*}
+    \beta + \frac{\partial \lambda }{\partial t} \coloneqq k(t) \implies \beta = - \frac{\partial \lambda }{\partial t} + k(t) = \frac{\partial}{\partial t} \left( - \lambda + \int_0 ^t k(t^{\prime} ) dt^{\prime}\right) 
+\end{align*}
+or by just redefining to be the term in parantheses above, we find that our \(\beta(\mathbf{r}, t) = \partial _t \lambda\). All in all, our gauge transformation takes the form 
+\begin{empheq}[box=\widefbox]{align*}
+    &\mathbf{A}^{\prime} = \mathbf{A} + \nabla \lambda\\
+    &\mathbf{V}^{\prime} = V - \frac{\partial \lambda}{\partial t}
+\end{empheq}
+
+where \(\lambda = \lambda (\mathbf{r},t)\). We thus see that just like there are infinitely many antiderivatives seperated by a constant in any integration problem, so are there infinitely many potentials which differ in the above way from the others. And this can be leveraged to simplify calculations. Two frequently used gauge transformations are the \textbf{Coloumb Gauge} and the \textbf{Lorenz Gauge}.
+
+\paragraph{The Coloumb Gauge} greatly simplifies electro\textit{static} problems by choosing \(\lambda \) such that \(\nabla \cdot \mathbf{A}^{\prime}  = 0\). This means that if we start with some \(\nabla \cdot \mathbf{A} = k \neq 0\) then we wish to find a lambda such that \begin{gather*}
+    \nabla \cdot \mathbf{A}^{\prime}  = \nabla \cdot \left( \mathbf{A} + \nabla \lambda \right) = \nabla \cdot \mathbf{A} + \nabla ^{2} \lambda = k + \nabla ^{2} \lambda = 0\\
+    \implies \nabla ^{2} \lambda = -k
+\end{gather*}  
+which is just Poisson's equation with a constant term. This can often be solved with seperation of variables (see \ref{19-12-24}). In fact we know the exact solution for the time independent case: \begin{align*}
+    \lambda (\mathbf{r}) = \frac{1}{4\pi}  \int \frac{k}{\griffr[2]} d \tau ^{\prime} 
+\end{align*}But how does this actually impose the necessary conditions on \(\lambda \) since this condition is only on the vector potential? Well, if we only change the vector potential as such, we see that the electric field becomes \begin{align*}
+    \mathbf{E}^{\prime} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} - \nabla \frac{\partial \lambda }{\partial t} 
+\end{align*}
+which in general doesn't give the same field unless we can get rid of the last term. One way to do that would be to impose that \(\nabla \lambda = 0\). But then we won't change our potential at all, since that is exactly what we shifted \(\mathbf{A}\) with in the first place: \(\mathbf{A}^{\prime} = \mathbf{A} + \nabla \lambda \). 
+
+The other way would, of course, be to shift the electric potential by the proper amount at the same time, which is exactly by using the form outlined in the gauge transformation equations above.
+
+\paragraph{The Lorenz Gauge} makes Maxwell's equation very symmetric. Remember that \begin{align*}
+    &\square^{2} V + \frac{\partial L}{\partial t} = -\frac{\rho}{\epsilon _0}\\
+    &\square^{2} \mathbf{A} - \nabla L = -\mu _0 \mathbf{J}
+\end{align*}
+where \begin{align*}
+    \square^{2} \equiv \nabla ^{2} - \frac{1}{c^{2} } \frac{\partial^{2} }{\partial t^{2} } 
+\end{align*}
+and \begin{align*}
+    L \equiv \nabla \cdot \mathbf{A} + \frac{1}{c^{2} }\frac{\partial V}{\partial t} 
+\end{align*} 
+If we choose \begin{align*}
+    \nabla \cdot \mathbf{A} = - \frac{1}{c^{2} } \frac{\partial V}{\partial t} 
+\end{align*}
+or \begin{align*}
+    L = 0
+\end{align*}
+we see that the equations become  \begin{align*}
+    &\square ^{2} V = -\frac{\rho}{\epsilon_0}\\
+    &\square^{2} \mathbf{A} = -\mu _0 \mathbf{J}
+\end{align*}
+
+The natural generalisation for the wave equation in a 4-dimensional special relativity context is \(\square^{2} f = 0\). Thus we see that in the Lorenz gauge, Maxwell's equations turn into \textbf{4-dimensional inhomogenous wave equations} with a "source" term on the right. All of electrodynamics thus boils down to solving the 4-dimensional inhomogenous wave equations above. What equation does \(\lambda (\mathbf{r}, t)\) need to satisfy to solve \begin{align*}
+    \nabla \cdot \mathbf{A}^{\prime}  = - \frac{1}{c^{2} }\frac{\partial V^{\prime} }{\partial t} 
+\end{align*}
+We get \begin{align*}
+    \nabla \cdot \mathbf{A} + \nabla ^{2} \lambda = -\frac{1}{c^{2} }\frac{\partial V}{\partial t} + \frac{1}{c^{2} }\frac{\partial^{2}  \lambda }{\partial t^{2} } 
+\end{align*}
+or rearranging \begin{align*}
+    \square ^{2} \lambda(\mathbf{r}, t) = L(\mathbf{r}, t)
+\end{align*}
+which is quite elegant! Is this equation always solvable for physically possible fields? Or are there physically possible fields where no gauge transformation can be found? GPT gave the following answer: \textit{Yes, for normal (physically relevant) boundary conditions and well-behaved fields, a gauge function \(\lambda\) always exists to implement your chosen gauge condition.} And this solution can be found by using Green's functions or retarded potentials. Is that the same thing? I guess that since \(\square^{2} (\cdot )\) is a linear operator, if we can find \begin{align*}
+    \square_{(\mathbf{r}, t)}^{2} G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} ) = \delta (\mathbf{r} - \mathbf{r}^{\prime} )\delta (t - t^{\prime} )
+\end{align*}
+then we see that \begin{align*}
+    \lambda (\mathbf{r}, t) = \int d^3 \mathbf{r}^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} L(\mathbf{r}^{\prime} , t^{\prime} ) G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} )  
+\end{align*}
+will solve the problem, since we then have\begin{align*}
+    \square_{(\mathbf{r}, t)}^{2} \lambda (\mathbf{r}, t) &= \square_{(\mathbf{r}, t)}^{2} \left[ \int d^3 \mathbf{r}^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} L(\mathbf{r}^{\prime} , t^{\prime} ) G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} )   \right] \\
+    &= \int d^3 \mathbf{r}^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} L(\mathbf{r}^{\prime} , t^{\prime} ) \square_{(\mathbf{r}, t)}^{2} G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} ) \\
+    &= \int d^3 \mathbf{r}^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} L(\mathbf{r}^{\prime} , t^{\prime} ) \delta (\mathbf{r} - \mathbf{r}^{\prime} )\delta (t - t^{\prime} )\\
+    &= L(\mathbf{r}, t)
+\end{align*}
+which solves the problem. In physics the Green's function is also chosen to respect causality, such that potentials can't communicate information infinitely fast to the fields such that physical information travels faster than the speed of light. Furthermore, there are always boundary conditions associated with the problem which the Green's function needs to satisfy as well. This is the hard part.
+
+The important point to remember though is this: We can transform our potentials however we like as long as it takes the form of the boxed equations above. Because when we do so, the fields, which contains the physics, will remain the same. This is a very general theme in more advanced physics: So long as our mathematical transformations leave the fields (or any other measurable quantaties) invariant, then the transformed potentials are equivalent; I don't know the deep meanings behind this, but in math speak I guess one can say that the gauge transformations define an equivalence class on the set of all possible fields. 
 
 \subsubsection*{Definitions} 
-\subsubsection*{Theorems}
+\paragraph{Electromagnetic Gauge Transformation} \begin{empheq}[box=\widefbox]{align*}
+    &\mathbf{A}^{\prime} = \mathbf{A} + \nabla \lambda \\
+    &V^{\prime} = V - \frac{\partial \lambda }{\partial t} 
+\end{empheq}
 \subsubsection*{Takeaways}
-
-\subsection*{Problems Attempted}
-\begin{enumerate}
-    \item \textit{Problem statement or reference.}
-    \item \textit{Solution (include partial work if needed).}
-\end{enumerate}
+For physically realisable fields in classical electromagnetism (decay conditions at infinity; simply connected regions), we can always solve the 4-dimensional inhomogenous wave equation with \(L(\mathbf{r},t) = \nabla \cdot \mathbf{A} + \mu _0 \epsilon _0 \partial_t V \) as the source to arrive at the \textbf{Lorenz Gauge} where Maxwell's equations take the simple form \begin{align*}
+    &\square^{2} V = -\frac{\rho}{\epsilon _0}\\
+    &\square^{2} \mathbf{A} = -\mu _0 \mathbf{J} 
+\end{align*} 
+\textbf{And these simpler equations give the same fields as the full ones, since they only differ by a realisable gauge transformation. It is thus equally valid to work from the Lorenz Gauge version of Maxwell's equations, since we arrive at the same \(\mathbf{E}\)- and \(\mathbf{B}\)-fields, which is the only condition we need for our potential formulation.} 
 
 \subsection*{Follow-Up Questions}
 \begin{itemize}
-    \item When is the Fourier Transform a smart thing to use? I remember Brian said something about that an instinctive response when seeing a function \(f(r_i - r_j)\) should be to Fourier Transform. How come? Are there other "forms" of functions where it immediately simplifies the problem (most of the time). What is \(k\)-space, and why does the Fourier Transform take us there? 
+    \item When is the Fourier Transform a smart thing to use? I remember Brian said something about that an instinctive response when seeing a function \(f(\mathbf{r}_i - \mathbf{r}_j)\) should be to Fourier Transform. How come? Are there other "forms" of functions where it immediately simplifies the problem (most of the time). What is \(k\)-space, and why does the Fourier Transform take us there? 
     
     Also, look at the picture you took of the blackboard last week when Jens Paaske wrote something about Fourier Transforming a single wave packet. Try it out for yourself with the normal distribution as the wave. Here you of course have to figure out how to write it "as a wave" (problably just replace \(x\) with \(x - vt\)) as well as how to integrate it properly. Exciting!
     \item How come the retarded potential formulation is not equivalent to putting a heaviside inside the integration.
-    \item Show what Gauge invariance means
-    \item Coloumb Gauge (\(\nabla \cdot \mathbf{A}\) )
-    \item Lorenz Gauge (\(L = 0\))
-    \item Why do we have to change \(V\) and \(\mathbf{A}\) simultaneously to have a proper Gauge transformation? Try to write out the potential formulation of Maxwell's equations and walk through the conditions imposed by the look of the Gauge Transformation. What happens if you only shift say \(V\). What about only shifting \(\mathbf{A}\)? 
     \item Walk through the full retarded potential derivation.
     \item Rederive boundary conditions for the fields (both free and in matter)
     \item Learn more about the 4-vector formulation and how \(g_{\mu \nu}\) can "raise or lower indecies"
