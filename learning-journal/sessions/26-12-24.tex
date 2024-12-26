@@ -1,0 +1,33 @@
+\section{Session Date: 14th December, 2024}
+\subsection*{Main Topic: \textit{What you are working on/torwards. What is the context?}}
+\subsection*{Resource: \textit{What are you mainly learning from}}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Green's Functions
+    \item Cross Products and Fields
+    \item Retarded Potentials
+\end{itemize}
+
+\subsection*{Key Insights}
+\paragraph{Green's Functions Intuition}
+With a 4-dimensional wave equation like
+\begin{align*}
+    \square ^{2} \lambda(\mathbf{r}, t) = L(\mathbf{r}, t)
+\end{align*}
+We can use Green's functions to solve it by finding a function such that
+\begin{align*}
+    \square_{(\mathbf{r}, t)}^{2} G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} ) = \delta (\mathbf{r} - \mathbf{r}^{\prime} )\delta (t - t^{\prime} )
+\end{align*}
+(you can already see that a 4-vector formulation will be elegant!) because then we see that \begin{align*}
+    \lambda (\mathbf{r}, t) = \int d^3 \mathbf{r}^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} L(\mathbf{r}^{\prime} , t^{\prime} ) G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} )  
+\end{align*}
+
+In other words, making a convolution of our Green's function and the source in the differential equation gives us a solution. The intuition behind this is that the source can be seen as something \textit{driving} the system. And since any continuous, driving signal can be seen as a succession of sharp impulses, we are kind of projecting our source onto the known behaviour of our system under the influence of an impulse. Since we \textit{know} (as in having solved) the systems behaviour under a sharp impulse, and since we can decompose any continuous signal (the source) into a series of sharp impulses, then we can find the behaviour of the system under such a continuous signal. 
+
+\paragraph{Symmetry Intuition for Electrodynamics}
+For there to be a magnetic field when there is a current, the current has to "go around" something. Magnetic fields are produced by \textit{circulating currents}. There has to be a \textit{preferred} axis. And since something radially in or out almost by definition has no preferred direction (any rotation preserves the symmetry). And since \(\nabla \cdot \mathbf{B} = 0\), any purely spherical fields are excluded. In other words, magnetic fields requires \textit{broken symmetries} and a preferred direction. 
+
+\subsection*{Follow-Up Questions}
+\begin{itemize}
+    \item Identities for the derivation of the retarded potentials
+\end{itemize}

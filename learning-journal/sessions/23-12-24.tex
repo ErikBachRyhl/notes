@@ -43,7 +43,7 @@ If this is to be equal to \(\mathbf{E}\) we require that \begin{align*}
 \textbf{But if the gradient of something is always zero, then it is \textit{independent} of position}. Therefore the term in parantheses can only depend on time: \begin{align*}
     \beta + \frac{\partial \lambda }{\partial t} \coloneqq k(t) \implies \beta = - \frac{\partial \lambda }{\partial t} + k(t) = \frac{\partial}{\partial t} \left( - \lambda + \int_0 ^t k(t^{\prime} ) dt^{\prime}\right) 
 \end{align*}
-or by just redefining to be the term in parantheses above, we find that our \(\beta(\mathbf{r}, t) = \partial _t \lambda\). All in all, our gauge transformation takes the form 
+or by just redefining \(\lambda \)  to be the term in parantheses above, we find that our \(\beta(\mathbf{r}, t) = \partial _t \lambda\). All in all, our gauge transformation takes the form 
 \begin{empheq}[box=\widefbox]{align*}
     &\mathbf{A}^{\prime} = \mathbf{A} + \nabla \lambda\\
     &\mathbf{V}^{\prime} = V - \frac{\partial \lambda}{\partial t}
@@ -51,7 +51,13 @@ or by just redefining to be the term in parantheses above, we find that our \(\b
 
 where \(\lambda = \lambda (\mathbf{r},t)\). We thus see that just like there are infinitely many antiderivatives seperated by a constant in any integration problem, so are there infinitely many potentials which differ in the above way from the others. And this can be leveraged to simplify calculations. Two frequently used gauge transformations are the \textbf{Coloumb Gauge} and the \textbf{Lorenz Gauge}.
 
-\paragraph{The Coloumb Gauge} greatly simplifies electro\textit{static} problems by choosing \(\lambda \) such that \(\nabla \cdot \mathbf{A}^{\prime}  = 0\). This means that if we start with some \(\nabla \cdot \mathbf{A} = k \neq 0\) then we wish to find a lambda such that \begin{gather*}
+\paragraph{The Coloumb Gauge} greatly simplifies magneto\textit{static} problems by choosing \(\lambda \) such that \(\nabla \cdot \mathbf{A}^{\prime}  = 0\), since we then get (by setting \(V = 0\) at infinity) \begin{align*}
+    \nabla ^{2} V(\mathbf{r}, t) = -\frac{\rho(\mathbf{r} ,t)}{\epsilon _0}
+\end{align*} 
+It is okay to think of the field as changing infinitely fast, since the electric potential isn't measurable in itself (in classical electrodynamics at least). The field still only changes as \begin{align*}
+    \mathbf{E} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} 
+\end{align*}
+and of course if we change \(\rho\) (in a continuous, physically way) very quickly, we are also introducing a current, which means that a magnetic field is being induced - and as such, there \textit{has} to be a change to the magnetic vector potential, \(\mathbf{A}\). With the Coloumb Gauge, if we start with some \(\nabla \cdot \mathbf{A} = k \neq 0\) then we wish to find a lambda such that \begin{gather*}
     \nabla \cdot \mathbf{A}^{\prime}  = \nabla \cdot \left( \mathbf{A} + \nabla \lambda \right) = \nabla \cdot \mathbf{A} + \nabla ^{2} \lambda = k + \nabla ^{2} \lambda = 0\\
     \implies \nabla ^{2} \lambda = -k
 \end{gather*}  
@@ -94,7 +100,7 @@ We get \begin{align*}
 or rearranging \begin{align*}
     \square ^{2} \lambda(\mathbf{r}, t) = L(\mathbf{r}, t)
 \end{align*}
-which is quite elegant! Is this equation always solvable for physically possible fields? Or are there physically possible fields where no gauge transformation can be found? GPT gave the following answer: \textit{Yes, for normal (physically relevant) boundary conditions and well-behaved fields, a gauge function \(\lambda\) always exists to implement your chosen gauge condition.} And this solution can be found by using Green's functions or retarded potentials. Is that the same thing? I guess that since \(\square^{2} (\cdot )\) is a linear operator, if we can find \begin{align*}
+which is quite elegant! Is this equation always solvable for physically possible fields? Or are there physically possible fields where no gauge transformation can be found? GPT gave the following answer: \textit{Yes, for normal (physically relevant) boundary conditions and well-behaved fields, a gauge function \(\lambda\) always exists to implement your chosen gauge condition.} And this solution can be found by using Green's functions or retarded potentials. /\textred{Is that the same thing?} I guess that since \(\square^{2} (\cdot )\) is a linear operator, if we can find \begin{align*}
     \square_{(\mathbf{r}, t)}^{2} G(\mathbf{r}, t, \mathbf{r}^{\prime}, t^{\prime} ) = \delta (\mathbf{r} - \mathbf{r}^{\prime} )\delta (t - t^{\prime} )
 \end{align*}
 then we see that \begin{align*}
@@ -116,7 +122,7 @@ The important point to remember though is this: We can transform our potentials 
     &V^{\prime} = V - \frac{\partial \lambda }{\partial t} 
 \end{empheq}
 \subsubsection*{Takeaways}
-For physically realisable fields in classical electromagnetism (decay conditions at infinity; simply connected regions), we can always solve the 4-dimensional inhomogenous wave equation with \(L(\mathbf{r},t) = \nabla \cdot \mathbf{A} + \mu _0 \epsilon _0 \partial_t V \) as the source to arrive at the \textbf{Lorenz Gauge} where Maxwell's equations take the simple form \begin{align*}
+For physically realisable fields in classical electromagnetism (decay conditions at infinity; simply connected regions), we can always solve the 4-dimensional inhomogenous wave equation \(\square^{2} \lambda = L = \nabla \cdot \mathbf{A} + \mu _0 \epsilon _0 \partial_t V \) to gauge transform to the \textbf{Lorenz Gauge} where Maxwell's equations take the simple form \begin{align*}
     &\square^{2} V = -\frac{\rho}{\epsilon _0}\\
     &\square^{2} \mathbf{A} = -\mu _0 \mathbf{J} 
 \end{align*} 
@@ -132,5 +138,5 @@ For physically realisable fields in classical electromagnetism (decay conditions
     \item Rederive boundary conditions for the fields (both free and in matter)
     \item Learn more about the 4-vector formulation and how \(g_{\mu \nu}\) can "raise or lower indecies"
     \item Lorentz tansformationts as rotations in 4-space (Mogen's notes)
-    \item \textred{Walk through Mathemaniac derivation again. Read Dotson's resource from Arizona state. Do the Mathemaniac problem.}
+    \item Walk through Mathemaniac derivation again. Read Dotson's resource from Arizona state. Do the Mathemaniac problem.
 \end{itemize}
