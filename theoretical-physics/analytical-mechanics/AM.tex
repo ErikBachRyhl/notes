@@ -451,13 +451,15 @@
         \delta \mathcal{L} \left(y(x,t), \frac{\partial y}{\partial x}, \frac{\partial y}{\partial t}, x, t\right) = \frac{\partial \mathcal{L}}{\partial y} \delta y + \frac{\partial \mathcal{L}}{\partial \left( \frac{\partial y}{\partial x}  \right)}\frac{\partial (\delta y)}{\partial x} + \frac{\partial \mathcal{L}}{\partial \left( \frac{\partial y}{\partial t}  \right)}\frac{\partial (\delta y)}{\partial t} 
     \end{align*}
 
-    Since \(x\) and \(t\) are independent, we have that \begin{align*}
+    Since \(x\) and \(t\) does not depend on anything, we have that \begin{align*}
         \frac{\partial}{\partial x} = \frac{d}{dx} 
     \end{align*} 
     and \begin{align*}
         \frac{\partial }{\partial t} = \frac{d}{dt} 
     \end{align*}
-    such that we can use total derivatives to account for \(x\) and \(t\) being dependent on further quantities (except for each other of course). Thus we get the integral \begin{align*}
+    such that we, in theory, could use total derivatives to account for \(x\) and \(t\) being dependent on further quantities (except for each other of course). This is quite silly to think about though, because in physics our \textit{fundamental} parameters are spacetime coordinates \((x, t)\). This is implicitly acknowledged in most physics textbooks such that the distinction between partial and total derivatives aren't discussed that much. 
+    
+    The correct field-theoretical consideration which we want is to think about how the action changes when we the Lagrangian density for our field in the \(x\)-direction while keeping all other parameters constants. Since there is no distinction we can just as well write the integral as \begin{align*}
         \delta S = \iint dx dt \left[ \frac{\partial \mathcal{L}}{\partial y} \delta y + \frac{\partial \mathcal{L}}{\partial \left( \frac{d y}{d x}  \right)}\frac{d (\delta y)}{d x} + \frac{\partial \mathcal{L}}{\partial \left( \frac{d y}{d t}  \right)}\frac{d (\delta y)}{d t}  \right].
     \end{align*} 
     With integration by parts and using Fubini's theorem (interchanging order of integration), which is valid since we assume our functions to be continous and have no singularities, we find that \(\delta S = 0\) gives us the differential condition
@@ -478,5 +480,37 @@
     \end{align*}
     where \(y(t)\) is meant to represent any parts of the path only dependent on \(t\). I don't know if that is rigorous notation or if there are pathological examples, but if one just thinks about "reversing" partial differentation, any such terms would have disappeard when doing the partial differentation, and thus have to be "put back in". 
 
-    Even though the constants are functions, they are constants, and as such they disappear when doing the definite integral. And we do not need to specify at which values of the other independent variables that we are doing this integration of the partial derivative, since \(\delta y\) disappears at the boundaries anyway.
+    Even though the constants are functions, they are constants w.r.t.\ the integration variable on the left hand side, and as such they disappear when doing the definite integral. And we do not need to specify at which values of the other independent variables that we are doing this integration of the partial derivative, since \(\delta y\) disappears at the boundaries anyway.
+
+    \subsection{Attempted Problems}
+    \subsubsection{Finding the Lagrangian Density for 1+1-D Shcrödinger Equation}
+    This was my attempt: \begin{align*}
+        \mathcal{L} = \frac{\hbar^{2} }{2m}\frac{\partial \psi }{\partial x}\frac{\partial \psi^{\ast}}{\partial x}  - \frac{i\hbar}{2}\left( \psi \frac{\partial \psi ^{\ast} }{\partial t}  - \psi ^{\ast} \frac{\partial \psi }{\partial t} \right) + V(x) \psi \psi ^{\ast} 
+    \end{align*}
+    such that \begin{align*}
+        \frac{\partial \mathcal{L} }{\partial \psi^{\ast} } &- \frac{\partial}{\partial x}  \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial \psi ^{\ast} }{\partial x}  \right) }  \right) = \frac{\partial }{\partial t} \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial \psi ^{\ast} }{\partial t}  \right) }  \right) \\
+        &\implies -\frac{\hbar^{2} }{2m} \frac{\partial^{2}  \psi}{\partial x^{2} } + V(x) \psi = i \hbar \frac{\partial \psi }{\partial t}   
+    \end{align*}
+    which is the Scrödinger equation. Whereas using the Euler-Lagrange equation in the other independent coordinate, \(\psi\), we get and equation for \(\psi ^{\ast} \) which reads \begin{align*}
+        -\frac{\hbar^{2} }{2m} \frac{\partial^{2}  \psi^{\ast} }{\partial x^{2} } + V(x) \psi^{\ast}  = -i \hbar \frac{\partial \psi^{\ast}  }{\partial t} 
+    \end{align*} 
+    This is exactly right! The density is thus correct. Notice how the second equation really just is the complex conjugate of the first. We can write it concise as \begin{align*}
+        \left[ -\frac{\hbar^{2} }{2m}\partial_x ^{2} + V(x) \right]\psi (x, t) = i \hbar \partial _t \psi(x, t) \tag{1}\\
+    \end{align*}
+    I thought the density wasn't purely real (as it should be from the problem description) because of the middle term, but in fact it is! And for precisely the reason I imagined. I noticed how since there needed to be an \(i\) in front of that type of term (as there is in the Schrödinger equation), then the thing that multiplied that term had to be purely imaginary. A symmetrical way to do that is of course to notice how \begin{align*}
+        \zeta - \zeta ^{\ast} = 2 \Im(\zeta)
+    \end{align*}
+    But I had mistaken \begin{align*}
+        \Re(zw) \neq \Re (z)\Re (w)
+    \end{align*}
+    for \begin{align*}
+        (zw)^{\ast} \neq z^{\ast} w^{\ast} 
+    \end{align*}
+    where the latter \textbf{isn't} true. It is in fact the case that \begin{align*}
+        (zw)^{\ast} = z^{\ast} w^{\ast} 
+    \end{align*} 
+    and one can see that we can actually then write the density as \begin{align*}
+        \mathcal{L} = \frac{\hbar^{2} }{2m}\partial _x \psi \partial _x \psi ^{\ast} - \frac{i\hbar}{2}\left[ \psi \partial _t \psi ^{\ast} - \left( \psi \partial _t \psi ^{\ast} \right)^{\ast} \right] + V(x) \psi \psi ^{\ast} 
+    \end{align*}
+    where the parantheses of the middle term now exactly matches the form that \textit{ensures} that it is purely imaginary, and thus multiplying \(i\) on it makes it purely real. 
 \end{document}

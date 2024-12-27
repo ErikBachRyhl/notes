@@ -1,0 +1,69 @@
+\section{Session Date: 27th December, 2024}
+\subsection*{Main Topic: Lagrangian Density and Least Action Principle Revisited}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Schrödinger equation from variational principle
+\end{itemize}
+
+\subsection*{Key Insights}
+\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+
+\subsection*{Problems Attempted}
+\paragraph{Finding the Lagrangian Density for 1+1-D Shcrödinger Equation}
+This was my attempt: \begin{align*}
+    \mathcal{L} = \frac{\hbar^{2} }{2m}\frac{\partial \psi }{\partial x}\frac{\partial \psi^{\ast}}{\partial x}  - \frac{i\hbar}{2}\left( \psi \frac{\partial \psi ^{\ast} }{\partial t}  - \psi ^{\ast} \frac{\partial \psi }{\partial t} \right) + V(x) \psi \psi ^{\ast} 
+\end{align*}
+such that \begin{align*}
+    \frac{\partial \mathcal{L} }{\partial \psi^{\ast} } &- \frac{\partial}{\partial x}  \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial \psi ^{\ast} }{\partial x}  \right) }  \right) = \frac{\partial }{\partial t} \left( \frac{\partial \mathcal{L} }{\partial \left( \frac{\partial \psi ^{\ast} }{\partial t}  \right) }  \right) \\
+    &\implies -\frac{\hbar^{2} }{2m} \frac{\partial^{2}  \psi}{\partial x^{2} } + V(x) \psi = i \hbar \frac{\partial \psi }{\partial t}   
+\end{align*}
+which is the Scrödinger equation. Whereas using the Euler-Lagrange equation in the other independent coordinate, \(\psi\), we get and equation for \(\psi ^{\ast} \) which reads \begin{align*}
+    -\frac{\hbar^{2} }{2m} \frac{\partial^{2}  \psi^{\ast} }{\partial x^{2} } + V(x) \psi^{\ast}  = -i \hbar \frac{\partial \psi^{\ast}  }{\partial t} 
+\end{align*} 
+This is exactly right! The density is thus correct. Notice how the second equation really just is the complex conjugate of the first. We can write it concise as \begin{align*}
+    \left[ -\frac{\hbar^{2} }{2m}\partial_x ^{2} + V(x) \right]\psi (x, t) = i \hbar \partial _t \psi(x, t) \tag{1}\\
+\end{align*}
+I thought the density wasn't purely real (as it should be from the problem description) because of the middle term, but in fact it is! And for precisely the reason I imagined. I noticed how since there needed to be an \(i\) in front of that type of term (as there is in the Schrödinger equation), then the thing that multiplied that term had to be purely imaginary. A symmetrical way to do that is of course to notice how \begin{align*}
+    \zeta - \zeta ^{\ast} = 2 \Im(\zeta)
+\end{align*}
+But I had mistaken \begin{align*}
+    \Re(zw) \neq \Re (z)\Re (w)
+\end{align*}
+for \begin{align*}
+    (zw)^{\ast} \neq z^{\ast} w^{\ast} 
+\end{align*}
+where the latter \textbf{isn't} true. It is in fact the case that \begin{align*}
+    (zw)^{\ast} = z^{\ast} w^{\ast} 
+\end{align*} 
+and one can see that we can actually then write the density as \begin{align*}
+    \mathcal{L} = \frac{\hbar^{2} }{2m}\partial _x \psi \partial _x \psi ^{\ast} - \frac{i\hbar}{2}\left[ \psi \partial _t \psi ^{\ast} - \left( \psi \partial _t \psi ^{\ast} \right)^{\ast} \right] + V(x) \psi \psi ^{\ast} 
+\end{align*}
+where the parantheses of the middle term now exactly matches the form that \textit{ensures} that it is purely imaginary, and thus multiplying \(i\) on it makes it purely real. 
+
+\textbf{Interpretation and takeaways:} What I have essentially showed by finding a Lagrangian density that reproduces the equations of motion (the Schrödinger Equation) is that one can view \(\psi (x, t)\) as a field. It is a unifying principle that all fields have a corresponding Lagrangian density. Above is the form of a \((1 + 1)\)-dimensional, nonrelativistic Schrödinger Field. There is much more to be said about this (Klein-Gordon, Dirac) etc.. You can look at GPT chat for this ("Quantum Mechanics" \(\to \)  "Schrödinger equation from variational principle").
+
+And interesting thing to note is how we can write the same density in multiple ways (remember how Lagrangians are invariant w.r.t.\ total derivatives). One can also use the norm of the gradient squared etc.
+
+\paragraph{How is the least action principle used in modern physics?}
+Modern physics typically starts with an action — often motivated by symmetry arguments, known experimental facts, or fundamental principles — and obtains the equations of motion by varying that action.
+
+Different physical systems have different Lagrangians (and hence different actions). This is natural because they describe different degrees of freedom, interactions, and symmetries.
+
+\paragraph{Euler-Lagrange Equations vs. Action Approach}
+Once the Euler-Lagrange equations (E-L) are known and you trust them as the correct equations of motion, you might sometimes begin by writing down the E-L equations directly. However, in deeper theoretical work — especially in field theory, general relativity, and beyond — physicists generally specify an action functional whose variation yields those equations. The reason is that knowing the action is far more powerful than just knowing the equations of motion. For instance, from the action, one can systematically:
+\begin{itemize}
+    \item Identify conservation laws via Noether's theorem.
+    \item Couple the system to other fields in a consistent way.
+    \item Quantize the system (in quantum field theory).
+\end{itemize}
+Hence, in modern physics, one usually starts by proposing or deducing an action (based on symmetry arguments, known physics, or fundamental principles) and then obtains the Euler-Lagrange equations by varying that action.
+
+\subsection*{Follow-Up Questions/Ideas/ToDos}
+\begin{itemize}
+    \item Learn about contra-variant and co-variant notation with 4-vectors. Become comfortable with Goldstein last chapter. Understand the proof and statement of Noether's Theorem. Then ask GPT for problems/examples of above: \textit{"For instance, from the action, one can systematically:
+    \begin{itemize}
+        \item Identify conservation laws via Noether's theorem.
+        \item Couple the system to other fields in a consistent way.
+        \item Quantize the system (in quantum field theory)."
+    \end{itemize}}
+\end{itemize}
