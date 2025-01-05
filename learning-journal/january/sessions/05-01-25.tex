@@ -1,0 +1,57 @@
+\section{Session Date: 5th of January, 2025}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Liénard-Wiechert Potentials
+\end{itemize}
+
+\subsection*{Key Insights}
+\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+\paragraph{Clarification of integration techniques} When we write the integral \begin{align*}
+    V(\mathbf{r}, t) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho (\mathbf{r}^{\prime}, t_r)}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| } d \tau ^{\prime} 
+\end{align*}
+we have to be very clear about what we are calculating. First of all, We are integrating over a fixed, stationary \textit{volume} in space. This is why no time dependence is implied in the denominator. Every point in the volume we are integrating over will have a static distance to the field point \(\left| \mathbf{r} - \mathbf{r}^{\prime} \right| \). Secondly, writing \(d \tau ^{\prime} \) is the same as writing \(d^3 r\) or even \(d \mathbf{r}\). So the integration variable didn't change in the above derivation. It was just another notation. Third, even though the integration \textit{region} is fixed and independent of time, the \textit{density} of charge at that point is not. And \emph{this} is what we wish to evaluate at the retarded time, \(t_r\). But the retarded time depends on the distance from the source point to the field point \begin{align*}
+    t_r = t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}\right| }{c}
+\end{align*} 
+
+And here comes the integral trick being used above: Instead of having to remember that we should evaluate our charge distribution at the retarded time (an implicit dependence \(\rho (\mathbf{r}, t_r)\) ), which depends on the primed coordinates which we are integrating over, making the whole thing quite convoluted, we can instead integrate over \textit{all} time, and just use a delta function to pick out the retarded time only and thus make the dependence excplicit mathematically (\(\delta (t^{\prime}  - t_r)\) ). This separates time and space as integration variables formally, so to say. And if our functions are nice enough (which they often are in physics), this subsequently allows us to carry out first the (independent) space integral and \textit{then} the time integral (we are really using the Green's functions solution to the wave equation here), while the dependencies are being "managed" explicitly by the delta functions: \begin{align*}
+    V(\mathbf{r}, t) &= \frac{1}{4\pi\epsilon_0} \int \frac{\rho (\mathbf{r}^{\prime} , t_r)}{\left| \mathbf{r} - \mathbf{r}^{\prime} \right| } d^3 r^{\prime} \\
+    &= \frac{1}{4\pi\epsilon_0} \int d^3r^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} \frac{\rho (\mathbf{r}^{\prime} , t^{\prime} )}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| } \delta (t^{\prime} - t_r)\\
+    &= \frac{1}{4\pi\epsilon_0} \int d^3r^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} \frac{\rho (\mathbf{r}^{\prime} , t^{\prime} )}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| } \delta (t^{\prime} - \left(t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right|}{c}\right))
+\end{align*} 
+Above is the general idea. Now in the case of a point particle, we can convinently write the distribution as follows: \begin{align*}
+    \rho (\mathbf{r}, t^{\prime} ) = q \delta ^3 (\mathbf{r}^{\prime} - \mathbf{w}(t^{\prime} ))
+\end{align*}
+such that when we carry out the space integration, we get \begin{align*}
+    V(\mathbf{r}, t) &= \frac{1}{4\pi\epsilon_0} \int d^3r^{\prime}  \int_{-\infty}^{\infty} dt^{\prime} \frac{\rho (\mathbf{r}^{\prime} , t^{\prime} )}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| } \delta (t^{\prime} - \left(t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right|}{c}\right))\\
+    &= \frac{q}{4\pi\epsilon_0}\int_{-\infty}^{\infty} dt^{\prime} \frac{\delta (t^{\prime} - \left(t - \frac{\left| \mathbf{r} - \mathbf{w}(t^{\prime})\right|}{c}\right))}{\left| \mathbf{r} - \mathbf{w}(t^{\prime} )  \right| }
+\end{align*}
+at which point we use the identity: \begin{align*}
+    \delta (h(t)) = \sum_{i} \frac{\delta (t - t_i)}{\left| h^{\prime} (t_i) \right| } 
+\end{align*}
+where \(h(t_i) = 0\). This identity is proven by doing a change of variables in the integral \begin{align*}
+    \int _{- \infty}^{\infty} f(t) \delta (h(t)) dt
+\end{align*} 
+Two delta functions are considered equal if they produce the same result when convoluted with the same function over the same integral. You might think that \(u = h(t)\) would force \(h^{-1}(u) = t\) to be defined everywhere, but that is not the case since you only need \(h(t)\) to be one-to-one (so there is an inverse) locally around the zeroes of \(h(t)\). This is perfectly consistent with the identity which sums up all these contributions.
+
+After using the identity we also come across the differentation \begin{align*}
+    \frac{d}{dt} \left| \mathbf{r} - \mathbf{w}(t)\right| &= \frac{d}{dt} \sqrt{(\mathbf{r} - \mathbf{w}(t)) \cdot (\mathbf{r} - \mathbf{w}(t))} \\
+    &= \frac{\mathbf{r} - \mathbf{w}(t)}{\left| \mathbf{r} - \mathbf{w}(t) \right| } \cdot \left( - \frac{d \mathbf{w}}{dt} \right) \\
+    &= - \hatgriffr \cdot  \mathbf{v}
+\end{align*}
+
+And those where the important steps in the derivation. The reason why the separation vector in the retarded time suddenly became \(\mathbf{w}(t)\) still eludes my previous explanation that the separation vector is from a fixed source point to a fixed field point. Is that because we are also changing \begin{align*}
+    t_r = t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| }{c} \to t - \frac{\left| \mathbf{r} - \mathbf{w}(t) \right| }{c}
+\end{align*}
+when doing the spatial integral? And if so, then I guess we haven't competely separated time and space, have we? \textit{I have restated the language above a little better: The delta function doesn't completely separate time and space - they \emph{are} dependent. But it keeps track of this depencence explicitly and mathematically, instead of us having to remember the implicit dependence through \(t_r\)}
+
+\subsection*{Problems Attempted}
+\begin{enumerate}
+    \item \textit{Problem statement or reference.}
+    \item \textit{Solution (include partial work if needed).}
+\end{enumerate}
+
+\subsection*{Follow-Up Questions/Ideas/ToDos}
+\begin{itemize}
+    \item \textit{Write down any gaps in understanding or questions to revisit.}
+\end{itemize}

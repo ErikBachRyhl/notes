@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../../preamble.tex}
+\graphicspath{{../figs/}}
+
+%--------------------------
+% PACKAGES
+%--------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+
+%--------------------------
+% PAGE SETUP
+%--------------------------
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Learning Journal}
+
+%--------------------------
+% SECTION FORMATTING
+%--------------------------
+\titleformat{\section}[block]{\large\bfseries}{Session \thesection:}{1em}{}
+\titleformat{\subsection}[block]{\bfseries}{\thesubsection}{1em}{}
+\setcounter{secnumdepth}{2}
+
+%--------------------------
+% CUSTOM ENVIRONMENTS
+%--------------------------
+\newenvironment{deff}[1][Definition]{\par\vspace{1em}\noindent\textbf{#1.}\hspace{0.5em}}{\par\vspace{0.1em}}
+
+\newenvironment{rem}[1][Remark]{\par\vspace{1em}\noindent\textit{#1.}\hspace{0.5em}\begingroup\itshape}{\endgroup\par\vspace{0.1em}}
+
+% Explanation of the custom environment:
+% 1. \newenvironment{definition}[1][Definition]: This creates a new environment named "definition" with an optional argument. The default title is "Definition."
+% 2. \par\vspace{1em}: Adds vertical space before the environment begins.
+% 3. \noindent\textbf{#1.}: Formats the title (e.g., "Definition.") as bold text.
+% 4. \hspace{0.5em}: Adds a small space between the title and the definition text.
+% 5. The closing curly braces define the formatting after the environment ends, including vertical spacing.
+
+
+%--------------------------
+% DOCUMENT
+%--------------------------
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Learning Journal}} \\
+    \vspace{0.5em}
+    {\large Organized by Sessions with Topic Summaries}
+\end{center}
+\vspace{1em}
+\hrule
+\vspace{2em}
+
+%--------------------------
+% TEMPLATE STRUCTURE
+%--------------------------
+\section*{Instructions}
+\begin{itemize}
+    \item Use this document to track your learning sessions.
+    \item Each session entry should include: \begin{enumerate}
+        \item Topics covered (briefly).
+        \item Key insights or definitions.
+        \item Problems attempted (with references or solutions if necessary).
+        \item Questions or areas for follow-up.
+    \end{enumerate}
+    \textit{Make Anki flashcards of whatever makes sense. Even topics if you'd like, just to leverage their spaced repitition algorithm.}
+    \item After completing a topic, write a summary essay, incorporating insights from session notes and solved examples.
+\end{itemize}
+\newpage
+
+%--------------------------
+% RESOURCES AND LEARNING PLANS
+%--------------------------
+\input{../resources.tex}
+\newpage
+
+\section*{Learning Plan}
+\textit{This is a first pass on some topics I find interesting. I don't need to understand everything the first time. I don't need to go through all the subtopics the first time. I need to understand the main idea, understand why and when it is useful, and try my hand at some basic problems to use it myself. I can always pick up these topics again since I keep a record here. Just remember to jot down your questions, the things you don't understand (and why) and what you'd like to investigate further in the future. You can \textbf{always} come back!}
+\input{../learning-plans/first-pass.tex}
+\newpage
+
+%--------------------------
+% SESSIONS
+%--------------------------
+\input{sessions/03-01-25.tex}
+\newpage
+\input{sessions/04-01-25.tex}
+\newpage
+\input{sessions/05-01-25.tex}
+
+
+\end{document}

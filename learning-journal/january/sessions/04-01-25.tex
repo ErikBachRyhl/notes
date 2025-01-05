@@ -1,0 +1,51 @@
+\section{Session Date: 4th of January, 2025}
+\subsection*{Main Topic: Electromagnetism}
+\subsection*{Topics Covered}
+\begin{itemize}
+    \item Liénard-Wiechert Potentials Continued
+\end{itemize}
+
+\subsection*{Key Insights}
+\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+
+\subsection*{Problems Attempted}
+\paragraph{Derivation of the Liénard-Wiechert Potentials}
+\begin{align*}
+    V(\mathbf{r}, t) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\mathbf{r}^{\prime}, t_r)}{\griffr[2] (t_r)} d \tau ^{\prime} 
+\end{align*}
+Since \begin{align*}
+    t_r = t - \frac{\griffr[2] (t_r) }{c} = t - \frac{\left| \mathbf{r} - \mathbf{w}(t_r)\right|}{c}
+\end{align*}
+we have that \begin{align*}
+    \griffr[2] (t_r) = \left| \mathbf{r} - \mathbf{w}(t_r)\right| = c (t - t_r)
+\end{align*}
+where \(\mathbf{w}(t_r)\) is the trajectory of the particle, evaluated at the retarded time (since this is the reality that any different point in space-time sees!).
+
+We also have that \begin{align*}
+    \rho(\mathbf{r}^{\prime} , t_r) = q \delta ^3(\mathbf{r}^{\prime} - \mathbf{w}(t_r))
+\end{align*}
+This can be read as "Any observer will see a point charge \(q\) not at the position \(r^{\prime} \)  \(\mathbf{w}(t)\) at the current time \(t\), but instead at the position \(\mathbf{w}(t_r)\) which is where the particle was a while ago, at the time \(t_r\)". Remember that we are integrating over the primed coordinates.
+
+In fact this is our regular expression for a point charge just in terms of retarded times since \begin{align*}
+    \mathbf{r}^{\prime} - \mathbf{w}(t_r) = \griffr[4] 
+\end{align*}
+
+Thus I would think that our expression would be \begin{align*}
+    V(\mathbf{r},t) = \frac{q}{4\pi\epsilon_0} \int \frac{\delta ^3 (\mathbf{r}^{\prime} - \mathbf{w}(t_r))}{\left| \mathbf{r} - \mathbf{w}(t_r) \right| } d \tau ^{\prime} 
+\end{align*}
+
+But my lecture notes does as following: Introduces another integration step, changes integration variable AND has a different denominator (which functional dependence I am not sure of) without a different numerator:
+\begin{align*}
+    V(\mathbf{r}, t) = \frac{q}{4\pi\epsilon_0} \int d \mathbf{r}^{\prime}  \int dt \frac{\delta ^3 (\mathbf{r}^{\prime} - \mathbf{w}(t))}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| } \delta(t - t_r)
+\end{align*}
+I can see how performing the \(d \mathbf{r}^{\prime} \) integral would give the same denominator, but now the integral is suddenly very different. It is over time and the numerator is a delta function involing \(t\) and \(t_r\). Could you explain everything that is happening here for me? I would really like to master these types of integral transforms and \textit{wield} them so I am more comfortable with doing something like this in the future by myself.   
+
+
+Now, here comes an interesting step, which I don't quite understand. We introduce another integration while integrating over \(\mathbf{r}^{\prime} \) instead of \(d \tau ^{\prime} \): \begin{align*}
+    V(\mathbf{r}, t) = \frac{q}{4\pi\epsilon_0} \int d \mathbf{r}^{\prime}  \int dt \frac{\delta ^3 (\mathbf{r}^{\prime} - \mathbf{w}(t))}{\left| \mathbf{r} - \mathbf{w}(t)  \right| } \delta(t - t_r)
+\end{align*}
+
+\subsection*{Follow-Up Questions/Ideas/ToDos}
+\begin{itemize}
+    \item \textit{Write down any gaps in understanding or questions to revisit.}
+\end{itemize}
