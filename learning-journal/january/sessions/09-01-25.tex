@@ -7,32 +7,66 @@
     \item Lorentz Transformations
     \item Contravariant and Covariant
     \item Metric
-    \item Lorentz Transformations as a matrix-vector product (\(\Lambda _\mu ^\nu\)) 
-    \item Metric invariant under similarity transform with the Lorentz Matrix
-\end{itemize}
-\subsubsection*{Problems}
-\begin{itemize}
-    \item \textit{List key problems here.}
 \end{itemize}
 
-\subsubsection*{Relevance}
-
-\subsection*{Main Topic: \textit{What you are working on/torwards. What is the context?}}
+\subsection*{Main Topic: Electromagnetism and Quantum Mechanics}
 \subsection*{Topics Covered}
 \begin{itemize}
-    \item \textit{List key topics or subtopics here.} 
+    \item Liénard-Wiechert Potentials Derivation (again!) 
 \end{itemize}
+\paragraph{Liénard-Wiechert Potentials Derivation (again!)}
+Starting from \begin{align*}
+    V(\mathbf{r}, t) = \frac{1}{4\pi\epsilon_0} \int_{\mathcal{V}}  \frac{\delta ^3 (\mathbf{r}^{\prime} - \mathbf{w}(t_r))}{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| }d \tau ^{\prime} 
+\end{align*}
+we substitute \begin{align*}
+    \mathbf{u} = \mathbf{r}^{\prime} - \mathbf{w}(t_r)
+\end{align*}
+such that the Jacobian becomes \begin{align*}
+    J_{ij} &= \frac{\partial u_i}{\partial r^{\prime} _j} \\
+    &=\delta _{ij} - \frac{\partial}{\partial r^{\prime} _j}\left( t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| }{c} \right)  
+\end{align*}
+Then we can calculate, take the determinant again with the epsilon-version of the Leibniz-formula (which you see above) and use the fact that many of the terms disappear because they are of the form \(\epsilon _{ijk}T^{ij}\) where \(T^{ij}\) is symmetric (which we showed to always give zero yesterday).  
 
-\subsection*{Key Insights}
-\textit{Write down definitions, theorems, or takeaways. Use this space for concise notes.}
+\textbf{Why isn't \(\mathbf{r}^{\prime} = \mathbf{w}(t_r)\)?} 
 
-\subsection*{Problems Attempted}
+This is because the retarded time we are considering is a fixed vector \textit{for each infinitesimal volume element \(d \tau ^{\prime} \) in \(\mathcal{V}\)} which the integral is over. Thus the retarded time is not the retarded time relating to the point particles position (which itself depends on retarded time, giving us a quadratic like the example in Griffiths). In the integral, it is a fixed vector but \textit{for each \(d \tau ^{\prime} \)}, such that it isn't by any means a constant. The rest of the derivation is just math from here.
+
+\paragraph{Lorentz Transformations} \begin{align*}
+    &\overline{x} = \gamma (x - vt)\\
+    &\overline{t} = \gamma (t - \frac{vx}{c^{2}})
+\end{align*}
+
+\paragraph{Covariant, Contravariant and Metric}
+A covariant vector is written as \(a_\mu\) and a contravariant vector is written as \(a^{\mu}\). They differ only by the sign in the zeroth component (temporal) such that we may formally write \begin{align*}
+    a_\mu = (-a_0, a_1, a_2, a_3) \equiv (a^0, a^1, a^2, a^3)
+\end{align*} 
+Defining the Minkowski metric as \begin{align*}
+    g_{\mu \nu} = \begin{pmatrix}
+        -1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+we see that \(g_{\mu  \nu }\) can raise and lower indicies \begin{align*}
+    &g^{\mu \nu }a_\nu  = a^{\mu} \\
+    & g_{\mu \nu } a^{\nu } = a_\mu 
+\end{align*}
+A greek letter always runs from 0 to 3 while a roman letter only runs from 1 to 3 (only spatial coordinates). We see that the interval \begin{align*}
+    I \equiv (\Delta x)^{\mu}(\Delta x)_{\mu} = - (\Delta x^0)^{2} + (\Delta x^1)^{2} + (\Delta x^2)^{2} + (\Delta x^3)^{2} 
+\end{align*}
+gives the invariant spacetime interval!
+
+\subsection*{Problems Attempted (Griffiths)}
 \begin{enumerate}
-    \item \textit{Problem statement or reference.}
-    \item \textit{Solution (include partial work if needed).}
+    \item 12.46
+    \item 12.47
+    \item 12.48
+    \item 12.49
 \end{enumerate}
 
 \subsection*{Follow-Up Questions/Ideas/ToDos}
 \begin{itemize}
-    \item \textit{Write down any gaps in understanding or questions to revisit.}
+    \item Lorentz Transformations as a matrix-vector product (\(\Lambda _\mu ^\nu\)) 
+    \item Metric invariant under similarity transform with the Lorentz Matrix
 \end{itemize}
