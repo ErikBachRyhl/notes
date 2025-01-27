@@ -1,0 +1,1393 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../../preamble.tex}
+
+\graphicspath{ {./figs/} }
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\title{EM 2 kompendium}
+\setcounter{secnumdepth}{0}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{De Helt Hyppige}
+    \subsection{Kredsløb}
+    \begin{align*}
+        I(t) &= Re \left[\frac{\tilde{\mathcal{E}}_0}{\left| Z_{tot} \right| } e^{-i{(\omega t + \phi )}}\right] \\
+        &= Re \left[\frac{\tilde{\mathcal{E}}_0}{ \left| Z_{tot}  \right|^{2}   } Z_{tot} ^{\ast} \left( \cos (\omega t) - i \sin (\omega t) \right)\right] 
+    \end{align*}
+    \begin{align*}
+        Z_R = R,\qquad Z_L = -i \omega L, \qquad Z_C = \frac{i}{\omega C}\tag{K(61)}
+    \end{align*}
+    \textbf{Tider / Frekvenser}
+    \begin{align*}
+        \text{LC-serie: } \omega_0 = 1 / \sqrt{LC}, \qquad \text{LR-serie: } \tau = \frac{L}{R}, \qquad \text{RC-serie: } \tau = RC
+    \end{align*} 
+    \textbf{Erstatningsimpedanser}
+    \begin{align*}
+        \text{Serie: }Z_{eff} = Z_1 + Z_2, \qquad \text{Parallel: } Z_{eff} = \frac{Z_{1}Z_2}{Z_1 + Z_{2}}
+    \end{align*} 
+    \begin{align*}
+        \tilde{Q}_{0, j} = \frac{\tilde{I}_{0, j}}{-i \omega } \tag{K(58)}
+    \end{align*}
+    \begin{align*}
+        \boxed{\left\langle P \right\rangle = \frac{\mathcal{E}_0 ^2 Re[Z] }{2|Z|^2} = \frac{1}{2}\left| \tilde{I}_0 \right| ^{2} Re[Z]} \tag{K(69)}
+    \end{align*}
+    \begin{align*}
+        R = \frac{L}{\sigma A} \tag{p. 300}
+    \end{align*}
+
+    \subsection{Bevarede Felt-størrelser}
+    Husk at flere af disse ændrer sig i lineære medier til \(\epsilon_0 \to \epsilon \) og \(\mu _0 \to \mu \). Tjek Griffiths her!
+    \begin{align*} 
+        \frac{\partial \rho }{\partial t} = - \nabla \cdot \mathbf{J}\tag{8.4}
+    \end{align*}
+    \textbf{Energitæthed}\begin{align*}
+        u = \frac{1}{2} \left( \epsilon _0 E^2 + \frac{1}{\mu _0} B^{2}\right)  \tag{8.5}
+    \end{align*} 
+    \textbf{Maxwell's Stress Tensor}
+    \begin{align*}
+        T_{ij} \equiv \epsilon _0 \left( E_i E_j - \frac{1}{2} \delta_{ij} E^{2}\right) + \frac{1}{\mu _0}\left( B_i B_j - \frac{1}{2} \delta_{ij} B^{2}\right) \tag{8.17}
+    \end{align*} 
+    hvor man skal huske at \(E^{2} = E_x ^{2} + E_y ^{2} + E_z ^{2} \) osv. 
+
+    \textbf{Energi-flux} 
+    \begin{align*}
+        \mathbf{S} \equiv \frac{1}{\mu _0} \left( \mathbf{E} \times \mathbf{B} \right) \tag{8.10}
+    \end{align*}
+    \textbf{Impulstæthed i felterne} \begin{align*}
+        \mathbf{g} = \mu _0 \epsilon _0 \mathbf{S} = \epsilon _0 \left( \mathbf{E} \times \mathbf{B} \right)  \tag{8.29}
+    \end{align*}  
+    
+    \subsection{Bølger}
+    Generelt (se dog s. 428-429 i særlige tilfælde):
+    \begin{align*}
+        \lambda = \frac{2\pi}{k}, \qquad T = \frac{2\pi}{k v}, \qquad \boxed{\omega = kv}
+    \end{align*}
+    \begin{align*}
+        \boxed{c = \frac{1}{\sqrt{\epsilon _0 \mu _0} }}
+    \end{align*}
+    \underline{\textbf{Planbølger i vakuum}}
+
+    Her er \(v = c\) i ovenstående.  
+    \begin{align*}
+       \mathbf{E}(z, t) = E_0 \cos (kz - \omega t + \delta ) \hat{\mathbf{x}}, \qquad \mathbf{B}(z, t) = \frac{1}{c} E_0 \cos (kz - \omega t + \delta ) \hat{\mathbf{y}} \tag{9.49}
+    \end{align*}
+    Læg mærke til at B-feltet bare er E-feltet drejet med 90 grader og skaleret med \(1 / c\). Generelt: \begin{align*}
+        &\tilde{\mathbf{E}}(\mathbf{r}, t) =  \tilde{E}_0 e^{(\mathbf{k} \cdot \mathbf{r} - \omega t + \delta )} \hat{\mathbf{n}}\\
+        &\tilde{\mathbf{B}}(\mathbf{r}, t) =  \frac{1}{c}\tilde{E}_0 e^{(\mathbf{k} \cdot \mathbf{r} - \omega t + \delta )} \left( \hat{\mathbf{k}} \times \hat{\mathbf{n}} \right) = \frac{1}{c} \hat{\mathbf{k}} \times \tilde{\mathbf{E}} \tag{9.50}
+    \end{align*}
+    For at vende en bølge om smider man bare et minus-tegn foran \(k\) kun. 
+    \begin{align*}
+        \boxed{I \equiv \left\langle S \right\rangle = \frac{1}{\mu _0}\left\langle \left| \mathbf{E} \times \mathbf{B} \right|   \right\rangle }\tag{9.64}
+    \end{align*}
+    Husk at
+    \begin{align*}
+        \int_0^{\lambda } dx \,\sin^2 (kx - \omega t + \delta )
+        &= \int_0^{\lambda } dx \,\cos^2 (kx - \omega t + \delta ) = \frac{1}{2} \lambda
+    \end{align*}
+    \begin{align*}
+        \int_0^{T } dt \,\sin^2 (kx - \omega t + \delta )
+        &= \int_0^{T } dt \,\cos^2 (kx - \omega t + \delta ) = \frac{1}{2} T
+    \end{align*}
+    \begin{align*}
+        \left\langle u \right\rangle &= \frac{1}{2} \epsilon _0 E_0^2 \tag{9.61}\\
+        \left\langle \mathbf{S} \right\rangle &= \frac{1}{2} c \epsilon _0 E_0 ^2 \hat{\mathbf{z}}\tag{9.62}\\
+        \left\langle \mathbf{g} \right\rangle &= \frac{1}{2c} \epsilon _0 E_0 ^2 \hat{\mathbf{z}}\tag{9.63}\\
+        I &= \frac{1}{2} c \epsilon _0 E_0^2\tag{9.64}\\
+        P &= \frac{I}{c}\tag{9.65}
+    \end{align*}
+
+    \underline{\textbf{Lineære Medier}}
+    \begin{align*}
+        &\boxed{v = \frac{1}{\sqrt{\epsilon \mu } } = \frac{c}{n}}\tag{9.69}\\
+        &n \equiv \sqrt{\frac{\epsilon \mu }{\epsilon _0 \mu _0}} \tag{9.70}
+    \end{align*}
+    hvor \(n\) kaldes \textbf{refraktions-indekset}.\begin{align*}
+        &I = \frac{1}{2} \epsilon v E_0 ^2\tag{9.74}\\
+        &u = \frac{1}{2} \left( \epsilon E^{2} + \frac{1}{\mu } B^{2}  \right) \tag{9.72}\\
+        &\mathbf{S} = \frac{1}{\mu } \left( \mathbf{E} \times \mathbf{B} \right) \tag{9.73}
+    \end{align*}
+    \begin{align*}
+        \beta \equiv \frac{\mu _1 v_1}{\mu _2 v_2} = \frac{\mu _1 n_2}{\mu _2 n_1}, \qquad \alpha \equiv \frac{\cos \theta_T}{\cos \theta  _I}
+    \end{align*}
+    \begin{align*}
+        \boxed{\tilde{E}_{0_R} = \left( \frac{\alpha - \beta }{\alpha + \beta }\right) \tilde{E}_{0_I}, \qquad \tilde{E}_{0_T} = \left( \frac{2}{\alpha + \beta }\right) \tilde{E}_{0_I}} \tag{9.110}
+    \end{align*}
+    \begin{align*}
+        \boxed{\frac{\sin \theta _T}{\sin \theta _I} = \frac{n_1}{n_2}} \tag{9.101}
+    \end{align*}
+    \textbf{Perfekt Transmission}
+    Hvis \(\theta _I = \theta _B\) bliver hele bølgen transmitteret.
+    \begin{align*}
+        \sin ^2 \theta _B = \frac{1 - \beta ^{2} }{(n_1 / n_2)^{2} - \beta ^2} \tag{9.112}
+    \end{align*}
+    Hvis \(\mu _1 \approx \mu _2\) får vi \begin{align*}
+        \tan \theta _B \approx \frac{n_2}{n_1} \tag{9.113}
+    \end{align*} 
+    \textit{Eksakt} hvis \(\mu _1 = \mu _2\). 
+
+    \textbf{Reflektions- og transmissionskoefficienter} 
+
+    \begin{align*}
+        &R \equiv \frac{I_R}{I_I} = \left( \frac{\alpha - \beta }{\alpha + \beta } \right) ^{2} \tag{9.116}\\
+        &T \equiv \frac{I_T}{I_I} = \alpha  \beta \left( \frac{2}{\alpha + \beta } \right) ^{2} \tag{9.117}\\
+        &R + T = 1\\
+        &I_I = I_T + I_R \tag{9.118}
+    \end{align*}
+    \underline{\textbf{Ledere og absorption/dispersion}}
+    \begin{align*}
+        \tilde{k} = k + i \kappa \tag{9.127}\\
+    \end{align*} 
+    \[
+    k \equiv \omega \sqrt{\frac{\epsilon \mu}{2}} 
+    \left[ \sqrt{1 + \left( \frac{\sigma}{\epsilon \omega} \right)^2} + 1 \right]^{1/2}, \quad
+    \kappa \equiv \omega \sqrt{\frac{\epsilon \mu}{2}} 
+    \left[ \sqrt{1 + \left( \frac{\sigma}{\epsilon \omega} \right)^2} - 1 \right]^{1/2} \tag{9.128}
+    \]\\
+    \begin{align*}
+        \implies k = \sqrt{\kappa ^{2} + \omega ^{2} \epsilon \mu } 
+    \end{align*}
+    \textbf{"Skin deapth"} 
+    \begin{align*}
+        d \equiv \frac{1}{\kappa } \tag{9.130}
+    \end{align*}
+    \begin{align*}
+        &\boxed{\mathbf{E}(z, t) = E_0 e^{-\kappa z} \cos(kz - \omega t + \delta_E) \, \hat{\mathbf{x}}}\tag{9.140}\\
+        &\boxed{\mathbf{B}(z, t) = B_0 e^{-\kappa z} \cos(kz - \omega t + \delta_E + \phi) \, \hat{\mathbf{y}}}
+    \end{align*}
+    hvor
+    \begin{align*}
+        B_0 &= \frac{K}{\omega } E_0 \tag{9.139}\\
+        K &\equiv |\tilde{k}| \tag{9.134}\\
+        \phi &\equiv \tan ^{-1} \left( \kappa / k \right)  \tag{9.136}
+    \end{align*}
+    \textbf{Reflektion og transmission ved leder}
+    
+    Her ændrer grænsebetingelserne igen (der kan være overfladeladninger eller overfladestrømme). Vi definerer \begin{align*}
+        \tilde{\beta } \equiv \frac{\mu _1 v_1}{\mu _2 \omega } \tilde{k}_2 \tag{9.148}
+    \end{align*}
+    og finder at \begin{align*}
+        \tilde{E}_{0R} = \left( \frac{1 - \tilde{\beta}}{1 + \tilde{\beta}} \right) \tilde{E}_{0I}, \quad
+        \tilde{E}_{0T} = \left( \frac{2}{1 + \tilde{\beta}} \right) \tilde{E}_{0I} \tag{9.149}
+    \end{align*}
+
+    \textbf{Bølgeledere}
+    
+    Hvis vi virkelig får en opgave i dette er det nemmest bare at slå op på side 430 og gå i gang ;).
+
+    \subsection{Felter, ladningsfordelinger og strømme}
+    \begin{gather*}
+        \boxed{\mathbf{B} = \nabla \times \mathbf{A}}\\
+        \boxed{\mathbf{E} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} }
+    \end{gather*}
+    \begin{align*}
+        \nabla ^{2} V + \frac{\partial}{\partial t} \left( \nabla \cdot \mathbf{A} \right) = - \frac{1}{\epsilon _0} \rho \tag{10.4}
+    \end{align*} 
+    \begin{align*}
+       \left( \nabla^2 \mathbf{A} - \mu_0 \epsilon_0 \frac{\partial^2 \mathbf{A}}{\partial t^2} \right)
+        - \nabla \left( \nabla \cdot \mathbf{A} + \mu_0 \epsilon_0 \frac{\partial V}{\partial t} \right)
+        = -\mu_0 \mathbf{J} \tag{10.5}
+    \end{align*}
+    \textbf{Gauge Transformationer}
+    \begin{align*}
+        \boxed{\mathbf{A}^{\prime}  = \mathbf{A} + \nabla \lambda, \qquad V^{\prime}  = V - \frac{\partial \lambda }{\partial t}} \tag{10.7}
+    \end{align*} 
+    \textbf{Coloumb Gauge}
+    \begin{align*}
+        \nabla \cdot \mathbf{A} = \mathbf{0} \tag{10.8}
+    \end{align*} 
+    \textbf{Lorenz Gauge}
+    \begin{align*}
+        \nabla \cdot \mathbf{A} = - \mu _0 \epsilon _0 \frac{\partial V}{\partial t}\tag{10.12}
+    \end{align*} 
+    \underline{\textbf{Potentialerne fra sources}}
+
+    Den relevante tid hvorved vi skal evaluere ladningsfordelinger eller strømme er til det tidspunkt hvor felterne udsendte den information, som nu er nået frem til et givet punkt. Dette er ved tiden \begin{align*}
+        \boxed{t_r \equiv t - \frac{\griffr[2] }{c} = t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| }{c}} \tag{10.25}
+    \end{align*}
+
+    \begin{align*}
+        \boxed{V(\mathbf{r}, t) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\mathbf{r}', t_r)}{r'} \, d\tau',\qquad
+        \mathbf{A}(\mathbf{r}, t) = \frac{\mu_0}{4 \pi} \int \frac{\mathbf{J}(\mathbf{r}', t_r)}{r'} \, d\tau^{\prime} } \tag{10.26}
+    \end{align*}
+    Se evt. eksempel 10.2.
+
+    \underline{\textbf{Potentialer fra punktpartikler}}
+    \begin{align*}
+        \boxed{V(\mathbf{r}, t) = \frac{1}{4\pi\epsilon_0} \frac{qc}{(\griffr[2] c - \hatgriffr \cdot \mathbf{v})}} \tag{10.46}
+    \end{align*} 
+    hvor \(\mathbf{v}\) er hastigheden af punktpartiklen ved \(t_r\) og \(\hatgriffr \) er afstanden fra den retarderede position til feltpunktet, \(\griffr[4] = \mathbf{r} - \mathbf{w}(t_r)\).
+    \begin{align*}
+        \boxed{\mathbf{A}(\mathbf{r}, t) = \frac{\mu _0}{4 \pi } \frac{qc \mathbf{v}}{(\griffr[2] c - \hatgriffr \cdot \mathbf{v})} = \frac{\mathbf{v}}{c^{2} } V(\mathbf{r}, t)} \tag{10.47}
+    \end{align*}
+    \underline{\textbf{Felterne for en punktpartikel med konstant hastighed}}
+    
+    Defineres 
+    \begin{align*}
+        \mathbf{R} \equiv  \mathbf{r} - \mathbf{v}t
+    \end{align*} 
+    som er vektoren fra den \textbf{nuværende} position af partiklen til \(\mathbf{r}\), og \(\theta \) er vinklen mellem \(\mathbf{R}\) og \(\mathbf{v}\) får vi: \begin{align*}
+        \boxed{\mathbf{E}(\mathbf{r}, t) = \frac{q}{4 \pi \epsilon_0} 
+        \frac{1 - v^2 / c^2}{\left( 1 - v^2 \sin^2 \theta / c^2 \right)^{3/2}} 
+        \frac{\hat{\mathbf{R}}}{R^2}} \tag{10.75}
+    \end{align*}     
+    \begin{align*}
+        \boxed{\mathbf{B} = \frac{1}{c} (\hatgriffr \times \mathbf{E}) = \frac{1}{c^{2} } (\mathbf{v} \times \mathbf{E})}\tag{10.76}
+    \end{align*}
+    Se eksempel 10.4 for fede tegninger af feltlinjer og en gennemgang.
+
+    \underline{\textbf{Tjek dine felter: Gyldige og ugyldige felter}}
+
+    \textbf{Uendelig energi går ikke}
+
+    Hvis du finder en energitæthed som integreret op over hele rummet divergerer (giver uendelig energi), så kan de felter du har fundet \textit{ikke} være gyldige i hele rummet!
+    
+    \textbf{Vakuum} 
+
+    I vakuum (ingen ladninger eller strømme) er \(dW / dt = 0\) hvilket giver "kontinuitetsligningen" for energi \begin{align*}
+        \frac{\partial u}{\partial t} = - \nabla \cdot \mathbf{S} \tag{8.12}
+    \end{align*} 
+    hvis denne ikke er opfyldt, må der være noget galt.
+    
+    \textbf{Divergens af \(\mathbf{B}\)-feltet }
+    \begin{align*}
+        \nabla \cdot \mathbf{B} = \mathbf{0}
+    \end{align*} 
+    Altid. Ellers er der noget galt.
+
+    \textbf{Statiske magnetfelter}
+    
+    Husk at \begin{align*}
+        \frac{\partial \mathbf{B}}{\partial t} = 0 \implies \nabla \times \mathbf{E} = \mathbf{0}
+    \end{align*} 
+
+
+    \subsection{Stråling}
+    For de følgende formler skal det gælde at vi er i \textbf{strålingszonen}, som er når
+    \begin{align*}
+    r \gg \frac{c}{\omega} \tag{11.13}
+    \end{align*}
+    samt at den karakteristiske længdeenhed (dipolens udstrækning, eller radius på strømkreds) er meget mindre end \(c / \omega \). Se udledningerne i kapitel 11 hvis du er i tvivl! 
+    
+    \underline{\textbf{Elektrisk dipol-stråling}}
+    \begin{align*}
+        V(r, \theta , t) = - \frac{p_0 \omega }{4 \pi  \epsilon _0 c} \left( \frac{\cos \theta }{r} \sin \left[ \omega (t - \frac{r}{c}) \right]  \right)  \tag{11.14}
+    \end{align*}
+    hvor \(p_0 \equiv q_0 d\) er det maksimale dipolmoment for en svingene elektrisk dipol. \textbf{Kræver at vi er i strålingszonen}.
+    
+    Hvis dipolen oscillerer langs \(z\)-aksen bliver vektorpotentialet da 
+    \begin{align*}
+        \mathbf{A}(r, \theta, t) = - \frac{\mu _0 p_0 \omega }{4 \pi  r} \sin \left[ \omega (t - \frac{r}{c}) \right] \hat{\mathbf{z}} \tag{11.17}
+    \end{align*}
+    \textbf{Kræver IKKE at vi er i strålingszonen faktisk! Men den kræver de to andre approksimationer} (som det elektriske potentiale også skal opfylde): \begin{align*}
+        d\ll r, \qquad d \ll \frac{c}{\omega } \tag{11.7+10}
+    \end{align*} 
+
+    Felterne bliver da \begin{align*}
+        \boxed{\mathbf{E} = -\frac{\mu _0 p_0 \omega ^{2} }{4 \pi } \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\theta}}} \tag{11.18}
+    \end{align*}
+    \begin{align*}
+        \boxed{\mathbf{B} = -\frac{\mu _0 p_0 \omega ^{2} }{4 \pi c} \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\phi }}} \tag{11.19}
+    \end{align*}
+    hvor \textbf{BEGGE udtryk kræver at vi er i strålingszonen} (også selvom udtrykket for \(\mathbf{A}\) ikke gjorde). 
+    \begin{align*}
+        \left\langle \mathbf{S} \right\rangle = \left( \frac{\mu _0 p_0 ^2 \omega ^4}{32 \pi^{2} c} \right) \frac{\sin ^{2} \theta }{r^{2} } \hat{\mathbf{r}} \tag{11.21}
+    \end{align*}
+    \begin{align*}
+        \left\langle P \right\rangle = \int \left\langle \mathbf{S} \right\rangle \cdot d \mathbf{a} = \frac{\mu _0 p_0 ^{2} \omega 
+        4}{12 \pi  c} \tag{11.22}
+    \end{align*}
+    \underline{\textbf{Magnetisk dipol-stråling}}
+
+    \textbf{Approksimationer (igen)} 
+    Lader vi \(b\) være strømkredsens radius vil vi have at \begin{align*}
+        b \ll \frac{c}{\omega } \ll r
+    \end{align*} 
+    Da strømkredsen antages for neutral er det elektriske potentiale nul. \begin{align*}
+        \mathbf{A}(r, \theta , t) = - \frac{\mu _0 m_0 \omega }{4 \pi c} \left( \frac{\sin \theta }{r} \right) \sin \left[ \omega (t - \frac{r}{c}) \right] \boldsymbol{\hat{\phi}} \tag{11.36}
+    \end{align*}
+    \begin{align*}
+        \boxed{\mathbf{E} = \frac{\mu _0 m_0 \omega^{2}  }{4 \pi c} \left( \frac{\sin \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \boldsymbol{\hat{\phi}}} \tag{11.36}
+    \end{align*} 
+    \begin{align*}
+       \boxed{\mathbf{B} = -\frac{\mu _0 m_0 \omega ^{2} }{4 \pi  c^{2} } \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\theta}}} \tag{11.37}
+    \end{align*}
+    hvor \(m_0 \equiv \pi  b^{2} I_0\) er det maksimale dipolmoment for den oscillerende dipol.
+
+    \begin{align*}
+        \left\langle P \right\rangle = \frac{\mu _0 m_0 ^{2} \omega ^4}{12 \pi  c^3} \tag{11.40}
+    \end{align*}
+    \begin{align*}
+        \frac{P_{\text{magnetic}}}{P_{\text{electric}}} = \left( \frac{m_0}{p_0 c} \right)^{2} \tag{11.41} 
+    \end{align*}
+    som viser, at den magnetiske dipolstråling oftest er afsindigt meget svagere end den elektriske dipolstråling.
+
+    \underline{\textbf{Stråling fra en punktladning}}
+    
+    \textbf{Lamor-formlen}
+
+    Gælder kun for \(v \ll c\):
+    \begin{align*}
+        \boxed{P = \frac{\mu _0 q^2 a^2}{6 \pi  c}} \tag{11.70}
+    \end{align*} 
+     Effekten fra generel stråling findes på s. 490 (ligning 11.73). Et særtilfælde er hvis \(\mathbf{v}\) og \(\mathbf{a}\) er instantant co-lineære (samme retning ved samme \(t\)): \begin{align*}
+        P = \frac{\mu _0 q^{2} a^{2} \gamma ^6}{6 \pi c}
+    \end{align*}  
+    \subsection{Relativitetsteori}
+    \begin{align*}
+        \boxed{\gamma \equiv \frac{1}{\sqrt{1 - v^{2} /c^{2} } }} \tag{12.6}
+    \end{align*}
+    husk at \(\gamma \geq 1\) altid. Hvis du skal lave flere transformationer i træk, så husk at du skal bruge forskellige gamma-faktorer mellem transformationerne! 
+
+    \textbf{\textred{I de nedenstående formler er antagelsen, at bevægelser er i x-retningen. Husk det!}} 
+    
+    \textbf{Tids\underline{forlængelse}} 
+    \begin{align*}
+        \Delta \overline{t} = \frac{\Delta t}{\gamma} \tag{12.5}
+    \end{align*}
+    \textbf{Længde\underline{forkortelse}}\begin{align*}
+        \Delta \overline{x} = \gamma \Delta x \tag{12.9}
+    \end{align*} 
+    \textbf{Lorenzttransformationerne} 
+    \begin{align*}
+        \text{(i)} \ & \bar{x} = \gamma (x - vt), \tag{12.18}\\
+        \text{(ii)} \ & \bar{y} = y, \\
+        \text{(iii)} \ & \bar{z} = z, \\
+        \text{(iv)} \ & \bar{t} = \gamma \left( t - \frac{v}{c^2} x \right)
+    \end{align*}
+    for at få omvendt transformation ændres \(v \to -v\).
+
+    \textbf{Generel transformation af felterne}
+
+    Ved bevægelse langs \(x\)-aksen:
+    \begin{align*}
+        \bar{E}_x &= E_x, \quad & \bar{B}_x &= B_x, \\
+        \bar{E}_y &= \gamma \left( E_y - v B_z \right), \quad & \bar{B}_y &= \gamma \left( B_y + \frac{v}{c^2} E_z \right), \\
+        \bar{E}_z &= \gamma \left( E_z + v B_y \right), \quad & \bar{B}_z &= \gamma \left( B_z - \frac{v}{c^2} E_y \right)\tag{12.111}
+    \end{align*}
+    \textred{Igen, så er ovenstående hvis bevægelsen er langs x-retningen}. 
+    
+    Den koordinatfri form er \begin{align*}
+        &\overline{\mathbf{E}}_{\parallel} =\mathbf{E}_{\parallel}, \qquad \overline{\mathbf{E}}_\perp = \gamma (\mathbf{E}_{\perp} + \mathbf{v} \times \mathbf{B}_\perp),\\
+        &\overline{\mathbf{B}}_{\parallel} =\mathbf{B}_{\parallel}, \qquad \overline{\mathbf{B}}_\perp = \gamma (\mathbf{B}_{\perp} - \frac{\mathbf{v}}{c^{2} } \times \mathbf{E}_\perp) \tag{12.112}
+    \end{align*}
+    Hvis du har fået givet en grim \(\mathbf{v}\)-vektor, som ikke ligger langs dine akser, så kan du bruge at \begin{align*}
+        \mathbf{B}_\parallel = \left(  \frac{\mathbf{B}\cdot \mathbf{v}}{v^{2} } \right) \mathbf{v}
+    \end{align*} 
+    og dernæst \begin{align*}
+        \mathbf{B}_\perp = \mathbf{B} - \mathbf{B}_\parallel
+    \end{align*}
+    Eller også kan du starte fra \begin{align*}
+        \mathbf{B}_\perp = \frac{\mathbf{v} \times \left( \mathbf{B} \times \mathbf{v} \right) }{v^{2} } = \frac{\mathbf{B}(\mathbf{v} \cdot \mathbf{v}) - \mathbf{v} (\mathbf{v} \cdot \mathbf{B})}{v^{2} }
+    \end{align*}
+    og så isolere for den paralelle komponent i ovenstående. Ellers kan du rotere dit koordinatsystem ved at gange med matricen \begin{align*}
+        \begin{bmatrix}
+            x^{\prime}_1 & x^{\prime} _2 & x^{\prime} _3\\
+            y^{\prime}_1 & y^{\prime} _2 & y^{\prime} _3\\
+            z^{\prime}_1 & z^{\prime} _2 & z^{\prime} _3\\
+        \end{bmatrix} \begin{bmatrix}
+            E_{x1} \\
+            E_{x2} \\
+            E_{x3}   
+        \end{bmatrix} = \begin{bmatrix}
+            E^{\prime} _{x1} \\
+            E^{\prime} _{x2} \\
+            E^{\prime} _{x3}   
+        \end{bmatrix}
+    \end{align*}
+    hvorefter din hastighedsvektor igen er langs \(x^{\prime}\)-aksen, så du direkte kan bruge (12.111) og derefter transformere tilbage igen. Husk at hvis du får forskellige kræfter i efter at have transformeret dine felter, så er der noget galt. Kræfter skal \textit{altid} stemme overens hvis de kun indeholder størrelser fra samme referencesystem. Altså \begin{align*}
+            \overline{\mathbf{F}}(\overline{x}, \overline{y}, \overline{z}, \overline{t}) = \mathbf{F}(x, y, z, t)
+        \end{align*}
+
+    \subsection{Recap: Felternes Grænsebetingelser}
+    Se kapitel 7.3.5 fra s. 344 til 347. Det er de skrevet så godt som muligt. Ellers har vi:
+
+    \underline{\textbf{Maxwell's ligninger i medier}}
+    \[
+    \begin{cases}
+    \text{(i)} \ \nabla \cdot \mathbf{D} = \rho _f, \quad & \text{(iii)} \ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}, \\[5pt]
+    \text{(ii)} \ \nabla \cdot \mathbf{B} = 0, \quad & \text{(iv)} \ \nabla \times \mathbf{H} = \mathbf{J}_f + \frac{\partial \mathbf{D}}{\partial t}.
+    \end{cases}
+    \]
+    \textbf{Lineære medier}
+    \begin{align*}
+        \mathbf{D} = \epsilon \mathbf{E}, \qquad \mathbf{H} = \frac{1}{\mu } \mathbf{B}
+    \end{align*}
+    \textbf{Grænsebetingelser} \begin{align*}
+        \begin{aligned}
+        \text{(i)} \ & \epsilon_2 E_2^\perp - \epsilon_1 E_1^\perp = \sigma _f, \quad & \text{(iii)} \ & \mathbf{E}_1^\parallel = \mathbf{E}_2^\parallel, \\[5pt]
+        \text{(ii)} \ & B_1^\perp = B_2^\perp, \quad & \text{(iv)} \ & \frac{1}{\mu_2} \mathbf{B}_2^\parallel - \frac{1}{\mu_1} \mathbf{B}_1^\parallel = \mathbf{K}_f \times \hat{\mathbf{n}}
+        \end{aligned}\tag{7.73}
+    \end{align*}
+    \textbf{Lineære medier uden overfladestrømme eller ladninger} 
+    \begin{align*}
+        \begin{aligned}
+            \text{(i)} \ & \epsilon_2 E_2^\perp - \epsilon_1 E_1^\perp = 0, \quad & \text{(iii)} \ & \mathbf{E}_1^\parallel = \mathbf{E}_2^\parallel, \\[5pt]
+            \text{(ii)} \ & B_1^\perp = B_2^\perp, \quad & \text{(iv)} \ & \frac{1}{\mu_2} \mathbf{B}_2^\parallel - \frac{1}{\mu_1} \mathbf{B}_1^\parallel = \mathbf{0}
+            \end{aligned}\tag{7.74}
+    \end{align*}
+
+    
+    
+    \newpage
+    \section{Integraler og Identiteter}
+    \subsection{Trigonometriske identiteter}
+    \begin{align*}
+        &\textbf{Pythagoras:} 
+        && \sin^2 x + \cos^2 x = 1, \\[6pt]
+        &\textbf{Euler:}
+        && e^{i x} = \cos x + i \sin x, \\[6pt]
+        &\textbf{Addition (sum) formler:} 
+        && \sin(a \pm b) = \sin a \cos b \pm \cos a \sin b, \\
+        &&& \cos(a \pm b) = \cos a \cos b \mp \sin a \sin b, \\[6pt]
+        &\textbf{Dobbelt-vinkler:}
+        && \sin(2x) = 2 \sin x \cos x, \\
+        &&& \cos(2x) = \cos^2 x - \sin^2 x = 1 - 2 \sin^2 x = 2 \cos^2 x - 1, \\[6pt]
+        &\textbf{Trekantede kombinationer:}
+        && \boxed{\sin^2 x = \frac{1 - \cos(2x)}{2}, \quad 
+        \cos^2 x = \frac{1 + \cos(2x)}{2}}, \\[6pt]
+        &\textbf{Andre:}
+        && \sin^3 x = \frac{3 \sin x - \sin(3x)}{4}, \quad
+        \cos^3 x = \frac{3 \cos x + \cos(3x)}{4}.\\
+        &&& \boxed{\cos (x) + \sin (x) = \sqrt{2} \cos \left( x - \pi/ 4 \right)} \\
+        &&& \cos (x) - \sin (x) = \sqrt{2} \cos \left( x + \pi /4 \right)  
+    \end{align*}
+    hvor de sidste to identiteter nogle gange kan bruges til at undersøge om ting er i fase, ved at skrive det hele som en enkelt cosinus! Nogle andre som er fine at huske / kunne:
+    \begin{align*}
+        \cos (x - \pi  /2 ) = \sin (x)
+    \end{align*}
+    \begin{align*}
+        \cos (\arctan(x)) = \frac{1}{\sqrt{1 + x^{2} }}
+    \end{align*}
+
+    \subsection{Forglem mig ej}
+    \textbf{Vinkler og Længder}
+    
+    Glem ej de trigonometriske måder at skrive prikprodukter og krydsprodukter. Nogle gange kan de bruges til at udtrkke manglende størrelser.
+    \begin{align*}
+        \mathbf{v} \cdot \mathbf{r} = |v||r|\cos \theta 
+    \end{align*}
+    \begin{align*}
+        \mathbf{v} \times \mathbf{r} = |v||r| \sin \theta 
+    \end{align*}
+    Og ligeså kan cosinus-relationen bruges i ikke-retvinklede trekanter hvis man har to sider og en vinkel:
+    \begin{align*}
+        \boxed{\griffr[2]^{2}  = r^{2} + r^{\prime 2} - 2 r r^{\prime} \cos \theta}
+    \end{align*}
+    \textbf{Ulige}
+    \begin{align*}
+        \sin (-x) &= - \sin (x)\\
+        \tan (-x) &= - \tan (x)\\
+        \arctan(-x) &= - \arctan(x) 
+    \end{align*}  
+    \textbf{Lige}
+    \begin{align*}
+        \cos (-x) &= \cos (x)
+    \end{align*} 
+
+    \subsection{Trigonometriske integraler}
+    \subsubsection{Vigtige}
+    \textbf{Over en bølgelængde} 
+    \begin{align*}
+        \int_0^{\lambda } dx \,\sin^2 (kx - \omega t + \delta )
+        &= \int_0^{\lambda } dx \,\cos^2 (kx - \omega t + \delta ) = \frac{1}{2} \lambda
+    \end{align*}
+    \textbf{Over en periode} 
+    \begin{align*}
+        \int_0^{T } dt \,\sin^2 (kx - \omega t + \delta )
+        &= \int_0^{T } dt \,\cos^2 (kx - \omega t + \delta ) = \frac{1}{2} T
+    \end{align*}
+    Læg mærke til at både integrationsgrænsen samt integrationsvariablen blev ændret, men at formen af integralet egentlig er fuldstændigt det samme.
+    
+    \textbf{Over \(2 \pi \) } 
+    \begin{align*}
+        \int_0^{2\pi} d\phi' \,\sin^2 \phi'
+        &= \int_0^{2\pi} d\phi' \,\cos^2 \phi'
+        = \pi, \\[6pt]
+        \int_0^{\pi} \sin^2 \phi' \, d\phi'
+        = \frac{\pi}{2}, 
+        &\quad
+        \int_0^{\pi} \cos^2 \phi' \, d\phi'
+        = \frac{\pi}{2}\\
+        \int_0^{2\pi} d\phi' \,\sin \phi'
+        &= \int_0^{2\pi} d\phi' \,\cos \phi'
+        = 0, \\[6pt]
+        \int_0^{2\pi} d\phi' \,\sin^3 \phi'
+        &= \int_0^{2\pi} d\phi' \,\cos^3 \phi'
+        = 0\\
+        \int_0^{2\pi} \sin^4 \phi' \, d\phi'
+        &= \int_0^{2\pi} \cos^4 \phi' \, d\phi'
+        = \frac{3\pi}{4}, \\[6pt]
+    \end{align*}
+    \textbf{Over \(\pi \)} 
+    \begin{align*}
+        \int_0^{\pi} \sin \phi' \, d\phi'
+        = 2, 
+        &\quad
+        \int_0^{\pi} \cos \phi' \, d\phi'
+        = 0, \\[6pt]
+        \int_0^{\pi} d\phi' \,\sin^3 \phi'
+        &= \frac{4}{3}, \\[6pt]
+        \int_0^{\pi} d\phi' \,\cos^3 \phi'
+        &= 0.
+    \end{align*}
+    \newpage
+    \section{Enheder og omksrivninger iblandt}
+    \textbf{Kredsløb} 
+    \begin{align*}
+        &\left[ I \right] = A = \frac{C}{s}\\
+        &\left[ V \right] = \frac{J}{C} = \frac{Nm}{C} = \frac{kg \cdot m^{2} }{s ^{2} C} = \frac{kg \cdot m^{2} }{s^3 A} = \frac{W \cdot s}{A}\\
+        &\left[ R \right] = \Omega = \frac{\text{spænding}}{\text{strøm}} = \frac{V \cdot s}{C}\\
+        &\left[ \text{Capacitance} \right] = F = \frac{C^{2}}{J} = \frac{A \cdot s}{V}\\
+        &\left[ L \right] = H = \frac{Wb}{A} = \frac{V \cdot s}{A} = \frac{s^2}{F}\\
+        &\left[ \sigma  \right] = \left[ \frac{1}{\rho } \right] = \frac{A}{V} = \frac{1}{\Omega \cdot m} = \frac{S}{m} 
+    \end{align*}
+    hvor \(C\) er en coloumb (noget ladning), \(F\) er en farad, \(H\) er en Henry, \(Wb\) er en Weber og \(S\) er en Siemens.
+
+    \textbf{Felter} 
+    \begin{align*}
+        &[\mathbf{E}] = \frac{V}{m} = \frac{N}{C}\\
+        &\left[ \mathbf{B} \right] = T = \frac{N}{A \cdot m}
+    \end{align*}
+    \textbf{Stråling}
+    \begin{align*}
+        &\left[ P \right] = W = \frac{J}{s}\\
+        &\left[ \text{Intensitet} \right] = \frac{W}{m^{2}} = \frac{kg}{s^3}
+    \end{align*} 
+
+    \textbf{Karakteristisk tid i LC-kreds}\begin{align*}
+        [\tau] = s = [\sqrt{L\cdot C}]
+    \end{align*}  
+    hvor \(C\) er kapacitans, og ikke en Coloumb. Herfra kommer ræsonansfrekvensen \begin{align*}
+        \omega _0 \equiv \frac{1}{\sqrt{LC} }
+    \end{align*}
+
+    \textbf{Karakteristisk tid i RC-kreds}
+    \begin{align*}
+        [\tau] = s = [R\cdot C]
+    \end{align*}
+    \textbf{Karakteristisk tid i RL-kreds} 
+    \begin{align*}
+        [\tau] = s = \left[ \frac{L}{R} \right] 
+    \end{align*}
+
+    \newpage
+
+    \section{Rækkeudviklinger}
+    \subsection{Recap af Taylorudviklinger}
+    \textbf{Taylorudvikling omkring et punkt}
+    Udvikles funktionen om punktet \(a\) opnås  
+    \begin{align*}
+        f(x) = \sum_{k = 0}^\infty \frac{f^{(k)}(a)}{k!} (x-a)^k &= f(a) + (x-a)\frac{df}{dx}\Bigr|_{x = a} + \frac{(x-a)^2}{2} \frac{d^2 f}{dx^2}\Bigr|_{x = a} + \frac{(x-a)^3}{6} \frac{d^3 f}{dx^3}\Bigr|_{x = a} + \cdots\\
+        &= f(a) + f^{\prime} (a) (x-a) + \frac{1}{2}f^{\prime\prime} (a) (x - a) ^2 + \cdots
+    \end{align*}
+    hvor \begin{align*}
+        \frac{df}{dx}\Bigr|_{x = a} = \frac{df(a)}{dx}
+    \end{align*}
+    betyder "den afledte af \(f\) evalueret i punktet \(a\)". Typisk udvikler man sin funktion omkring \(a = 0\), hvormed en Taylorudviklingen til 2. orden (som oftest er nok) bliver simpel:
+    \begin{align*}
+        f(x) = f(a) + f^{\prime} (a) x + \frac{1}{2}f^{\prime\prime} (a) x^2 + \cdots
+    \end{align*} 
+    \textbf{Taylorudvikling af en lille afvigelse}
+    Oftest vil vi gerne udvikle udtryk der kan skrives på formen \begin{align*}
+        f(x + \Delta x) = f(x + \epsilon)
+    \end{align*}
+    hvor \(\Delta x \equiv \epsilon\) bruges for at notere, at vi gerne vil have, at afvigelsen er lille (hvis 2. ordens approksimationen skal være god). Vi kan bruge den generelle formel ovenfor, men i stedet for at udvikle omkring et konstant \(a\), så kan vi udvikle omkring et variabelt \(x\), som vi altid kan erstatte senere. På den måde finder vi en generel Taylorudvikling, som vi altid kan genbruge for en lille given afvigelse. Ved at erstatte \(a \to x\) i ovenstående, samt \(x \to x + \epsilon\), så ser vi at
+    \begin{align*}
+        f(x + \epsilon) &= f(x) + f^{\prime} (x) \left[(x + \epsilon) - x\right] + \frac{1}{2}f^{\prime\prime} (x) \left[(x + \epsilon) - x \right] ^2 + \cdots\\
+        &= f(x) + \epsilon f^{\prime} (x) + \frac{\epsilon^{2}}{2} f^{\prime\prime} (x) + \cdots
+    \end{align*}
+    hvor det nok især er den sidste form, der bliver mest brugbar at skrive sig bag øret: \begin{align*}
+        \boxed{f(x \pm \epsilon) = f(x) \pm \epsilon f^{\prime} (x) + \frac{\epsilon ^{2} }{2} f^{\prime\prime} (x) + \cdots}
+    \end{align*}
+    \textit{Læg mærke til at 2. ordens-leddet ikke skifter fortegn hvis vi har \(x - \epsilon\) i stedet pga. \(\epsilon ^{2}\)}.
+
+    Hvis vi har en vektorfunktion kan vi bare Taylorudvikle hver komponent. 
+    
+    Hvis vi har en funktion af flere variable, så er det oftest kun forventet at vi tager første-ordens leddet med, da 2. orden næsten altid smides væk. Lad os evaluere en sådan funktion omkring punktet \(\mathbf{r}_0 = (x_0, y_0, z_0, t_0)\), og huske at funktionen afhænger af \(\mathbf{r} = (x, y, z, t)\):
+    \begin{align*}
+        f(\mathbf{r}) = f(\mathbf{r}_0) + (x - x_0)\frac{\partial f}{\partial x}\Bigr|_{\mathbf{r} = \mathbf{r}_{0} } + (y - y_0)\frac{\partial f}{\partial y}\Bigr|_{\mathbf{r} = \mathbf{r}_{0} } + (z - z_0)\frac{\partial f}{\partial z}\Bigr|_{\mathbf{r} = \mathbf{r}_{0} } + (t - t_0)\frac{\partial f}{\partial t}\Bigr|_{\mathbf{r} = \mathbf{r}_{0} } + \cdots
+    \end{align*}
+
+    Igen kan vi udvikle den generelle situation der har formen \(f(\mathbf{r} + d \mathbf{x})\), hvor \(d\mathbf{x}\) kan være en lille vektor med en hvilken som helst retning (husk vi udvikler omkring det generelle \(\mathbf{r}\) nu!) \begin{align*}
+        f(\mathbf{r} + \Delta \mathbf{x}) = f(\mathbf{r}) + \left[ (x + dx_x) - x \right]\frac{\partial f}{\partial x}\Bigr|_{\mathbf{r} = \mathbf{r}} + dx_y\frac{\partial f}{\partial y} + dx_z\frac{\partial f}{\partial z} + dt\frac{\partial f}{\partial t} + \cdots  
+    \end{align*}
+    hvor jeg kun har beholdt den meget eksplicitte form på første led, da det ellers fylder meget. Det sidste led ovenfor er hvis funktionen har en eksplicit tidsafhængighed, og at tiden også ændrer sig undervejs i vores approksimation. Men oftest laver vi kun rumlige approksimationer, fordi ting er tæt på hinanden, og det sidste led er derfor sjældent en nødvendighed. Det ses at prikproduktet og gradienten af funktionen giver den kompakte skriveform \begin{align*}
+        f(\mathbf{r} + \Delta \mathbf{x}) = f(\mathbf{r}) + \nabla f \cdot d \mathbf{x} + \cdots 
+    \end{align*}
+    Denne side var egentlig mest for sjov. Nu til nogle nyttige noter.
+    \newpage
+    \subsection{Nyttige rækkeudviklinger}
+    Schaum's har selvfølgelig dem alle, og flere til, men her er de oftest brugte (alle udviklet omkring punktet \(0\)):
+    \begin{align*}
+        \sin (x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
+    \end{align*} 
+    Heraf kommer \begin{align*}
+        \sin (x) \approx x, \qquad x \ll 1
+    \end{align*}
+    \begin{align*}
+        \cos (x) = 1 - \frac{x^{2} }{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+    \end{align*}
+    \begin{align*}
+        \tan (x) = x + \frac{x^3}{3} + \cdots
+    \end{align*}
+    Igen ses \begin{align*}
+        \tan (x) \approx x, \qquad x \ll 1
+    \end{align*}
+    \begin{align*}
+        \arctan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots, \qquad (\left| x \right| < 1)
+    \end{align*}
+    Igen fås \begin{align*}
+        \arctan(x) \approx x, \qquad x \ll 1
+    \end{align*}
+    \begin{align*}
+        \left( 1 + x \right)^{\frac{1}{2}} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \cdots
+    \end{align*}
+    \begin{align*}
+        \ln(1 + x) = x - \frac{x^{2} }{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots, \qquad (\left| x \right| < 1 )
+    \end{align*}
+    \begin{align*}
+        e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots
+    \end{align*}
+    \textbf{Binomialudvidelsen}
+    For ethvert tal \(\alpha \in \mathbb{R}\) så gælder at  
+    \[
+    (1 + x)^\alpha
+    = 1
+    + \alpha\,x
+    + \frac{\alpha(\alpha - 1)}{2!}\,x^2
+    + \frac{\alpha(\alpha - 1)(\alpha - 2)}{3!}\,x^3
+    + \cdots.
+    \]
+
+    \textbf{Eksempel: Gamma-faktoren fra Lorentz-transformationen} 
+    Det ses at hvis \(v \ll c\) bliver \(v^{2} / c^{2}  \ll 1\) således at vi med det samme kan bruge binomial-udvidelsen ovenfor 
+    \begin{align*}
+        \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \left( 1 - \frac{v^2}{c^2} \right)^{-\frac{1}{2}} \approx 1 + \frac{1}{2}\frac{v^{2}}{c^{2} } + \frac{3}{8} \frac{v^4}{c^4} + \cdots
+    \end{align*}
+
+    \newpage
+
+    \section{Differentialligniner - af GPT}
+    \textit{Hvis du skal løse for en strøm, så se kredsløbsnoten s. 12! Nedenfor er bare et overview af metoden og løsninen for ladning på en kapacitor-plade.}
+
+    We consider the series LRC circuit with inductance $L$, resistance $R$, 
+    capacitance $C$, and a driving (source) voltage $\mathcal{E}(t)$. Let $Q(t)$ be the 
+    charge on the capacitor. By KVL, the governing differential equation is:
+    \[
+    L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{1}{C} \, Q = \mathcal{E} (t).
+    \]
+    \subsection*{1. The Homogeneous Equation}
+    First, set $\mathcal{E}(t)=0$:
+    \[
+    L Q''(t) + R Q'(t) + \frac{1}{C} \, Q(t) = 0.
+    \]
+    We look for a solution of the form $Q(t) = e^{- \lambda t}$. Substituting and dividing 
+    by $e^{- \lambda t}$ leads to the characteristic equation:
+    \[
+    L \lambda ^2 - R \lambda + \frac{1}{C} = 0.
+    \]
+    Solving for $\lambda $ gives two (possibly complex) roots $\lambda _1, \lambda _2$, which determine 
+    the form of the homogeneous solution $Q_h(t)$:
+    \[
+    Q_h(t) = 
+    \begin{cases}
+    A e^{-\lambda _1 t} +B e^{- \lambda _2 t}, & \text{(overdamped, if $\omega _0 < R / (2L)$)}, \\
+    (A + B t) e^{- Rt/(2L)}, & \text{(critically damped, if $\omega _0 = R / (2L)$)}, \\
+    (A\cos(\omega t) + B \sin(\omega t))e^{- Rt/(2L)}, & \text{(underdamped, if $\omega _0 > R / (2L)$)}.
+    \end{cases}
+    \]
+
+    \subsection*{2. A Particular Solution}
+    For the non-homogeneous equation
+    \[
+    L Q''(t) + R Q'(t) + \frac{1}{C}\, Q(t) = \mathcal{E} (t),
+    \]
+    we find a particular solution $Q_p(t)$ depending on the form of $\mathcal{E} (t)$. For 
+    example, if $\mathcal{E} (t) = \mathcal{E} _0$ is a constant, we can guess $Q_p(t) = M$ (constant), 
+    so
+    \[
+    \frac{M}{C} = \mathcal{E} _0 \quad \Longrightarrow \quad M = C\, \mathcal{E} _0.
+    \]
+    Thus, a particular solution is $Q_p(t) = C\,\mathcal{E} _0$.
+
+    \subsection*{3. General Solution and Initial Conditions}
+    The general solution is
+    \[
+    Q(t) = Q_h(t) + Q_p(t).
+    \]
+    If we have initial conditions $Q(0) = Q_0$ and $Q'(0) = I_0$, we can solve for 
+    the constants $A, B$ (or their analogues in the underdamped case) by:
+    \[
+    Q(0) = Q_h(0) + Q_p(0) = Q_0, \quad Q'(0) = Q_h'(0) + Q_p'(0) = I_0.
+    \]
+
+    \subsection*{Sidebemærkning}
+    Den generelle teknik med at løsningen til en differentialligning er givet ved den homogene plus en partikulær løsning gælder også for førsteordens-ligninger. Tag f.eks. en \(LR\)-serie kreds. Her bliver den reelle ligning \begin{align*}
+        \mathcal{E} = L \frac{dI}{dt} + RI
+    \end{align*}
+    Den homogene ligning er \begin{align*}
+        L \frac{dI}{dt} + RI = 0
+    \end{align*}
+    som giver løsningen (ved seperation af variable) \begin{align*}
+        I_h(t) = Ke^{-Rt/L}
+    \end{align*}
+    hvor \(K\) er konstant. Så gætter vi at \(d I / dt = 0\) hvormed den oprindelige ligning bliver \begin{align*}
+        \mathcal{E} = RI \implies I_p = \frac{\mathcal{E}}{R}
+    \end{align*}  
+    således at den fulde løsning bliver \begin{align*}
+        I(t) = I_h(t) + I_p(t) = \frac{\mathcal{E}}{R} + Ke^{-Rt/L}
+    \end{align*}
+    Hvis \(I(0) = 0\) får vi at \begin{align*}
+        I(0) = 0 = \frac{\mathcal{E}}{R} + K \implies K = - \frac{\mathcal{E}}{R}
+    \end{align*} 
+    og \begin{align*}
+        I(t) = \frac{\mathcal{E}}{R} \left( 1 - e^{-Rt/L} \right)  \tag{K(35)}
+    \end{align*}
+
+    \newpage
+    \section{Strøm og kredsløb}
+    I en leder har vi \begin{align*}
+        \mathbf{J} = \sigma \mathbf{E} \tag{K(2)}
+    \end{align*}
+    med Ohm's lov \begin{align*}
+        \boxed{V = IR} \tag{K(5)}
+    \end{align*}
+    findes det ofte at \begin{align*}
+        R = \frac{L}{\sigma A}
+    \end{align*}
+    \begin{align*}
+        \boxed{P = \frac{dW}{dt} = VI = R I^{2} } \tag{K(7)}
+    \end{align*}
+    \subsection{Komponenter}
+    \subsubsection{Kapacitor} 
+    \begin{align*}
+        Q = CV \tag{K(8)}
+    \end{align*}
+    hvor \(C \approx \epsilon_0 a\) med \(a\) som typisk længde i komponenten.  
+    
+    \textbf{Opladning af kapacitor}
+    \begin{align*}
+        W = \frac{Q^2}{2C} \tag{K(9)}
+    \end{align*}
+    \textbf{Strøm der løber "gennem" kapacitor}\begin{align*}
+        I = C \frac{dV}{dt} \implies V = \frac{1}{C} \int I dt \tag{K(10)}
+    \end{align*}
+    \subsubsection{Induktor}
+
+    Husk at EMF er givet ved \begin{align*}
+        \mathcal{E} = \oint \mathbf{E} \cdot d \mathbf{l} = - \frac{d \Phi }{dt} = - \frac{d}{dt} \int_{\mathcal{S} } \mathbf{B} \cdot d \mathbf{a}  \tag{K(11)}
+    \end{align*} 
+    \begin{align*}
+        \Phi = LI
+    \end{align*}
+    hvor \(L \approx \mu _0 a N^{2} \) hvor \(N\) er antal vindinger.  
+    \begin{align*}
+        \mathcal{E} = - L \frac{dI}{dt} \tag{K(12)}
+    \end{align*}
+    \textbf{Oprettelse af magnetfelt i spole} kræver også energi \begin{align*}
+        W = \frac{1}{2} L I^{2} \tag{K(13)}
+    \end{align*}
+    Det kræver altså energi at ændre på strømmen, og der induceres en elektromotorisk kræft som vil modvirke enhver ændring i strømmen.
+    \subsubsection{Batteri}
+    \begin{align*}
+        \mathcal{E} _0 = \int \mathbf{f} \cdot  d \mathbf{l} \tag{K(14)}
+    \end{align*} 
+    Energi per sekund som strømforsyning pumper ind i kredsløb
+    \begin{align*}
+        \frac{dW}{dt} = \frac{d}{dt}\left( Q \mathcal{E} _0 \right) = I \mathcal{E} _0 \tag{K(15)}
+    \end{align*}
+
+    Samlet arbejde per ladning udført af elektriske og andre kræfter pr. tid \begin{align*}
+        \int \left( \mathbf{f} + \mathbf{E} \right) \cdot  \mathbf{J} d \tau \tag{K(19)} 
+    \end{align*}
+    \subsection{Kirchoff's Love og Komplekse Strømme}
+    \textbf{Krav for gyldighed (den kvasistatiske approksimation)}
+    \begin{align*}
+        \frac{1}{f} = \frac{1}{2 \pi  \omega } \gg \frac{L}{c} \tag{K(16)}
+    \end{align*}
+    hvor \(L\) er kredsens geometriske størrelse og \(f\) er typisk frekvens for systemet. Det er ækvivalent med kravet \begin{align*}
+        \lambda = \frac{c}{f} \gg L \tag{K(17)}
+    \end{align*}
+    I praksis: centimeter store kredse skal bruge frekvenser mindre end \(10^9 Hz\).
+    
+    \textbf{Kompleks form}
+
+    Reel strøm \begin{align*}
+        I(t) = I_0 \cos (\omega t + \phi )
+    \end{align*} 
+    kan skrives som \begin{align*}
+        I(t) =  Re\left[ \tilde{I}_0 e^{i \omega t} \right]
+    \end{align*}
+    hvor \begin{align*}
+        \tilde{I}_0 = |\tilde{I}_0| e^{-i \phi } = I_0 e^{-i \phi }
+    \end{align*}
+    også er kompleks fordi den så både "holder styr på" den reelle amplitude såvel som faseforskydningen der kan opstå fra impedanser. Samme princip bruges med EMF'en:
+    \begin{align*}
+        \tilde{\mathcal{E} }(t) = \tilde{\mathcal{E}}_0 e^{-i \omega t}
+    \end{align*}
+
+    Der er tit to måder hvorpå man kan isolere sin strøm, og der er fordele og ulemper ved begge tilgange. Lad os sige vi har fundet følgende udtryk:
+    \begin{align*}
+        \tilde{\mathcal{E}}_0 = Z_{tot} \tilde{I}_0
+    \end{align*}
+    
+    Hvis man kan se fra sine delopgaver at man skal diskutere noget faseforskydning, så kan det tit være smart at gøre følgende: \begin{align*}
+        I(t) = Re \left[\frac{\tilde{\mathcal{E}}_0}{\left| Z_{tot} \right| } e^{-i{(\omega t + \phi )}}\right]
+    \end{align*}
+    hvorimod hvis ens udtryk for vinklen er super grimt og man gerne vil have nogle udtryk som er lidt nemmere at arbejde med en arctan, så kan man bruge: \begin{align*}
+        I(t) = Re \left[\frac{\tilde{\mathcal{E}}_0}{ \left| Z_{tot}  \right|^{2}   } Z_{tot} ^{\ast} \left( \cos (\omega t) - i \sin (\omega t) \right)\right] 
+    \end{align*}
+
+    Derfra får man også at \begin{align*}
+        \tilde{I}_{j} (t) = \tilde{I}_{0,j} e^{-i \omega t} &= \frac{d\tilde{Q}_{j} (t)}{dt} = \frac{d \left[  \tilde{Q}_{0, j} e^{-i \omega t} \right]}{dt} = -i \omega \tilde{Q}_{0, j} e^{-i \omega t}\\
+        &\implies \boxed{\tilde{Q}_{0, j} = \frac{\tilde{I}_{0, j}}{-i \omega }} \tag{K(58)}
+    \end{align*}
+
+
+    Dermed fås Kirchoff's komplekse generaliseringer (gælder for hver knudepunkt og maske respektivt)\begin{align*}
+        \boxed{\sum_{j} \tilde{I}_{0_j} = 0} \tag{K(59)}
+    \end{align*}
+    \begin{align*}
+        \boxed{\sum_{j} \tilde{\mathcal{E}}_{0_j} = \sum_{j} \left(Z_{L_j} + Z_{C_j} + Z_{R_j}\right)\tilde{I}_{0_j}} \tag{K(60)}
+    \end{align*}
+    hvor \begin{align*}
+        \boxed{Z_R = R,\qquad Z_L = -i \omega L, \qquad Z_C = \frac{i}{\omega C}}\tag{K(61)}
+    \end{align*}
+    
+    \textbf{Erstatningsimpedans}
+    
+    Generel impedans \begin{align*}
+        Z = R + i X = |Z| e^{i \phi } = \sqrt{R^2 + X^2} \exp \left[i \arctan\left( \frac{X}{R} \right) \tag{K(64)}\right] 
+    \end{align*} hvor \(R\) kaldes resistans og \(X\) kaldes reaktans. 
+    
+    Serie \begin{align*}
+        Z_{eff} = Z_1 + Z_2 
+    \end{align*} 
+    Parallel \begin{align*}
+        Z_{eff} = \frac{Z_{1}Z_2}{Z_1 + Z_{2}}  
+    \end{align*}
+
+    \subsection{Effekter og energitab} 
+    En effekt er reel \begin{align*}
+        P(t) = \mathcal{E} (t) I(t) \tag{K(66)}
+    \end{align*}
+    Med spændingsfaldet \(\mathcal{E} _0 \cos (\omega t)\) over en \textit{generel} impedans bliver den afsatte effekt i ethvert givet øjeblik \begin{align*}
+        P(t) = \frac{\mathcal{E}_0^2}{|Z|} \cos (\omega t) \cos (\omega t + \phi )  \tag{K(67)}
+    \end{align*}
+    Midling over perioden \(T = 2\pi  / \omega \) giver \begin{align*}
+        \left\langle P \right\rangle &= \frac{1}{T} \frac{\mathcal{E}_0 ^2}{|Z|} \int _0 ^T \cos (\omega t) \cos (\omega t + \phi )dt \\
+        &=  \frac{\mathcal{E}_0 ^2}{2|Z|} \cos (\phi ) \tag{K(68)}
+    \end{align*} 
+    Generelt \begin{align*}
+        \boxed{\left\langle P \right\rangle = \frac{\mathcal{E}_0 ^2 Re[Z] }{2|Z|^2} = \frac{1}{2}\left| \tilde{I}_0 \right| ^{2} Re[Z]} \tag{K(69)}
+    \end{align*}
+    \subsubsection{Klassiske kredse}
+    \textbf{L og R i serie}
+    \begin{align*}
+        I(t) = \frac{\mathcal{E}}{R} ( 1 - e^{- R t / L}) \tag{K(35)}
+    \end{align*} 
+    Karakteristisk tidskonstant \(\tau \sim \frac{L}{R}\).
+    
+    \textbf{C og R i serie}
+    \begin{align*}
+        Q(t) = \mathcal{E} C (1 - e^{- t / RC}) \tag{K(38)}
+    \end{align*} 
+    Karakteristisk tidskonstant \(\tau \sim RC\). 
+    
+    \textbf{LRC-kredsen}
+    
+    Se kredsløbsnoten s. 11 til 12. Der står den generelle løsning til en 2. ordens differentialligning, som strømmen opfylder.
+    
+    \textbf{Ræsonansfrekvens}\begin{align*}
+        \boxed{\omega _0 = \frac{1}{\sqrt{LC} }}\tag{K(74)}
+    \end{align*} 
+    \textbf{Godhed}  
+    \begin{align*}
+        Q = \pi  \frac{\tau}{T} = \frac{L \omega _0}{R}
+    \end{align*}
+    Se bunden af kredsløbsnoten (s. 22) for en diskussion af ræsonansstop og godheden Q.
+    
+    \newpage
+    \section{Kap. 8: Bevarede Størrelser}
+    \textbf{Kontinuitetsligningen for ladninger} \begin{align*} 
+        \boxed{\frac{\partial \rho }{\partial t} = - \nabla \cdot \mathbf{J}}\tag{8.4}
+    \end{align*}
+    \textbf{Energitæthed}\begin{align*}
+        u = \frac{1}{2} \left( \epsilon _0 E^2 + \frac{1}{\mu _0} B^{2}\right)  \tag{8.5}
+    \end{align*} 
+    \textbf{Energi-flux-tæthed}\begin{align*}
+        \boxed{\mathbf{S} \equiv \frac{1}{\mu _0} \left( \mathbf{E} \times \mathbf{B} \right)} \tag{8.10}
+    \end{align*} 
+    husk at elektromagnetiske bøler transporterer elektromagnetisk energy, og felterne fra plane bølger er derfor altid orthogonale på hinanden (\textit{inden eventuel refleksion i hvert fald}). Poynting-vektoren (\(\mathbf{S}\)) overholder \textit{ikke} superpositionsprincippet, idet krydsproduktet mellem felterne indgår.
+
+    \begin{align*}
+        \boxed{\frac{dW}{dt} = -\frac{d}{dt} \int _\mathcal{V} u d \tau  - \oint_{\mathcal{S} } \mathbf{S} \cdot d \mathbf{a}} \tag{8.11}
+    \end{align*}
+    Hvis der ikke er nogle ladninger i regionen? Så er \(dW / dt = 0\) hvilket giver "kontinuitetsligningen" for energi \begin{align*}
+        \frac{\partial u}{\partial t} = - \nabla \cdot \mathbf{S} \tag{8.12}
+    \end{align*} 
+    \textbf{Maxwell's Stress Tensor}
+    \begin{align*}
+        T_{ij} \equiv \epsilon _0 \left( E_i E_j - \frac{1}{2} \delta_{ij} E^{2}\right) + \frac{1}{\mu _0}\left( B_i B_j - \frac{1}{2} \delta_{ij} B^{2}\right) \tag{8.17}
+    \end{align*} 
+    hvor man skal huske at \(E^{2} = E_x ^{2} + E_y ^{2} + E_z ^{2} \) osv. 
+    \textbf{Total elektromagnetisk kraft på ladninger i \(\mathcal{V} \)} 
+    \begin{align*}
+        \boxed{\mathbf{F} = \oint_S \overset{\leftrightarrow}{\mathbf{T}} \cdot d\mathbf{a} 
+        - \epsilon_0 \mu_0 \frac{d}{dt} \int_V \mathbf{S} \, d\tau} \tag{8.20}
+    \end{align*}
+    \textbf{Impulstæthed i felterne} \begin{align*}
+        \boxed{\mathbf{g} = \mu _0 \epsilon _0 \mathbf{S} = \epsilon _0 \left( \mathbf{E} \times \mathbf{B} \right) } \tag{8.29}
+    \end{align*}  
+    Igen, hvis regionen \(\mathcal{V}\) er tom (vakuum) får vi "kontinuitetsligninen" for elektromagnetisk momentum \begin{align*}
+        \frac{\partial \mathbf{g}}{\partial t} = \nabla \cdot \overset{\leftrightarrow}{\mathbf{T}} \tag{8.30}
+    \end{align*}  
+    \textbf{Impulsmomenttæthed i felterne}
+    \begin{align*}
+        \mathbf{l} = \mathbf{r} \times \mathbf{g} = \epsilon _0 \left[ \mathbf{r} \times (\mathbf{E}\times \mathbf{B}) \right] \tag{8.33}
+    \end{align*}       
+    
+    \newpage
+    \section{Kap. 9: Bølger}
+    \begin{align*}
+        \lambda = \frac{2\pi}{k}, \qquad T = \frac{2\pi}{k v}, \qquad \boxed{\omega = kv}
+    \end{align*}
+    \begin{align*}
+        \boxed{c = \frac{1}{\sqrt{\epsilon _0 \mu _0} }}
+    \end{align*}
+    Igen vil vi bruge komplekse amplituder og Eulers formel til at arbejde med bølgerne.
+    \subsection{Frie bølger i vakuum}
+    Planbølger i vakuum er i fase. Den relle del har den generelle form \begin{align*}
+       \boxed{\mathbf{E}(z, t) = E_0 \cos (kz - \omega t + \delta ) \hat{\mathbf{x}}, \qquad \mathbf{B}(z, t) = \frac{1}{c} E_0 \cos (kz - \omega t + \delta ) \hat{\mathbf{y}}} \tag{9.49}
+    \end{align*}
+    hvor den relative orientering mellem felterne altid skal opfylde \begin{align*}
+        \mathbf{S} = \frac{1}{\mu _0} (\mathbf{E} \times \mathbf{B})
+    \end{align*}
+    Læg mærke til at B-feltet bare er E-feltet drejet med 90 grader og skaleret med \(1 / c\).
+    
+    I en arbritrær retning givet ved \(\mathbf{k}\) bliver (de komplekse) bølger \begin{align*}
+        &\boxed{\tilde{\mathbf{E}}(\mathbf{r}, t) =  \tilde{E}_0 e^{(\mathbf{k} \cdot \mathbf{r} - \omega t + \delta )} \hat{\mathbf{n}}}\\
+        &\boxed{\tilde{\mathbf{B}}(\mathbf{r}, t) =  \frac{1}{c}\tilde{E}_0 e^{(\mathbf{k} \cdot \mathbf{r} - \omega t + \delta )} \left( \hat{\mathbf{k}} \times \hat{\mathbf{n}} \right) = \frac{1}{c} \hat{\mathbf{k}} \times \tilde{\mathbf{E}}} \tag{9.50}
+    \end{align*}
+    For at vende en bølge om smider man bare et minus-tegn foran \(k\) kun. 
+    
+    For monokromatiske planbølger får vi \begin{align*}
+        \left\langle u \right\rangle &= \frac{1}{2} \epsilon _0 E_0^2 \tag{9.61}\\
+        \left\langle \mathbf{S} \right\rangle &= \frac{1}{2} c \epsilon _0 E_0 ^2 \hat{\mathbf{z}}\tag{9.62}\\
+        \left\langle \mathbf{g} \right\rangle &= \frac{1}{2c} \epsilon _0 E_0 ^2 \hat{\mathbf{z}}\tag{9.63}\\
+        I &= \frac{1}{2} c \epsilon _0 E_0^2\tag{9.64}\\
+        P &= \frac{I}{c}\tag{9.65}
+    \end{align*}
+    \textbf{Generel definition af intensiteten}\begin{align*}
+        \boxed{I \equiv \left\langle S \right\rangle = \frac{1}{\mu _0}\left\langle \left| \mathbf{E} \times \mathbf{B} \right|   \right\rangle }\tag{9.64}
+    \end{align*}
+    \textbf{Generel definition af strålingsstryk} \begin{align*}
+        P = \frac{1}{A} \frac{\Delta p}{\Delta t} = \frac{1}{A} \frac{\left| \left\langle \mathbf{g} \right\rangle A v \Delta t \right| }{\Delta t}
+    \end{align*}
+    \subsection{Lineære Medier}
+    \begin{align*}
+        \boxed{v = \frac{1}{\sqrt{\epsilon \mu } } = \frac{c}{n}}\tag{9.69}
+    \end{align*}
+    hvor \begin{align*}
+        n \equiv \sqrt{\frac{\epsilon \mu }{\epsilon _0 \mu _0}} \tag{9.70}
+    \end{align*}
+    kaldes \textbf{refraktions-indekset}. Generelt gælder formler for bølger i vakuum også for bølger i \textit{lineære medier} hvis man laver substitutionerne: \begin{align*}
+        \epsilon _0 \to \epsilon, \quad \mu _0 \to \mu, \quad c \to v
+    \end{align*}
+    så \begin{align*}
+        \omega = kv
+    \end{align*}
+    og amplituden af \(\mathbf{B}\) er \(E_0/v\) og \begin{align*}
+        I = \frac{1}{2} \epsilon v E_0 ^2\tag{9.74}
+    \end{align*}
+    og \begin{align*} 
+        &u = \frac{1}{2} \left( \epsilon E^{2} + \frac{1}{\mu } B^{2}  \right) \tag{9.72}\\
+        &\mathbf{S} = \frac{1}{\mu } \left( \mathbf{E} \times \mathbf{B} \right) \tag{9.73}
+    \end{align*}
+
+    Med \begin{align*}
+        \beta \equiv \frac{\mu _1 v_1}{\mu _2 v_2} = \frac{\mu _1 n_2}{\mu _2 n_1}, \qquad \alpha \equiv \frac{\cos \Delta_T}{\cos \Delta _I}
+    \end{align*}
+    gælder det generelt at \begin{align*}
+        \boxed{\tilde{E}_{0_R} = \left( \frac{\alpha - \beta }{\alpha + \beta }\right) \tilde{E}_{0_I}, \qquad \tilde{E}_{0_T} = \left( \frac{2}{\alpha + \beta }\right) \tilde{E}_{0_I}} \tag{9.110}
+    \end{align*}
+    Hvis bølgen rammer lige på reduceres de til Eq. 9.83.
+
+    \begin{align*}
+        k_I v_1 = k_R v_1 = k_T v_2 = \omega \tag{9.93}
+    \end{align*}
+    ved \(z = 0\) får vi \begin{align*}
+        \mathbf{k}_I \cdot \mathbf{r} = \mathbf{k}_R \cdot \mathbf{r} = \mathbf{k}_T \cdot \mathbf{r} \tag{9.95}
+    \end{align*} 
+
+    \textbf{De tre optiske love} er givet på side 414 med en forklaring. \begin{align*}
+        &k_I \sin  \theta _I = k_R \sin \theta _R = k_T \sin \theta _T \tag{9.99}\\
+        &\theta _I = \theta _R \tag{9.100}\\
+        &\frac{\sin \theta _T}{\sin \theta _I} = \frac{n_1}{n_2} \tag{9.101}
+    \end{align*}
+    Se eq. (9.102) for eksplicitte boundary conditions, hvis du sidder fast.
+    
+    \textbf{Perfekt Transmission}
+
+    Sker når \begin{align*}
+        E_{0_R} = 0 \implies \alpha = \beta
+    \end{align*}
+    Den vinkel, hvormed dette opnås, kaldes \textbf{Brewster's vinkel} og den skal opfylde ligningen \begin{align*}
+        \sin ^2 \theta _B = \frac{1 - \beta ^{2} }{(n_1 / n_2)^{2} - \beta ^2} \tag{9.112}
+    \end{align*}
+    Hvis \(\mu _1 \approx \mu _2\) får vi \begin{align*}
+        \tan \theta _B \approx \frac{n_2}{n_1} \tag{9.113}
+    \end{align*} 
+    Dette bliver \textit{eksakt} hvis \(\mu _1 = \mu _2\). Så hvis \(\theta _I = \theta _B\) bliver hele bølgen transmitteret! 
+
+    \textbf{Reflektions- og transmissionskoefficienter} fortæller om brøkdelen af den indkommende energi som bliver hhv. reflekteret og transmitteret.
+
+    \begin{align*}
+        &R \equiv \frac{I_R}{I_I} = \left( \frac{\alpha - \beta }{\alpha + \beta } \right) ^{2} \tag{9.116}\\
+        &T \equiv \frac{I_T}{I_I} = \alpha  \beta \left( \frac{2}{\alpha + \beta } \right) ^{2} \tag{9.117}\\
+        &R + T = 1\\
+        &I_I = I_T + I_R \tag{9.118}
+    \end{align*}
+    \subsection{Ledere og absorption/dispersion}
+    \textbf{Komplekst bølgetal}
+    \begin{align*}
+        \tilde{k} = k + i \kappa \tag{9.127}
+    \end{align*} 
+    \[
+    k \equiv \omega \sqrt{\frac{\epsilon \mu}{2}} 
+    \left[ \sqrt{1 + \left( \frac{\sigma}{\epsilon \omega} \right)^2} + 1 \right]^{1/2}, \quad
+    \kappa \equiv \omega \sqrt{\frac{\epsilon \mu}{2}} 
+    \left[ \sqrt{1 + \left( \frac{\sigma}{\epsilon \omega} \right)^2} - 1 \right]^{1/2} \tag{9.128}
+    \]
+    hvilket også giver at \begin{align*}
+        k = \sqrt{\kappa ^{2} + \omega ^{2} \epsilon \mu } 
+    \end{align*}
+    helt generelt.
+
+    \textbf{"Skin deapth"} 
+    \begin{align*}
+        d \equiv \frac{1}{\kappa } \tag{9.130}
+    \end{align*}
+    hvor vi ved at bruge ovenstående \(k\) får \begin{align*}
+        \lambda = \frac{2\pi}{k}, v = \frac{\omega}{k} \tag{9.131}
+    \end{align*} 
+    Bølgerne bliver \[
+        \begin{aligned}
+        \mathbf{E}(z, t) &= E_0 e^{-\kappa z} \cos(kz - \omega t + \delta_E) \, \hat{\mathbf{x}}, \\[5pt]
+        \mathbf{B}(z, t) &= B_0 e^{-\kappa z} \cos(kz - \omega t + \delta_E + \phi) \, \hat{\mathbf{y}}.
+        \end{aligned}
+        \]
+    hvor \begin{align*}
+        \phi \equiv \tan ^{-1} \left( \kappa / k \right)  \tag{9.136}
+    \end{align*}
+
+    \textbf{Reflektion og transmission ved leder}
+    
+    Her ændrer grænsebetingelserne igen (der kan være overfladeladninger eller overfladestrømme). Vi definerer \begin{align*}
+        \tilde{\beta } \equiv \frac{\mu _1 v_1}{\mu _2 \omega } \tilde{k}_2 \tag{9.148}
+    \end{align*}
+    og finder at \begin{align*}
+        \tilde{E}_{0R} = \left( \frac{1 - \tilde{\beta}}{1 + \tilde{\beta}} \right) \tilde{E}_{0I}, \quad
+        \tilde{E}_{0T} = \left( \frac{2}{1 + \tilde{\beta}} \right) \tilde{E}_{0I} \tag{9.149}
+    \end{align*}
+
+    \textit{Hvis du får en frekvens-afhængig relativ permittivitet, så se kapitel 9.4.3 (5th edition). Se "Reeksamen 2023" og løsningsforslaget hvis du er helt i tvivl om hvordan det ser ud i brug.}
+
+    \subsubsection{Bølgeledere}
+    Hvis vi virkelig får en opgave i dette er det nemmest bare at slå op på side 430 og gå i gang ;).
+
+    \subsection{Recap: Felternes Grænsebetingelser}
+    Maxwell's ligninger i medier
+    \[
+    \begin{cases}
+    \text{(i)} \ \nabla \cdot \mathbf{D} = \rho _f, \quad & \text{(iii)} \ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}, \\[5pt]
+    \text{(ii)} \ \nabla \cdot \mathbf{B} = 0, \quad & \text{(iv)} \ \nabla \times \mathbf{H} = \mathbf{J}_f + \frac{\partial \mathbf{D}}{\partial t}.
+    \end{cases}
+    \]
+    \textbf{Lineære medier}
+    \begin{align*}
+        \mathbf{D} = \epsilon \mathbf{E}, \qquad \mathbf{H} = \frac{1}{\mu } \mathbf{B}
+    \end{align*}
+    \textbf{Grænsebetingelser} \begin{align*}
+        \begin{aligned}
+        \text{(i)} \ & \epsilon_2 E_2^\perp - \epsilon_1 E_1^\perp = \sigma _f, \quad & \text{(iii)} \ & \mathbf{E}_1^\parallel = \mathbf{E}_2^\parallel, \\[5pt]
+        \text{(ii)} \ & B_1^\perp = B_2^\perp, \quad & \text{(iv)} \ & \frac{1}{\mu_2} \mathbf{B}_2^\parallel - \frac{1}{\mu_1} \mathbf{B}_1^\parallel = \mathbf{K}_f \times \hat{\mathbf{n}}
+        \end{aligned}\tag{7.73}
+    \end{align*}
+
+    
+    \newpage
+    \section{Kap. 10: Potentialer, punktpartikler og retarderet tid}
+    \begin{gather*}
+        \boxed{\mathbf{B} = \nabla \times \mathbf{A}}\\
+        \boxed{\mathbf{E} = - \nabla V - \frac{\partial \mathbf{A}}{\partial t} }
+    \end{gather*}
+    Bemærk, ovenstående felter opfylder automatisk de homogene Maxwell-ligninger: 
+    \begin{gather*}
+        \nabla \cdot \mathbf{B} = \mathbf{0}\\
+        \nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t} 
+    \end{gather*} 
+    så disse behøves aldrig at tjekkes fra potentialeformuleringen.
+    \subsection{Maxwell's ligninger på potentiale-form}
+    \textbf{Generelt}
+    \begin{align*}
+        \boxed{\nabla ^{2} V + \frac{\partial}{\partial t} \left( \nabla \cdot \mathbf{A} \right) = - \frac{1}{\epsilon _0} \rho} \tag{10.4}
+    \end{align*} 
+    \begin{align*}
+       \boxed{ \left( \nabla^2 \mathbf{A} - \mu_0 \epsilon_0 \frac{\partial^2 \mathbf{A}}{\partial t^2} \right)
+        - \nabla \left( \nabla \cdot \mathbf{A} + \mu_0 \epsilon_0 \frac{\partial V}{\partial t} \right)
+        = -\mu_0 \mathbf{J} }\tag{10.5}
+    \end{align*}
+    \textbf{Gauge Transformationer}
+    \begin{align*}
+        &\mathbf{A}^{\prime}  = \mathbf{A} + \nabla \lambda \\
+        &V^{\prime}  = V - \frac{\partial \lambda }{\partial t} \tag{10.7}
+    \end{align*} 
+    \textbf{Coloumb Gauge}
+    \begin{align*}
+        \nabla \cdot \mathbf{A} = \mathbf{0} \tag{10.8}
+    \end{align*} 
+    \textbf{Lorenz Gauge}
+    \begin{align*}
+        \boxed{\nabla \cdot \mathbf{A} = - \mu _0 \epsilon _0 \frac{\partial V}{\partial t} } \tag{10.12}
+    \end{align*} 
+    Disse indsættes hver især i de generelle ligninger ovenfor.
+    \subsection{Potentialerne fra sources}
+    Den relevante tid hvorved vi skal evaluere ladningsfordelinger eller strømme er til det tidspunkt hvor felterne udsendte den information, som nu er nået frem til et givet punkt. Dette er ved tiden \begin{align*}
+        \boxed{t_r \equiv t - \frac{\griffr[2] }{c} = t - \frac{\left| \mathbf{r} - \mathbf{r}^{\prime}  \right| }{c}} \tag{10.25}
+    \end{align*}
+    
+    Kender vi ladningsfordeling og strøm kan vi finde potentialerne og dermed felterne: 
+    \begin{align*}
+        \boxed{V(\mathbf{r}, t) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\mathbf{r}', t_r)}{r'} \, d\tau',\qquad
+        \mathbf{A}(\mathbf{r}, t) = \frac{\mu_0}{4 \pi} \int \frac{\mathbf{J}(\mathbf{r}', t_r)}{r'} \, d\tau^{\prime} } \tag{10.26}
+    \end{align*}
+    Se evt. eksempel 10.2.
+    \subsection{Potentialer fra punktpartikler}
+    \begin{align*}
+        \boxed{V(\mathbf{r}, t) = \frac{1}{4\pi\epsilon_0} \frac{qc}{(\griffr[2] c - \hatgriffr \cdot \mathbf{v})}} \tag{10.46}
+    \end{align*} 
+    hvor \(\mathbf{v}\) er hastigheden af punktpartiklen ved \(t_r\) og \(\hatgriffr \) er afstanden fra den retarderede position til feltpunktet, \(\griffr[4] = \mathbf{r} - \mathbf{w}(t_r)\).
+    \begin{align*}
+        \boxed{\mathbf{A}(\mathbf{r}, t) = \frac{\mu _0}{4 \pi } \frac{qc \mathbf{v}}{(\griffr[2] c - \hatgriffr \cdot \mathbf{v})} = \frac{\mathbf{v}}{c^{2} } V(\mathbf{r}, t)} \tag{10.47}
+    \end{align*}
+    \subsection{Felterne fra en punktpartikel}
+    \begin{align*}
+        \boxed{\mathbf{E}(\mathbf{r}, t) = \frac{q}{4 \pi \epsilon_0} \frac{\griffr[2] }{(\griffr[4] \cdot \mathbf{u})^3} 
+        \left[ (c^2 - v^2) \mathbf{u} + \griffr[4] \times (\mathbf{u} \times \mathbf{a}) \right]} \tag{10.72}
+    \end{align*}
+    \begin{align*}
+        \boxed{\mathbf{B}(\mathbf{r}, t) = \frac{1}{c} \hatgriffr \times \mathbf{E}(\mathbf{r}, t)} \tag{10.73}
+    \end{align*}
+    hvor \begin{align*}
+        \mathbf{u} \equiv  c \hatgriffr - \mathbf{v} \tag{10.71}
+    \end{align*}
+    \textbf{Felterne for en punktpartikel med konstant hastighed}
+    
+    Defineres 
+    \begin{align*}
+        \mathbf{R} = \mathbf{r} - \mathbf{v}t
+    \end{align*} 
+    som er vektoren fra den \textbf{nuværende} position af partiklen til \(\mathbf{r}\), og \(\theta \) er vinklen mellem \(\mathbf{R}\) og \(\mathbf{v}\) får vi: \begin{align*}
+        \boxed{\mathbf{E}(\mathbf{r}, t) = \frac{q}{4 \pi \epsilon_0} 
+        \frac{1 - v^2 / c^2}{\left( 1 - v^2 \sin^2 \theta / c^2 \right)^{3/2}} 
+        \frac{\hat{\mathbf{R}}}{R^2}} \tag{10.75}
+    \end{align*}     
+    og \begin{align*}
+        \boxed{\mathbf{B} = \frac{1}{c} (\hatgriffr \times \mathbf{E}) = \frac{1}{c^{2} } (\mathbf{v} \times \mathbf{E})}\tag{10.76}
+    \end{align*}
+    Se eksempel 10.4 for fede tegninger af feltlinjer og en gennemgang.
+    \subsection{Tjek dine felter: Gyldige og ugyldige felter}
+    I vakuum (ingen ladninger eller strømme) er \(dW / dt = 0\) hvilket giver "kontinuitetsligningen" for energi \begin{align*}
+        \frac{\partial u}{\partial t} = - \nabla \cdot \mathbf{S} \tag{8.12}
+    \end{align*} 
+    hvis denne ikke er opfyldt, må der være noget galt.
+
+    \textbf{Uendelig energi går ikke}
+
+    Hvis du finder en energitæthed som integreret op over hele rummet divergerer (giver uendelig energi), så kan de felter du har fundet \textit{ikke} være gyldige i hele rummet!
+    
+    \textbf{Divergens af \(\mathbf{B}\)-feltet }
+    \begin{align*}
+        \nabla \cdot \mathbf{B} = \mathbf{0}
+    \end{align*} 
+    Altid. Ellers er der noget galt.
+
+    \textbf{Statiske magnetfelter}
+    
+    Husk at \begin{align*}
+        \nabla \times \mathbf{E} = \mathbf{0}
+    \end{align*} 
+    hvis \begin{align*}
+        \frac{\partial \mathbf{B}}{\partial t} = 0
+    \end{align*}
+
+    \newpage
+    \section{Kap. 11: Stråling}
+    For de følgende formler skal det gælde at vi er i \textbf{strålingszonen}, som er når
+    \begin{align*}
+    r \gg \frac{c}{\omega} \tag{11.13}
+    \end{align*}
+    samt at den karakteristiske længdeenhed (dipolens udstrækning, eller radius på strømkreds) er meget mindre end \(c / \omega \). Se udledningerne i kapitel 11 hvis du er i tvivl! 
+    \subsection{Stråling fra dipoler}
+    \subsubsection{Elektrisk dipol-stråling}
+    \begin{align*}
+        \boxed{V(r, \theta , t) = - \frac{p_0 \omega }{4 \pi  \epsilon _0 c} \left( \frac{\cos \theta }{r} \sin \left[ \omega (t - \frac{r}{c}) \right]  \right) } \tag{11.14}
+    \end{align*}
+    hvor \(p_0 \equiv q_0 d\) er det maksimale dipolmoment for en svingene elektrisk dipol. \textbf{Kræver at vi er i strålingszonen}.
+    
+    Hvis dipolen oscillerer langs \(z\)-aksen bliver vektorpotentialet da 
+    \begin{align*}
+        \boxed{\mathbf{A}(r, \theta, t) = - \frac{\mu _0 p_0 \omega }{4 \pi  r} \sin \left[ \omega (t - \frac{r}{c}) \right] \hat{\mathbf{z}}} \tag{11.17}
+    \end{align*}
+    \textbf{Kræver IKKE at vi er i strålingszonen faktisk! Men den kræver de to andre approksimationer} (som det elektriske potentiale også skal opfylde): \begin{align*}
+        d\ll r, \qquad d \ll \frac{c}{\omega } \tag{11.7+10}
+    \end{align*} 
+
+    Felterne bliver da \begin{align*}
+        \boxed{\mathbf{E} = -\frac{\mu _0 p_0 \omega ^{2} }{4 \pi } \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\theta}}} \tag{11.18}
+    \end{align*}
+    og
+    \begin{align*}
+        \boxed{\mathbf{B} = -\frac{\mu _0 p_0 \omega ^{2} }{4 \pi c} \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\phi }}} \tag{11.19}
+    \end{align*}
+    hvor \textbf{BEGGE udtryk kræver at vi er i strålingszonen} (også selvom udtrykket for \(\mathbf{A}\) ikke gjorde). Læg mærke til, at felterne er i fase, at de er vinkelrette på hinanden, at \begin{align*}
+        \mathbf{B} = \frac{1}{c} \hat{\mathbf{r}} \times \mathbf{E}
+    \end{align*} og at forholdet mellem felternes amplituder derfor netop er \(E_0 /B_0 = c\). Dette er fordi det er monokromatiske bølger med samme frekvens, som rejser radielt afsted med lysets hast. Det er \textit{sfæriske} bølger! De er tilmed proportionelle med \(1 / r\), hvilket giver anledning til stråling. 
+    
+    Genmemsnitlig energi-intensiteten findes som \begin{align*}
+        \left\langle \mathbf{S} \right\rangle = \left( \frac{\mu _0 p_0 ^2 \omega ^4}{32 \pi^{2} c} \right) \frac{\sin ^{2} \theta }{r^{2} } \hat{\mathbf{r}} \tag{11.21}
+    \end{align*}
+    Herfra opnås intensiteten fra \begin{align*}
+        I \equiv \left\langle |\mathbf{S}| \right\rangle 
+    \end{align*}
+    og vi finder at  \begin{align*}
+        \left\langle P \right\rangle = \int \left\langle \mathbf{S} \right\rangle \cdot d \mathbf{a} = \frac{\mu _0 p_0 ^{2} \omega 
+        4}{12 \pi  c} \tag{11.22}
+    \end{align*}
+    \subsubsection{Magnetisk dipol-stråling}
+    \textbf{Approksimationer (igen)} 
+    Lader vi \(b\) være strømkredsens radius vil vi have at \begin{align*}
+        b \ll r, \qquad b \ll \frac{c}{\omega }, \qquad r \gg \frac{c}{\omega }
+    \end{align*} 
+    hvor den sidste approksimation igen er strålingszonen (som i princippet overflødiggør approksimation 2 igen). Da strømkredsen antages for neutral er det elektriske potentiale nul. Vi finder at \begin{align*}
+        \boxed{\mathbf{A}(r, \theta , t) = - \frac{\mu _0 m_0 \omega }{4 \pi c} \left( \frac{\sin \theta }{r} \right) \sin \left[ \omega (t - \frac{r}{c}) \right] \boldsymbol{\hat{\phi}}} \tag{11.36}
+    \end{align*}
+    som ved stort \(r\) giver felterne \begin{align*}
+        \boxed{\mathbf{E} = \frac{\mu _0 m_0 \omega^{2}  }{4 \pi c} \left( \frac{\sin \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \boldsymbol{\hat{\phi}}} \tag{11.36}
+    \end{align*} 
+    samt \begin{align*}
+       \boxed{\mathbf{B} = -\frac{\mu _0 m_0 \omega ^{2} }{4 \pi  c^{2} } \left( \frac{\sin  \theta }{r} \right) \cos \left[ \omega (t - \frac{r}{c}) \right] \hat{\boldsymbol{\theta}}} \tag{11.37}
+    \end{align*}
+    hvor \(m_0 \equiv \pi  b^{2} I_0\) er det maksimale dipolmoment for den oscillerende dipol.
+
+    Vi finder at \begin{align*}
+        \left\langle P \right\rangle = \frac{\mu _0 m_0 ^{2} \omega ^4}{12 \pi  c^3} \tag{11.40}
+    \end{align*}
+
+    Generelt finder vi at \begin{align*}
+        \frac{P_{\text{magnetic}}}{P_{\text{electric}}} = \left( \frac{m_0}{p_0 c} \right)^{2} \tag{11.41} 
+    \end{align*}
+    som viser, at den magnetiske dipolstråling oftest er afsindigt meget svagere end den elektriske dipolstråling.
+    \subsection{Stråling fra en punktladning}
+    \textbf{Lamor-formlen}
+    \begin{align*}
+        \boxed{P = \frac{\mu _0 q^2 a^2}{6 \pi  c}} \tag{11.70}
+    \end{align*} 
+    gælder kun for \(v \ll c\). Effekten fra generel stråling findes på s. 490 (ligning 11.73). Et særtilfælde er hvis \(\mathbf{v}\) og \(\mathbf{a}\) er instantant co-lineære (samme retning ved samme \(t\)): \begin{align*}
+        P = \frac{\mu _0 q^{2} a^{2} \gamma ^6}{6 \pi c}
+    \end{align*}  
+    Dette gælder f.eks. hvis en elektron bremses af et metal. Se eks. 11.3. Læg mærke til at gamma-faktoren er i \textit{sjette}! Altså er det ekstremt hastigheds-afhængigt. Husk at man ikke behøver at have \(v \ll c\) her, men at man skal have \(\mathbf{v} \parallel \mathbf{a}\) ved tidspunktet \(t\) (hvor man så får effekten udsendt ved det tidspunkt fra formlen ovenfor). Se Figur 11.13 på s. 492 for hvordan feltet afbøjes af denne type "bremsninsstråling".    
+
+    \newpage
+    \section{Kap. 12: Relativitetsteori}
+    \textbf{\textred{I de nedenstående formler er antagelsen, at bevægelser er i x-retningen. Husk det!}} 
+    \subsection{Lorentz-transformationerne}
+    \begin{align*}
+        \boxed{\gamma \equiv \frac{1}{\sqrt{1 - v^{2} /c^{2} } }} \tag{12.6}
+    \end{align*}
+    husk at \(\gamma \geq 1\) altid. 
+    
+    \textbf{Tids\underline{forlængelse}} 
+    \begin{align*}
+        \Delta \overline{t} = \frac{\Delta t}{\gamma} \tag{12.5}
+    \end{align*}
+    Jeg synes altid, at det ligner, at der står tidsforkortelse (da \(\gamma \geq 1\)). Men her skal man huske at det læses sådan at et interval \(\Delta t\), som er blevet defineret i de ikke-mærkede koordinater, skal deles med \(\gamma\) (som altid er større end 1), for at passe med de mærkede koordinater. Altså er der gået kortere tid i de mærkede koordinater
+    
+    \textbf{Længde\underline{forkortelse}}\begin{align*}
+        \Delta \overline{x} = \gamma \Delta x \tag{12.9}
+    \end{align*} 
+
+    \textbf{Lorenzttransformationerne} 
+    \begin{align*}
+        \text{(i)} \ & \bar{x} = \gamma (x - vt), \tag{12.18}\\
+        \text{(ii)} \ & \bar{y} = y, \\
+        \text{(iii)} \ & \bar{z} = z, \\
+        \text{(iv)} \ & \bar{t} = \gamma \left( t - \frac{v}{c^2} x \right)
+    \end{align*}
+
+    \textbf{Transformation af hastigheder} 
+    \begin{align*}
+        \bar{u}_x &= \frac{d\bar{x}}{d\bar{t}} = \frac{u_x - v}{1 - vu_x / c^2}, \\
+        \bar{u}_y &= \frac{d\bar{y}}{d\bar{t}} = \frac{u_y}{\gamma \left( 1 - vu_x / c^2 \right)}, \\
+        \bar{u}_z &= \frac{d\bar{z}}{d\bar{t}} = \frac{u_z}{\gamma \left( 1 - vu_x / c^2 \right)}.
+    \end{align*}
+    hvor \(u_i\) er fart i det ikke-mærkede system, og \(v\) er den relative fart mellem koordinatsystemerne \(\mathcal{S} \) og \(\overline{\mathcal{S}}\).
+    \subsection{Impuls, Energi og Kræfter}
+    \textbf{Relativistisk impuls}
+    \begin{align*}
+        \boxed{\mathbf{p} \equiv \frac{m \mathbf{u}}{\sqrt{1 - u^{2} /c^{2} } } = \gamma m \mathbf{u}} \tag{12.47}
+    \end{align*} 
+    \textbf{Relativistisk energi}
+    \begin{align*}
+       \boxed{E \equiv \frac{mc^{2} }{\sqrt{1 - u^{2} /c ^{2} }}  = \gamma m c^{2}} \tag{12.50}
+    \end{align*} 
+    \textbf{Energi-impuls relationen}\begin{align*}
+        \boxed{E^{2} = p^{2} c^{2} + m^{2} c^4} \tag{12.55}
+    \end{align*} 
+
+    \textbf{Kræfter}
+    \begin{align*}
+        \boxed{\mathbf{F} = \frac{d \mathbf{p}}{dt}} \tag{12.60}
+    \end{align*}
+    gælder stadig \textit{så længe vi bruger den relativistiske impuls}. Kræfter transformeres som
+    \begin{align*}
+        \bar{F}_x &= \frac{F_x - \beta (\mathbf{u} \cdot \mathbf{F}) / c}{1 - \beta u_x/ c}, \tag{12.67} \\
+        \bar{F}_y &= \frac{F_y}{\gamma \left( 1 - \beta u_x / c \right)}, \tag{12.66} \\
+        \bar{F}_z &= \frac{F_z}{\gamma \left( 1 - \beta u_x / c \right)},
+    \end{align*}
+    hvor \begin{align*}
+        \beta = \frac{v}{c}
+    \end{align*}
+    Hvis partiklen er instantant i hvile (\(\mathbf{u} = \mathbf{0}\) ), så bliver transformationen bare\begin{align*}
+        \overline{\mathbf{F}}_\perp = \frac{1}{\gamma } \mathbf{F}_\perp, \qquad \overline{F}_\parallel = F_\parallel \tag{12.68}
+    \end{align*}
+
+    \subsection{Generel transformation af felterne}
+    \begin{align*}
+        \bar{E}_x &= E_x, \quad & \bar{B}_x &= B_x, \\
+        \bar{E}_y &= \gamma \left( E_y - v B_z \right), \quad & \bar{B}_y &= \gamma \left( B_y + \frac{v}{c^2} E_z \right), \\
+        \bar{E}_z &= \gamma \left( E_z + v B_y \right), \quad & \bar{B}_z &= \gamma \left( B_z - \frac{v}{c^2} E_y \right)\tag{12.111}
+    \end{align*}
+    Hvis du skal lave flere transformationer i træk, så husk at gamma-faktoren også ændrer sig! \textred{Igen, så er ovenstående hvis bevægelsen er langs x-retningen}. Den koordinatfri form er \begin{align*}
+        &\overline{\mathbf{E}}_{\parallel} =\mathbf{E}_{\parallel}, \qquad \overline{\mathbf{E}}_\perp = \gamma (\mathbf{E}_{\perp} + \mathbf{v} \times \mathbf{B}_\perp),\\
+        &\overline{\mathbf{B}}_{\parallel} =\mathbf{B}_{\parallel}, \qquad \overline{\mathbf{B}}_\perp = \gamma (\mathbf{B}_{\perp} - \frac{\mathbf{v}}{c^{2} } \times \mathbf{E}_\perp) \tag{12.112}
+    \end{align*}
+
+    \newpage
+    \section{Tips til panik}
+    \begin{itemize}
+        \item Husk at strømme er bevaret i serie, men \textit{ikke} i parallel og omvendt med spændinger. Dermed skal du altid gange impedansen på den strøm, som er i den gren du overvejer!
+        \item Small Angle Approximation. Hvis frekvens er høj er udsving ofte små.
+        \item Er der symmetri i dit problem som gør, at visse feltkomponenter ikke overlever?
+        \item Skal du bruge \(v\) eller \(-v\)? Hvem bevæger sig ift. hvem?
+    \end{itemize}
+
+
+\end{document}

@@ -1,0 +1,165 @@
+Recap
+\begin{itemize}
+    \item Topology Definition
+    \item Chaotic Topology
+    \item Discrete Topology
+    \item Open and closed definition topology
+    \item Ball Definition
+    \item Standard Topology
+    \item Induced Topology
+    \item Product Topology
+    \item Continuity
+    \item Convergence
+    \item Topological Classifications (T1, T2, T3 etc.)
+\end{itemize}
+
+\subsection{Set Theory Recap}
+\begin{definition}[Union]
+    Let \(X\) be a set. We define the union of \(X\) to be the set \(\bigcup X\) which has exactly as its members every element of every element of \(X\): \begin{align*}
+        \forall X: \exists \bigcup X : \forall y : \left(y \in \bigcup X \iff \exists s : (y \in s \wedge s \in X)\right)
+    \end{align*}
+    The fact that \(\bigcup X\) is garuanteed by the axiom on union of sets. A shorter way to write this is \begin{align*}
+        \bigcup X \coloneqq \left\{ y \ \big| \ \exists s \in X : y \in s\right\} 
+    \end{align*}
+    One may notice that we are missing an epsilon-relation on the left of the bar, such that it looks like universal comprehension (which we don't want) instead of restricted comprehension (which is fine). But this is exactly why we have the axiom on union sets: to garuantee that this is in fact a set.
+\end{definition}
+
+\begin{definition}[Intersection]
+    Let \(X\) be a set. We define the intersection of \(X\) to be the set \(\bigcap X\) which has as exactly as its members the elements which are elements of all the elements of \(X\): 
+    \begin{align*}
+        \forall X: \exists \bigcap X : \forall y \in \bigcup X : \left( y \in \bigcap X \iff \forall s \in X : y \in s\right) 
+    \end{align*}
+    Again, in set-builder notation we can write \begin{align*}
+        \bigcap X \coloneqq \left\{ y  \in \bigcup X \ \big| \ \forall s \in X: y \in s \right\} 
+    \end{align*}
+    Note how we can in fact use the principle of restricted comprehension (which follows from the axiom of replacement), since we know that all the elements of the intersections must be members of the union (which is again a set because of the union axiom). This can be seen by comparing the set-builder definitions: In the union, if \(y\) is contained in even a single subset of \(X\), then it is included; in the intersection, \(y\) has to be contained in \textit{every} subset of \(X\) to be included - but then it is certainly also contained in at least one subset of \(X\), and therefore it is an element of the union. 
+
+    Note though, with above definition, we currently have \(\bigcap \varnothing = \varnothing \) since no element \(y \in \bigcup \varnothing \).  
+\end{definition}
+
+\subsection{Topological Definitions}
+
+\begin{definition}[Topology]
+    Let \(M\) be a set. A \textit{topology} on \(M\) is a set \(\mathcal{O} \subseteq \mathcal{P}(M)\) such that \begin{enumerate}[i)]
+        \item \(\varnothing \in \mathcal{O}\) and \(M \in \mathcal{O}\); 
+        \item \( U, V  \in \mathcal{O} \implies U \cap V  \in \mathcal{O} \);
+        \item \(C \subseteq \mathcal{O} \implies \bigcup C \in \mathcal{O} \).
+    \end{enumerate}
+    The pair \((M, \mathcal{O})\) is called a \textit{topological space}.  
+\end{definition}
+
+\begin{notation}
+    \(C = \left\{ C_j \in \mathcal{P} (M)\ \big|\  j \in J \right\} \subseteq \mathcal{P}(M)\) is just a very explicit way of writing that we are considering an arbritrary subfamily of \(\mathcal{O}\).
+\end{notation}
+\begin{notation}
+    Criteria ii) can also be written as \(\left\{ U, V \right\} \subseteq \mathcal{O} \implies \bigcap \left\{ U, V \right\} \in \mathcal{O} \). This is because \begin{align*}
+        x \subseteq y : \iff \forall a : (a \in x \implies a \in y)
+    \end{align*}
+    In other words, \(\left\{ U, V \right\} \subseteq \mathcal{O}\) does \textit{not} mean that the set \(\left\{ U, V \right\}\) is an element of \(\mathcal{O} \), but rather that the elements of the set \(\left\{ U, V \right\}\) are elements of \(\mathcal{O} \). Otherwise, we would have written \(\left\{ U, V \right\} \in \mathcal{O}\). An regarding the big intersection, this is defined as \begin{align*}
+        \bigcap \left\{U, V\right\} \coloneqq  \left\{ y \in \bigcup \left\{U, V\right\}\ \big|\ y \in U \wedge y \in V \right\} 
+    \end{align*}
+    which is exactly the same condition as \begin{align*}
+        U \cap V \coloneqq \left\{ y \in U \cup V\ \big|\ y \in U \wedge y \in V\right\} 
+    \end{align*}
+\end{notation}
+
+\begin{definition}[Open and Closed]
+    Let \((M, \mathcal{O} )\) be a topological space. A subset \(S\) of \(M\) is said to be \textit{open (with respect to \(\mathcal{O} \))} if \(S \in \mathcal{O}\) and it is said to be \textit{closed (w.r.t.\ \(\mathcal{O} \))} if \(M \setminus S \in \mathcal{O}\).
+\end{definition}
+
+Notice that open and closed aren't mutually exclusive!
+
+\begin{definition}[Open Ball]
+    For any \(x \in \mathbb{R}^d\) and \(r \in \mathbb{R}^+\), we define the \textit{open ball} of radius \(r\) around \(x\) to be the set \begin{align*}
+        B_r (x) \coloneqq \left\{ y \in \mathbb{R} ^d\ \big|\ \sqrt{\sum_{i = 1}^d \left( y_i - x_i \right)^{2}  } < r \right\}.
+    \end{align*}
+\end{definition}
+
+With this auxiliary definition we can implicitly define the standard topology on \(\mathbb{R} ^d\). 
+
+\begin{definition}[Standard Topology]
+    An element \(U\) is a member of the the \textit{standard topology} on \(\mathbb{R} ^d\), denoted by \(\mathcal{O}_{st}\), if \begin{align*}
+        U \in \mathcal{O}_{st} :\iff  \forall p \in U : \exists r \in \mathbb{R}^+ : B_r(p) \subseteq U.
+    \end{align*}
+\end{definition}
+It is relatively easy to proove that the set \((\mathbb{R} ^d, \mathcal{O}_{st})\) constitutes a topology. The intuition of being a member of the standard topology is easily seen in \(\mathbb{R}^2\): here, only shapes without their boundaries are included in the topology. Such sets (without boundaries) are what we intuitively think of as "open sets" and this is also the intuition behind calling members of a topology for open sets and using the letter \(\mathcal{O}\).
+
+\begin{definition}[Discrete Topology]
+    Let \(M\) be a set. The \textit{discrete topology} is obtained by choosing \(\mathcal{O} = \mathcal{P} (M)\). 
+\end{definition}
+\begin{definition}[Trivial / Chaotic Topology]
+    Let \(M\) be a set. The \textit{chaotic topology} is obtained by choosing \(\mathcal{O} = \left\{ \varnothing , M \right\} \).
+\end{definition}
+
+\subsection{Induced Topologies}
+Building topologies from already known topologies is an extremely important concept. 
+
+\begin{proposition}[Induced Topology]
+    Let \((M, \mathcal{O})\) be a topological space and \(N \subset M\) (strict subset). Then \begin{align*}
+        \mathcal{O}\bigr|_{N} \coloneqq \left\{ U\ \big|\ \exists S \in \mathcal{O} : S \cap N = U \right\} \subseteq \mathcal{P} (N)
+    \end{align*} 
+    is a topology on \(N\) called the {\normalfont induced (subset) topology}.
+\end{proposition}
+
+\begin{definition}[Product Topology]
+    Let \((A, \mathcal{O} _A)\) and \((B, \mathcal{O} _B)\) be topological spaces. Then the set \(\mathcal{O} _{A \times B}\) defined implicitly by: \begin{align*}
+        U \in \mathcal{O}_{A \times B}: \iff  \forall p \in U : \exists (S, T) \in \mathcal{O} _A \times \mathcal{O} _B : S \times T \subseteq U
+    \end{align*}
+    is a topology on \(A \times B\) called the \textit{product topology}. 
+\end{definition}
+
+\subsection{Convergence}
+\begin{definition}[Sequence]
+    Let \(M\) be a set. A \textit{sequence} (of points) in \(M\) is a map \(q : \mathbb{N} \to  M\).
+\end{definition}
+
+\begin{definition}[Convergence]
+    Let \((M, \mathcal{O} )\) be a topological space. The sequence \(q\) in \(M\) is said to \textit{converge} against a \textit{limit point} \(a \in M\) if: \begin{align*}
+        \forall U \in \mathcal{O} : a \in U \implies \exists N \in \mathbb{N} : \forall n > \mathbb{N} : q(n) \in U. 
+    \end{align*}    
+\end{definition}
+\begin{remark}
+    An open set \(U\) around the limit point \(a\) is often called an \textit{open neighbourhood} of \(a\). 
+\end{remark}
+
+\subsection{Continuity}
+The following definitions are at the heart of topology:
+\begin{definition}[Continuity]
+    Let \((M, \mathcal{O} _M)\) and \((N, \mathcal{O} _N)\) be topological spaces. Let \(\phi : M \to N\) be a map. Then \(\phi \) is called continuous (with respect to the topologies \(\mathcal{O} _M\) and \(\mathcal{O} _N\)  ) if \begin{align*}
+        \forall S \in \mathcal{O} _N : \text{preim}_{\phi} (S) \in \mathcal{O} _M 
+    \end{align*}
+    where \(\text{preim}_{\phi}(S) \coloneqq \left\{ m \in M\ \big|\ \phi (m) \in S \right\}  \) 
+\end{definition}
+In other words, a map is continuous if the preimage of open sets are also open sets. This is the most general definition of continuity that there is. Applying it to maps of the type \(\phi : \mathbb{R} ^d \to  \mathbb{R} ^f\) one recovers the epsilon-delta criterion if one equips the sets with the respective standard topologies.
+
+\begin{definition}[Homeomorphism]
+    Let \(\phi : M \to N\) be a bijection. Equip the spaces with respective topologies to form \((M, \mathcal{O} _M)\) and \(N, \mathcal{O} _N\). We call \(\phi \) a \textit{homeomorphism} if both \begin{itemize}
+        \item \(\phi : M \to N\) is continuous;
+        \item \(\phi ^{-1} : N \to M\) is continuous.
+    \end{itemize}    
+\end{definition}
+In other words, a homeomorphism is a both-way continuous bijection between topological spaces; they are the structure-preserving maps of topology.
+
+\begin{remark}
+    Since the map \(\phi \) is continuous both ways, this means that the preimage of any open set in \(N\) under the map \(\phi \) is itself an open set in \(M\). But because \(\phi \) is also a bijection, the preimage is given by the map \(\phi ^{-1}\). This also works the other way around.
+    
+    We thus see that homeomorphisms provides one-to-one mappings between open sets of different topological spaces.
+\end{remark}
+
+\begin{definition}[Homeomorphic]
+    Let \((M, \mathcal{O} _M)\) and \((N, \mathcal{O} _N)\) be topological spaces. If there exists a homeomorphism \(\phi\) between these topological spaces, they are said to be \textit{homeomorphic} (or \textit{topologically isomorphic}) and we write \begin{align*}
+        (M, \mathcal{O} _M) \cong_{\text{top}} (N, \mathcal{O} _N) 
+    \end{align*}    
+\end{definition}
+
+\textbf{Questions / further learning} 
+\begin{itemize}
+    \item How does the quotient topology work? How are topologies "inherited" through equivalence relations?
+\end{itemize}
+\textbf{Problems}
+\begin{itemize}
+    \item Prove that the induced topology is indeed a topology
+    \item Prove that the product topology is indeed a topology
+\end{itemize} 
+
+

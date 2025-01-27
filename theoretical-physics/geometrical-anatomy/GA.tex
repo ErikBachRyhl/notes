@@ -1,0 +1,35 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../preamble.tex}
+
+\graphicspath{ {./figs/} }
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+
+\theoremstyle{definition} % Define theorem styles here based on the definition style (used for definitions and examples)
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{plain} % Define theorem styles here based on the plain style (used for theorems, lemmas, propositions)
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark} % Define theorem styles here based on the remark style (used for remarks and notes)
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{solution}{Solution}
+
+\title{Geometrical Anatomy of Physics}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Topology}
+    \input{ga/04topology.tex}
+
+\end{document}
