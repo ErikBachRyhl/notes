@@ -1,0 +1,100 @@
+\section{Postulater}
+\begin{enumerate}[i)]
+    \item En partikel er beskrevet ved en \textit{bølgefunktion} \(\Psi (\mathbf{x}, t)\).
+    \item \(\Psi (\mathbf{x}, t)\) udivkler sig ved Schrödinger-ligningen \begin{align*}
+        \boxed{i \hbar \frac{\partial \Psi }{\partial t} = \left(  - \frac{\hbar ^{2} }{2m} \nabla^{2}  + V(\mathbf{x}, t) \right) \Psi (\mathbf{x},t).}   
+    \end{align*}
+    \item Hvis partiklen er beskrevet ved bølgefunktionen \(\Psi (\mathbf{x}, t)\) så har vi \begin{align*}
+        \boxed{P_{\mathcal{V} } = \int_{\mathcal{V}}  d^3 x^{\prime}\  \Psi^{\ast} (\mathbf{x},t) \Psi (\mathbf{x} ,t).}
+    \end{align*}
+    \item Hvis vi til tiden \(t^{\prime} \) måler positionen og detekterer partiklen ved \(\mathbf{x} = \mathbf{x}^{\prime}\) så \textit{kollapser} bølgefunktionen \begin{align*}
+        \boxed{\Psi (\mathbf{x}, t) \longrightarrow \delta (\mathbf{x} - \mathbf{x}^{\prime} ).}
+    \end{align*}   
+    \item Impulsoperatoren er givet ved \begin{align*}
+        \boxed{\hat{p} = -i \hbar \frac{\partial}{\partial x}.}
+    \end{align*}
+\end{enumerate}
+
+\section{Den Tidsuafhængige Schrödinger-Ligning}
+Vi starter fra Schrödinger-ligningen (SE): \begin{align*}
+    i \hbar \frac{\partial \Psi (x, t)}{\partial t} = \left( - \frac{\hbar ^{2} }{2m} + V(x, t)  \right) \Psi (x, t)
+\end{align*}
+Hvad repræsenterer leddet \begin{align*}
+    \frac{1}{2m}\left( -\hbar ^{2} \frac{\partial^{2} }{\partial x^{2} }  \right) 
+\end{align*}
+egentlig? Vi genkender leddet som \begin{align*}
+    \frac{1}{2m} \hat{p}^{2} 
+\end{align*}
+og ser at det ligner en kvantemekanisk analog til kinetisk energi. Vi ser altså, at jo mere energi vi har (højresiden), jo hurtigere må tidsændringen af vores bølgefunktion være. Det giver faktisk meget god mening!
+
+\textbf{Forventningsværdien for en operator} 
+\begin{align*}
+    \left\langle A \right\rangle = \int _{- \infty} ^{\infty} d x \  \Psi (x, t)^{\ast} A \Psi (x, t)
+\end{align*} 
+
+\textbf{Spredningen for en operator} 
+\begin{align*}
+    \sigma _A ^{2} = \left\langle A^{2}  \right\rangle - \left\langle A \right\rangle ^{2} 
+\end{align*}
+\textbf{Dispersion (afstand fra middelværdien)}
+\begin{align*}
+    \Delta A = A - \left\langle A \right\rangle 
+\end{align*} 
+
+\subsection{Løsning af den Tidsuafhængige SE}
+Det antages at \(V(x, t) = V(x)\) (det er dét, der menes med tidsuafhængig). Vi håber at vi kan separere ligningen (da den er 2. ordens) og prøver ansatzen \begin{align*}
+    \Psi (x, t) \overset{?}{=} \psi (x) \phi (t).
+\end{align*}
+
+Det ses direkte fra denne ansatz at \begin{align*}
+    i \hbar  \frac{1}{\phi (t)} \frac{\partial \phi (t)}{\partial t} = - \frac{\hbar ^{2} }{2m} \frac{1}{\psi (x)} \frac{\partial ^{2} \psi (x)}{\partial x ^{2} } + V(x) .
+\end{align*}
+
+Dermed må begge sider være lig (\textred{samme?}) en konstant. Det ses også at begge sider har enheden Joule, og dermed vælger vi at kalde konstanten på højresiden \(E\): \begin{align*}
+    i \hbar \frac{1}{\phi (t)} \frac{\partial \phi (t)}{\partial t} = E
+\end{align*}  
+hvilket giver os en roterende fase-faktor som løsning:
+\begin{align*}
+    \boxed{\phi (t) = e^{- i Et / \hbar }}
+\end{align*}
+og som forventet: jo højere energi, jo hurtigere ændrer den tidsafhængige del af \(\Psi (x, t)\) sig!
+
+Faktisk er studiet af højresiden \begin{align*}
+    - \frac{\hbar ^{2} }{2m} \frac{1}{\psi (x)} \frac{\partial ^{2} \psi (x)}{\partial x ^{2} } + V(x) = E
+\end{align*}
+så vigtig i sig selv, at ganger vi igennem med \(\psi (x)\) får vi det, vi kalder den tidsuafhængige SE \begin{align*}
+    \boxed{\left[ -\frac{\hbar ^{2} }{2m} \frac{\partial ^{2} }{\partial x ^{2} } + V(x) \right] \psi (x) = E \psi (x)}
+\end{align*} 
+Resten af KM1 vil hovedsageligt beskæftige sig med at løse denne ligning for forskellige potentialer. Betragter vi dét, der agerer på \(\psi (x)\) på højresiden af ligningen som en operator, så genkender vi det som en egen"vektor" ligning. Vi kalder derfor \(\psi (x)\) en \textit{egenfunktion} for operatoren. Disse egenfunktioner er altså løsningerne for den tidsuafhængige SE, og energiniveauerne er egenværdierne. 
+
+Men idet vi da har et uendeligt-dimensionelt vektorrum (vores operator har uendeligt mange indgange), så forventer vi også uendeligt mange løsninger. Vi skriver derfor også (for at indeksere dem) \begin{align*}
+    \left[ - \frac{\hbar ^{2} }{2m} \frac{\partial ^{2} }{\partial x ^{2} } + V(x)\right] \psi_n (x) = E_n \psi_n (x)
+\end{align*}
+
+\subsection{Infinite Square Well}
+Hvis vores potentiale er givet ved
+\begin{align*}
+    V(x) = 
+    \begin{cases}
+    0, & 0 \le x \le a, \\
+    \infty, & \text{otherwise}.
+    \end{cases}
+\end{align*}
+
+får vi \begin{align*}
+    - \frac{\hbar ^{2} }{2m} \frac{\partial ^{2} \psi_n (x)}{\partial x ^{2} } = E_n \psi _n (x)
+\end{align*}
+sådan at \begin{align*}
+    \psi _n (x) = A \sin (kx) + B \cos (kx)
+\end{align*}
+
+Med vores boundary conditions ser vi først at \begin{align*}
+    \psi_n(x) = A \sin (kx)
+\end{align*}
+og dernæst at \begin{align*}
+    k_n = \frac{n \pi }{a} 
+\end{align*}
+
+% \section*{Mathematical Interlude: Gaussian Integrals}
+
+

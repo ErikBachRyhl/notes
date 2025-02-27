@@ -1,0 +1,289 @@
+\subsection{Linear Algebra Review}
+Consider the linear system of equations \begin{align*}
+    P \vec{x} = \vec{u}
+\end{align*}
+where \(P\) and \(\vec{u}\) is known. It can be solved formally by multyplying with the inverse matrix on both sides \begin{align*}
+    \vec{x} = P^{-1} \vec{u}
+\end{align*}
+
+\begin{theorem}[Determinant]
+    The entries in the inverse of a matrix \(M\) are ratios of a number called the \textbf{determinant}, which for an \(n\times n\) matrix can be computed explicitly as follows: \begin{align*}
+        \boxed{\mathcal{D} = \sum_{P \in S_n} \mathrm{sgn}(P) \prod_{i = 1}^{n} M_{i, P(i)}} \tag{56}
+    \end{align*}
+\end{theorem}
+
+\begin{remark}
+    The determinant can also be written as (Einstein Summation implied) \begin{align*}
+        \det M = \epsilon ^{i_1 i_2 \cdots i_n}  M^{1i_1} M^{2i_2} \cdots M^{ni_n}
+    \end{align*}
+    Even more generally, it is written in the book that \begin{align*}
+        \epsilon ^{pqr \cdots s} \det M = \epsilon ^{i j k \cdot m} M^{ip}M^{jq} M^{kr} \cdots M^{ms} \tag{67}
+    \end{align*}
+    which expresses the tensorial transformation property of the Levi-Civita symbol. I don't know what this means yet, but hopefully we will in a few weeks.
+\end{remark}
+
+\begin{theorem}[Cramer's Formula for the Inverse]
+    The inverse of an \(n\times n\) matrix is given by \begin{align*}
+        \left( M^{-1}  \right)_{ij} = \frac{1}{\mathcal{D} } (-1)^{i + j} \det \tilde{M}(\slashed{j}, \slashed{i}) \tag{67}
+    \end{align*}
+\end{theorem}
+
+\textbf{Transpose}\begin{align*}
+    \left( A \right)_{ij} ^T & := A_{ji}\\  
+    \left( AB \right) ^T &= B^T A^T
+\end{align*} 
+\textbf{Trace}
+\begin{align*}
+    &\mathrm{tr}\ M := \sum_i M_{ii}\\
+    &\mathrm{tr}\ AB = \mathrm{tr}\ BA
+\end{align*} 
+Note that the above equality implies that trace is left invariant under cyclic permutations of the matrices involved.
+
+\subsubsection{Properties of the Determinant}
+\begin{enumerate}
+    \item Multiplying a row (column) of the matrix \(M\) with \(\lambda\) scales the determinant by the same factor, \(\mathcal{D} \to \lambda \mathcal{D} \).
+    \item Interchanging rows (columns) flips the sign of the determinant.
+    \item Repeated rows (columns) gives a determinant of zero.
+    \item Subtracting scaled rows (columns) from other rows (columns) leaves the determinant unchanged.
+    \item \(\det M = \det M^T\) 
+\end{enumerate}
+These properties ensure that any matrix can be transformed to an upper triangular matrix without changing the determinant. Once a matrix is upper triangular, the determinant is just the product of the diagonal (as seen by Laplace expansion).
+
+If \begin{align*}
+    B \vec{v} = 0
+\end{align*}
+then a solution can only exist if \(\det B = 0\) as well.
+
+\subsubsection{Eigenvectors and Eigenvalues}
+\begin{align*}
+    \det (M - \lambda I) = 0
+\end{align*}
+gives an \(n\)-degree polynomium which implies \(n\) solutions. This means that one can use eigenvectors as a basis. 
+
+\subsubsection{Properties of Hermitian Matrices}
+\begin{definition}[Hermitian Matrices]
+    The Hermitian conjugate of a matrix is defined as follows:
+\begin{align*}
+    M^{\dagger} \coloneqq \left( M^{\ast}  \right)^T
+\end{align*}
+A matrix is said to be Hermitian if \(M^{\dagger} = M\) 
+\end{definition}
+
+A Hermitian Matrix \begin{enumerate}
+    \item Has only real eigenvalues
+    \item Orthogonal eigenvectors spanning the space. These can be normalized. Thus:
+\end{enumerate}
+\begin{align*}
+    H = H^{\dagger} \implies \lambda _a = \lambda _a ^{\ast} \text{ and } \psi_a ^{\dagger} \psi _b = \delta _{ab}
+\end{align*}
+
+
+\subsubsection{Upper and Lower Indicies}
+Since \begin{align*}
+    \phi^{\dagger} \psi = \left( \phi ^{\ast}  \right) ^T \psi = \sum_{i} \phi _i ^{\ast} \psi _i 
+\end{align*} 
+we now change our notation such that complex vectors carry an upper index, \(\psi ^i\). And for each such complex vector, we introduce a vector carrying a lower index, where one raises or lowers an index through complex conjugation. As such, \begin{align*}
+    \psi _i \equiv \left( \psi ^i \right) ^{\ast} 
+\end{align*} 
+With this definition, we get the notation \begin{align*}
+    \phi ^{\dagger} \psi = \phi _i \psi ^i = \sum_{i} \phi ^{i \ast} \psi ^i  
+\end{align*}
+We now introduce a rule, which will be able to help us out like unit analysis: \begin{notation}
+    An upper (lower) index always needs to be contracted with a lower (upper) index. 
+\end{notation}
+
+This also means that we will write the \((i, j)\)-th element of the matrix \(M\) as \(M^i _j \) such that \begin{align*}
+    \left( M \psi  \right) ^i = M^i_j \psi ^j 
+\end{align*}  
+In that sense, an upper index is a row index and the lower index is a column index.
+
+\subsubsection{Diagonalization}
+Letting \(S = \left( \psi _1, \psi _2, \dots , \psi _n \right) \) be the matrix with the \(n\) eigenvectors of the matrix \(M\) as it's columns. Then the \textit{similarity transformation} of \(M\) with \(S\) will result in a diagonal matrix with the eigenvalues along the diagonal. As an equation: \begin{align*}
+    S^{-1} M S = \mathrm{diag} \left\{ \lambda _1, \lambda _2, \dots, \lambda _n \right\} \coloneqq  \Lambda 
+\end{align*} 
+
+\begin{definition}[Unitary and Orthogonal Matrices]
+    A unitary matrix is any matrix satisfying \begin{align*}
+        U ^{\dagger} U = I.
+    \end{align*}
+    An orthogonal matrix is any matrix satisfying \begin{align*}
+        O^T O = I.
+    \end{align*}
+    Thus a real unitary matrix is orthogonal.
+\end{definition}
+
+This gives us the following "theorem" (basically the definition of unitary matrices, actually): 
+\begin{theorem}[Diagonalization of Hermitian Matrices]
+    A Hermitian matrix can, by definition, be diagonalized into a purely real matrix by similarity transform with a unitary matrix \begin{align*}
+        U ^{\dagger} M U = \Lambda 
+    \end{align*}
+\end{theorem}
+
+\begin{theorem}[Trace equals sum of Eigenvalues]
+    The trace of a matrix is the sum of its eigenvalues.
+\end{theorem}
+\textit{Proof:} We have already seen that taking the trace is cyclic. Thus \begin{align*}
+    \mathrm{tr}\ S^{-1} M S = \mathrm{tr}\ S^{-1} S M = \mathrm{tr}\ M = \mathrm{tr}\ \Lambda = \sum_{a} \lambda _a 
+\end{align*}
+
+\begin{theorem}[Simultaneous Diagonalization]
+    If two matrices commute, they will be diagonalized by the same similarity transformation.
+\end{theorem}
+
+\subsubsection{Functions of Matrices}
+
+\subsection{Why Group Theory?}
+Group Theory is the mathematics of symmetry. But what exactly is meant by symmetry? \begin{definition}
+    A \textit{symmetry} is an invariance under a transformation.
+\end{definition}
+But what then is a transformation?
+\begin{definition}
+    A \textit{transformation} is any operation satisfying the following: \begin{itemize}
+        \item Composition
+        \item Invertability
+    \end{itemize}
+\end{definition}
+
+In classical physics, a symmetry \(\implies \) conserved quantity (Nöether's Theorem). For example, invariance under a translation means that momentum is conserved and if there is an invariance under a rotation, then the angular momentum is conserved.
+
+In quantum physics, we have that if there is a symmetry under the action of an operator, then \begin{align*}
+    \textit{Symmetry} \iff  \left[ \hat{O}, H \right] = 0
+\end{align*}
+In other words, the operator responsible for this symmetry commutes with the Hamiltonian operator. this implies that the Hamiltonian operator and the \(\hat{O}\) have the same eigenvalues and eigenvectors. And these eigenvalues are in some sense weights of the group while the eigenvectors form a representation of the group. We'll get to know what all of this means!
+
+There are mainly two kinds of symmetries met in physics: \begin{enumerate}[i)]
+    \item Space-time 
+    \item Internal
+\end{enumerate}
+
+\textbf{Examples of space-time symmetries} \begin{itemize}
+    \item Translation
+    \item Rotation
+    \item Lorentz Boost
+\end{itemize} 
+If one has rotation + boost symmetry, then one has "Lorentz symmetry". If one includes translation, then one has "Poincaré symmetry". Further examples include \begin{itemize}
+    \item Dilatation: \(X^{\mu} \to  \lambda  X^\mu \)
+    \item Inversion: \(X^\mu \to  \frac{X^\mu}{\left| X \right| ^{2} }\) (of the unit sphere)
+\end{itemize}
+
+All the above taken together are known as "Conformal Symmetries" (angle preserving). This is the basis for Conformal Field Theories (CFT). One can also introduce symmetry under "supertranslations" and "superboosts". Then we can form a superconformal field theory (SCFT).
+
+\textbf{Examples of internal symmetries}
+\begin{itemize}
+    \item Permutation symmetry
+    \item Gauge symmetry
+\end{itemize} 
+
+In electromagnetism, the gauge symmetry is described by the group \(U(1)\) (invariance under phase shifts). In the standard model, one meets the gauge symmetry \(SU(3) \times SU(2) \times U(1)\). In heterotic string theory, the group is \(SO(32)\), or \(E_8 \times E_8\).
+
+A new field of research which has gained recent traction is known as "non-invertible symmetries". One cannot describe this by use of groups, but by "Fusion Categories" instead. Maybe this will be hot in the future. 
+
+\newpage
+\Large{\textbf{Course Structure}}
+\normalsize
+\begin{itemize}
+    \item Basic definitions and examples
+    \item Representation Theory \begin{itemize}
+        \item Character Tables
+        \item Tensor Representation of \(SO(N)\) (especially \(SO(3), SO(4)\) )
+        \item Tensor Repr. of \(SU(N)\)
+        \item Spinor Repr. of \(SO(N)\) (fermions) 
+    \end{itemize}
+    \item Lie Groups \begin{itemize}
+        \item Roots, Weights
+        \item Dynkin Diagrams
+        \item Classification of Lie Groups (Cartan's Classification)
+    \end{itemize}
+\end{itemize}
+\newpage
+\subsection{Introduction}
+\begin{definition}
+    A group \(\left( \mathcal{G} , \circ \right) \)  is a set of elements \(\mathcal{G} = \left\{ g_{\alpha }  \right\} \) (cont. or discrete) together with a group operation \(( \circ)\) satisfying the following axioms \begin{enumerate}[i)]
+        \item \(g_{\alpha }, g_{\beta } \in \mathcal{G}   : g_{\alpha } \circ g_{\beta } \in \mathcal{G}   \) (closure)
+        \item \(\left( g_{\alpha } \circ g_{\beta }   \right) \circ g_{\gamma } = g_{\alpha } \circ  \left( g_{\beta } \circ g_{\gamma }   \right)   \) (associativity)
+        \item \(\exists I: g_{\alpha } \circ  I = I \circ  g_{\alpha } = g_{\alpha }   \) (existence of identity)
+        \item \(\forall g_{\alpha } \in \mathcal{G}  : \exists g_{\alpha } ^{-1} : g_{\alpha } \circ  g_{\alpha } ^{-1} = g_{\alpha } ^{-1} \circ g_{\alpha } = I  \) (existence of inverse)
+    \end{enumerate} 
+\end{definition}
+
+\begin{definition}
+    If the group operation is commutative, the group is said to be \textbf{Abelian}. 
+\end{definition}
+
+\underline{Space time examples: }\((\mathbb{Z} , +)\) is Abelian, whereas \((\mathbb{R} ^3, O(3))\) is non-Abelian. "Boosts" are also commutative.
+
+\underline{Internal examples:} \(SL(N, \mathbb{R} ) = (\left\{ N\times N \text{ real matrices with det}(M) = 1  \right\}, \circ )\)  
+
+\subsubsection{Finite Groups and Multiplication Tables}
+\begin{definition}
+    Let \(\mathcal{G}\) be a group with a finite set of elements \(\left\{ g_1, \dots , g_n \right\} \). We then define the \textbf{order} of the group to be the cardinality of the set of group members: \begin{align*}
+        \rm{order}(\mathcal{G} ) \coloneqq \left| \left\{ g_{\alpha } \right\}  \right|  = n 
+    \end{align*} 
+\end{definition}
+
+For any finite group of order \(n\) one can construct a \(n \times n\) \textit{multiplication table} where entry \((i, j)\) is given by \(g_i \circ g_j\). 
+
+\begin{theorem}["Sudoku Theorem"]
+    All group elements of a finite group \(\mathcal{G}\) appear once, and only once, in each row and in each column.  
+\end{theorem}
+\textit{Proof:} Let \(g_i, g_j, g_k \in \mathcal{G}\). Assume \(j \neq k\). We see that if the same element \(g_i\) multiplies an element both in column \(j\) and in column \(k\) of the multiplication table, then  
+\begin{align*}
+    g_i \circ  g_j = g_i \circ  g_k \implies  g_i ^{-1}\circ  g_i \circ  g_j = g_i ^{-1} \circ  g_i \circ g_k \implies g_j = g_k \implies j = k\quad \contra
+\end{align*} 
+Thus we conclude that \(j = k\); we could equally well have gone through the proof with the rows, since the we can, by our axioms, multiply the inverse both from the right and from the left to get the identity element of the group.
+
+\hfill \qed 
+
+\begin{remark}
+    The consequence of the above theorem is, that if one one can make a multiplication table that \textit{has} a repeated element in a row or a column, then the elements used to form that multiplication table do not constitute a group. We also see that Abelian groups necessarily have symmetric multiplication tables. Note also that since the group elements forms an unordered set (all members are unique), then the last implication above is unnecessary to write, since the prior equality is already stating that \(j = k\); the fact that they are "tacked onto" a \(g\) is just to remind ourselves that we are working with a group.   
+\end{remark}
+
+\subsubsection{Group Isomorphisms}
+\begin{definition}
+    Let \(\mathcal{G} \) and \(\mathcal{G} ^{\prime} \) be groups. Let \(f : \mathcal{G} \to  \mathcal{G} ^{\prime} \) be a map between them. We say that the map is a \textbf{homomorphism} between the groups if \begin{align*}
+        f(g_1 \circ g_2) = f(g_1) \circ f(g_2)
+    \end{align*}
+    If the map \(f\) is bijective, we say that the map is an \textbf{isomporhism} between the groups, and that the groups are group-theoretically \textbf{isomorphic}: \begin{align*}
+        \mathcal{G} \cong_{\text{grp}} \mathcal{G}^{\prime}  
+    \end{align*}   
+    The map \(f\) provides a \textbf{structure-preserving, one-to-one mapping} between the groups. 
+\end{definition}
+
+\begin{proposition}
+    Let \(f : \mathcal{G} \to \mathcal{G} ^{\prime} \) be an isomorphism. Then \begin{enumerate}[i)]
+        \item \(f(I_{\mathcal{G} } ) = I_{\mathcal{G} ^{\prime} }\)
+        \item \(\left( f(g) \right) ^{-1} = f(g^{-1}) \)  
+    \end{enumerate} 
+\end{proposition}
+\textit{Proof}: Let \(g^{\prime} \in \mathcal{G}^{\prime} \implies \exists g : f(g) = g^{\prime}\)  
+\begin{enumerate}[i)]
+    \item and since \(f(g) = f(I_{\mathcal{G} } \circ g ) = f(I_{\mathcal{G} } ) \circ f(g) = f(I_{\mathcal{G} }) \circ g^{\prime}\) we find that \(g^{\prime} = f(I_{\mathcal{G}} ) \circ g^{\prime}\implies f(I_{\mathcal{G} }) = I_{\mathcal{G}^{\prime} } \).
+    \item and then we have that \(I_{\mathcal{G} ^{\prime}} = f(I_{\mathcal{G} } ) = f(g \circ g^{-1}) = f(g) \circ f(g^{-1}) \implies \left( f(g) \right)^{-1} = f(g^{-1})\).
+\end{enumerate}
+\hfill\(\qed\) 
+
+\begin{theorem}
+    Let \(p\) be prime. Then there is only one group with \(p\) elements, which is \begin{align*}
+        \mathbb{Z} _p \coloneqq \left( \left\{ 0, 1, \dots, p \right\}, +\ \rm{mod }\ p  \right) 
+    \end{align*}  
+\end{theorem}
+We say that there "is only one group" in the sense that all other groups with \(p\) elements will be isomorphic to \(\mathbb{Z} _p\).  
+
+\subsubsection{Construction of Groups}
+There are several way to construct groups: \begin{itemize}
+    \item Construct multiplication tables
+    \item Use the Cartesian Product: Let \((F, \cdot ), (G, \circ)\) be groups. Then we see that \begin{align*}
+        \left( F \times G, *\right) = \left( \left\{ (f, g)\ \big| \ f \in F, g\in G \right\}, \left( f_1, g_1 \right) * \left( f_2, g_2 \right) = \left( f_1 \cdot f_2, g_1 \circ g_2\right)   \right)
+    \end{align*}
+    also constitutes a group.
+\end{itemize}
+
+\begin{theorem}[Reformulation of Sylow's Theorems (informal)]
+    There exists as many different Abelian groups of order \(n\) (with \(n\) elements) as there are "ways of writing" the number \(n\) as a factorisation of primes raised to an integer power.
+\end{theorem}
+\underline{Example:} As an example to illustrate what is meant by "ways of writing", consider \(n = 8\). With this theorem, we conclude that there exists 3 distinct, finite, abelian groups with 8 elements since we can write \begin{align*}
+    8 &= 2^3\\
+    &= 2^2 \cdot 2\\
+    &= 2 \cdot 2 \cdot 2
+\end{align*} 
+Notice that \(2^2 \cdot 2\) is regarded as equivalent to \(2 \cdot 2^2\) in this sense of "different ways".  

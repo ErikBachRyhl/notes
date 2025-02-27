@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../preamble.tex}
+
+\usepackage{slashed}
+
+\graphicspath{ {./figs/} }
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+
+\theoremstyle{definition} % Define theorem styles here based on the definition style (used for definitions and examples)
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{plain} % Define theorem styles here based on the plain style (used for theorems, lemmas, propositions)
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{problem}{Problem}
+
+\theoremstyle{remark} % Define theorem styles here based on the remark style (used for remarks and notes)
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{solution}{Solution}
+
+\title{MatF3 Exercises}
+\begin{document}
+    \maketitle
+
+    \section*{Chapter II}
+    \begin{problem}[Ch. II.2, Problem 6)]
+        Use Schur's lemma to prove that all irreducible representations of an abelian group are 1-dimensional. 
+    \end{problem}
+    \textred{This is stated as "an almost self-evident fact" - how come?} 
+
+    \section*{Chapter IV}
+    \subsection*{Chapter IV.1}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{IV.1.12.png}
+    \end{figure}
+
+    The number of components in an \(k\)-rank tensor furnishing the repr. of \(SO(N)\) is \(N^k\). To have the fewest components, we thus start from the lowest rank.
+
+    The 0-rank tensor (the trivial repr.) is the normalised trace:\begin{align*}
+        S^{kk} \to S^{kk}   
+    \end{align*}
+    It has a dimension of 1.
+
+    Going to 1-rank tensors (vectors), we know that they furnish the defining repr. with \(\dim = 5\).
+
+    Goint to 2-rank tensors, we know we can use the identity to split them into a \(\frac{1}{2} N(N - 1)\) dimensional antisymmetric part, a \(\frac{1}{2} N(N + 1) - 1\) dimensional symmetric part and finally the trace (which we have already counted!). We thus get a \(\dim = 10\) and a \(\dim = 14\) dimensional repr.
+    
+    We now go to 3-rank tensors. What 3-rank irreducible tensor has the lowest dimensionality (apart from trace)? 
+    
+    Conraction with the Levi-Civita symbol (dualisation) throws out all the symmetrical parts of a tensor (which is also the trace). Thus, the remaining free components must be totally antisymmetric - and as we have seen, a totally antisymmetric tensor transforms into itself (and therefore constitutes an irreducible repr.). We dualise the three-rank tensor:
+    \begin{align*}
+        \epsilon^{ijklm} T^{ijk} = \tilde{T}^{lm}
+    \end{align*}
+    As the dualised vector is a total antisymmetric 2-rank tensor, we have already taken this irrep. into account in fact, just like we have already counted the trace.
+
+    But we can try to count the independent components of the totally symmetric 3-rank tensor. Let's consider an \(j\)-rank tensor in \(SO(5)\). Since it is totally symmetric, we can always order the indicies like \begin{align*}
+        S^{55\dots 544\dots 433\dots 322\dots 211\dots 1}
+    \end{align*}
+
+    But suppose we we're in \(SO(2)\). Then just by counting how many 2's we had placed, we would know how many 1's we had to place as well (it has to be of rank \(j\)). Once again, since the tensor is totally symmetric, the exact placement of any 2's or 1's doesn't matter, only the count! The possibilites in this case are manageable: We can either have zero 2's, one 2's, two 2's, etc. all the way up to \(j\). This gives \(j + 1\) different symmetric components: \begin{align*}
+        \sum_{n_2 = 0}^j 1 = j + 1 
+    \end{align*}
+    Now we go to \(SO(3)\) (we allow the indicies to run to three). Again, we can use the "canonical ordering" shown above, and we essentially just get a lot of cases of a problem we know how to solve: \begin{itemize}
+        \item If there are zero 3's, then we have the exact same problem and we get \(j + 1\)  
+        \item If there is one 3, then we count as before, but now there are only \(j - 1\) components left to count with.
+        \item If there are two 3's, then we count as before but only with \(j - 2\) components left.
+        \item If there are \(n_3\) 3's, then we can count as before but with only \(j - n_3\) components left.
+        \item This can go on all the way up to us having \(n_3 = j\) 3's, where there is only 1 possibility.  
+    \end{itemize}
+
+    For each of these cases, we get a certain amount of possible distributions of 1's, 2's and 3's. And we want to add them, since we want the total number of such possible distributions, since they correspond to the independent components in the totally symmetric tensor. This is because the distribution has to differ, since ordering doesn't matter. We can thus write \begin{align*}
+        \sum_{n_3 = 0}^j \left( \sum_{n_2 = 0} ^{j - n_3} 1 \right) = \sum_{n_3 = 0}^j\sum_{n_2 = 0} ^{j - n_3} 1
+    \end{align*}
+
+    This recursive idea of the problem reducing to one we know how to account for but with a different outset (\(j - n_3\) "total" components left for example) is really powerful, and it clearly just generalises to \(SO(5)\). We can thus count the total number of independent symmetric components in a \(j\)-rank tensor in \(SO(5)\) with the sum:
+    \begin{align*}
+        \sum_{n_5 = 0}^{j} \left(\sum_{n_4 = 0}^{j - n_5} \left(\sum_{n_3 = 0}^{j - n_5 - n_4} \left(\sum_{n_2 = 0}^{j - n_5 - n_4 - n_3} 1 \right)\right)\right)
+    \end{align*} 
+    (the parantheses are for readibility of the upper limits). This sum can be computed explicitly, but it takes a while by hand. Evaluating with WolframAlpha, we get 35. 
+
+    The final answer is thus: \begin{itemize}
+        \item 1 (trace, rank 0)
+        \item 5 (defining, rank 1)
+        \item 10 (antisymmetric, rank 2)
+        \item 14 (symmetric, rank 2)
+        \item 35 (symmetric, rank 3)
+    \end{itemize}
+
+    In doing this exercise, August first accidently thought we had to solve it for \(SO(4)\). We then got the sum \begin{align*}
+        \sum_{n = 0}^j n^{2}  
+    \end{align*} 
+    and we wanted to evaluate it. It is easiest to prove closed formulas by induction, but then one needs the induction hypothesis. But here is a another powerful approach, in which you study the partial sums as a function: \begin{align*}
+        f(n + 1) = f(n) + (n + 1)^{2} = f(n) + n^{2} + 2n + 1
+    \end{align*} 
+    If one can then match the function at the beginning step, then by induction they must be the same, since for every step, the sum and the function increase by the same amount and thus continue being equal so to say.
+
+    August noticed that 3'rd degree polynomials in \(n\) would have the property that they "spit out" a second degree polynomium: \begin{align*}
+        f(n + 1) \stackrel{?}{=} a(n + 1)^3 + b(n + 1)^2 + c(n + 1) = \underbrace{an^3 + bn^{2} + cn}_{f(n)} + a(3n^{2} + 3n + 1) + b(2n + 1) + c
+    \end{align*}
+
+    We thus get an equation for the remainder (matching like terms): \begin{align*}
+        n^{2} + 2n + 1 = a(3n^{2} + 3n + 1) + b(2n + 1) + c &= 3an ^{2} + (3a + 2b)n + a + b + c\\
+        &\implies a = \frac{2}{6}, b = \frac{3}{6}, c = \frac{1}{6}
+    \end{align*}
+    such that \begin{align*}
+        f(n) = \frac{2n^3 + 3n^2 + n}{6} = \frac{n(2n^2 + 3n + 1)}{6}
+    \end{align*}
+    Also, remember polynomium division: \begin{align*}
+        2n^{2}= (n+1) \frac{2n^{2}}{n + 1} = (n + 1) \left(\frac{2(n + 1)^{2} }{n + 1} - \frac{2(n + 1)^{2} - 2n^{2} }{n + 1}\right) = (n + 1) \left( 2n + 2 - \frac{4n + 2}{n + 1} \right)  
+    \end{align*}
+    such that \begin{align*}
+        \frac{n(2n^2 + 3n + 1)}{6} = \frac{n(n + 1) \left( 2n + 2 - \frac{4n + 2}{n + 1} + \frac{3n + 1}{n + 1} \right)  }{6} = \frac{n (n + 1) \left( 2n + 1\right) }{6}
+    \end{align*}
+    which is in fact the correct form for the sum \begin{align*}
+        \sum_{k = 0}^n k^{2} = \frac{1}{6}n(n+1)(2n + 1) 
+    \end{align*}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{figs/IV.1.13.png}
+    \end{figure}
+
+\end{document}
+
+

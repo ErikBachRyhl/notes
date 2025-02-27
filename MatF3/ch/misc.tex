@@ -1,0 +1,25 @@
+\section{Notes to self}
+\subsection{To Add}
+\begin{itemize}
+    \item An explanation of why \begin{align*}
+        \epsilon^{ijk \cdots n} R^{ip} R^{jq} R^{kr} \cdots R^{ns} = \epsilon^{p q r \cdots s} \mathrm{det}\ R  
+    \end{align*}
+    \item The more formal definition of a representation
+\end{itemize}
+\subsection{From Ludvig}
+The elements of $SO(3)$ are $3D$ rotations, so the generators represented by $J_x, J_y, J_z$ generate infinitesimal rotations. Using Noether's theorem, the angular momentum operator (about some axis) in quantum mechanics is defined as the generator of infinitesimal rotations (about that axis). This is exactly the same as the Lie group! The generators correspond to operators, the exponentiated group elements correspond to actual rotations of particle. Thus, the $J_z$ angular momentum operator is (conceptually) the same as the $J_z$ in the Lie algebra of $SO(3)$. Zee writes it as $\vec{L}_{\text{operator}} = \hbar \vec{L}_{\text{Lie}}.$
+
+Now, let $J_z \ket{m} = m \ket{m}$. Here, the $\ket{m}$ kets are the normalised eigenvectors of $J_z$, meaning they span the "eiggenspace" of the $J_z$ matrix. This definition is the same as a tensor furnishing a representation of $J_z$ in group theory; it is something, the representation of $J_z$ can be applied to by matrix multiplication from the left. Thus, tensors furnishing representations of $J_z$ are directly connected to the eigenfunctions $\ket{m}$. This means that the number of eigenvalues $m$ is equal to the dimension of the corresponding representations. Interlude:
+
+\textit{A tensor representation of $SO(3)$ can be similarity transformad into a block-diagonal form, where the irreducible representations are furnished by traceless, symmetric tensors. They have dimensions equal to the number of independent indices of these, which for $j$ components are $2j+1$.}
+
+Now, as the $\ket{m}$ kets transform among themselves under rotations, i.e. by $J_z$ operating on them (that's the definition of an eigenket), the corresponding representations must do the same. Therefore, the eigenkets and eigenvalues correspond to tensors furnishing \textit{irreducible} representations of the corresponding operator/representation matrix. 
+
+For a given $j$, there are $2j+1$ corresponding $\ket{m}$ kets. Thus, if $j$ is integer, these correspond to the irreducible tensor representations of $SO(3)$ before exponentiation, or the irreducible representations of the Lie algebras. 
+
+Now for angular momentum addition. By considering infinitesimal rotations, it is shown in Zee that $J_z \ket{j, m} \otimes \ket{j', m'} = (m+m')$. This leads to the conclusion given at the last lecture: “Taking direct products of irreducible representations of SO(3) \& SO(3) and decomposing into irreducible representations = adding angular momentum and possibly spin in QM”.
+
+Another thing is that the Clebsch-Gordan decomposition of tensor representations yields the same possible values as the the possible values of $m$ are in quantum mechanics:
+\begin{align}
+	j \otimes j' = (j+j') \oplus (j+j'-1) \oplus \dots \oplus (j-j'), \quad \text{for } j > j'.
+\end{align}

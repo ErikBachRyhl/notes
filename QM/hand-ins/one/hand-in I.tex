@@ -1,0 +1,63 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margin here, e.g., 1 inch
+\input{../../../preamble.tex}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\title{Hand In I}
+\begin{document}
+    \maketitle
+    \subsection*{Part 1.}
+    \textbf{1.1} 
+    Let \begin{align*}
+        H = -\frac{\hbar  ^{2} }{2I} \frac{\partial ^{2} }{\partial \phi ^{2} } \tag{1}
+    \end{align*}
+    and let \begin{align*}
+        \psi _m (\phi ) = A e^{i m \phi }
+    \end{align*}
+    Since \begin{align*}
+        H \psi _m = -\frac{\hbar ^{2} }{2I} \frac{\partial ^{2} \psi _m}{\partial \phi ^{2} } =  \frac{\hbar ^{2} m ^{2} }{2I} \psi _m = E_m \psi _m,
+    \end{align*}
+    The set \(\left\{ \psi _m(\phi ) \right\} \) clearly constitutes a collection of eigenfunctions for the Hamiltonian operator as defined in (1), since \(\hbar ^{2} m^{2} /2I\) is a number.  
+
+    \textbf{1.2} Since the particle is on a ring, we have the physical constraint that \begin{align*}
+        \psi _m (\phi + 2\pi ) = \psi _m (\phi )
+    \end{align*} which means that we require \begin{align*}
+        e^{i m \phi } = e ^{i m (\phi + 2 \pi  m)}\\
+        \implies e^{i 2\pi m} = 1
+    \end{align*}
+    For this equation to hold, we thus get the requirement that \(m \in \mathbb{Z}\), or \begin{align*}
+        m = \dots , -2, -1, 0, 1, 2, \dots
+    \end{align*} 
+
+    \textbf{1.3} We see that \begin{align*}
+        \braket{\psi _m}{\psi _m} = |A|^{2} \int_{- \pi }^{\pi} d \phi\ e^{i (m - m)\phi } = 2 \pi|A|^{2}  
+    \end{align*}
+    For the state to be normalized, or equivalently \(|\psi _m|^2 = \braket{\psi _m}{\psi _m} = 1 \), we thus choose \begin{align*}
+        A = \frac{1}{\sqrt{2\pi } }
+    \end{align*} 
+
+    \textbf{1.4} The state \begin{align*}
+        \Psi (x, t = 0) = \frac{1}{\sqrt{\pi } } \sin (2 \phi )
+    \end{align*} 
+    can also be written as a superposition of the (complete set of) eigenfunctions of the Hamiltonian operator as defined in (1):
+    \begin{align*}
+        \Psi (x, t = 0) = \frac{1}{\sqrt{\pi } } \sin (2 \phi ) &= \frac{1}{\sqrt{\pi }}\left( \frac{e^{i2 \phi } - e^{-i2 \phi }}{2i} \right) \\
+        &= -\frac{i \sqrt{2 \pi } }{2\sqrt{\pi } } \left(\frac{1}{\sqrt{2 \pi } } e^{i 2\phi } - \frac{1}{\sqrt{2 \pi } } e^{- i 2 \phi }  \right) \\
+        &= -\frac{i}{\sqrt{2} } \left( \psi_2 (\phi ) - \psi _{-2}(\phi ) \right) 
+    \end{align*}
+    The state is clearly already normalized (as it should be if it were realizable in the first place!) and we know just tack on the "wiggle factors" to obtain \(\Psi (x, t)\):
+    \begin{align*}
+        \Psi (x, t) = \frac{1}{i \sqrt{2} } \left( \psi _2 (\phi ) e^{-i E_{(2)} t / \hbar } - \psi _{(-2)}(\phi )e^{-i E_{-2} t / \hbar } \right)
+    \end{align*} 
+    As is seen from (1), we have that \begin{align*}
+        E_m = \frac{\hbar ^{2} m^{2} }{2 I}
+    \end{align*}
+    such that we may explicitly expand
+    \begin{align*}
+        \Psi(x, t) &= \frac{1}{i \sqrt{2} } \left( \frac{1}{\sqrt{2\pi }}e^{i 2\left(\phi - \frac{\hbar}{I}t \right) } - \frac{1}{\sqrt{2\pi } } e^{-i 2 \left( \phi - \frac{\hbar }{I} t \right)} \right) \\
+        &= \frac{1}{\sqrt{\pi }} \sin \left( 2 \left[ \phi  - \frac{\hbar}{I} t \right]  \right) 
+    \end{align*}
+    for \(t > 0\). 
+\end{document}

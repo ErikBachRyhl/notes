@@ -1,0 +1,189 @@
+\section{Tensors and Representations of the Rotation Group \(SO(N)\)}
+\begin{definition}[Representation (take 1)]
+    A representation is homomorphic map \(D^{(n)} : \mathcal{G} \to GL (n, \mathbb{C})\). That is, a map from the group \(\mathcal{G}\) to the set of all linear transformations on a vector space \(V\) with \(\mathrm{dim} (V) = n\). That the map is homomorphic means that it \textit{preserves structure}: \begin{align*}
+        D(g_1) D(g_2) = D(g_1 g_2)
+    \end{align*}
+    This means that any product between the representations of group elements (in the vector space) is equal to the representation of the products of the group elements (in the group).
+\end{definition}
+
+\begin{definition}[Direct Product]
+    Given two mathematical objects \(A\) and \(B\) carrying any number of free indicies, we define the direct product between them by defining how to obtain its components:
+    \begin{align*}
+        (A \otimes B)_{} = A_{i, j, k, \cdots n} \otimes B_{p, q, r, \cdots s} \coloneqq 
+    \end{align*}
+\end{definition}
+
+\subsection{The Special Unitary Groups \(SU(N)\)}
+\begin{definition}[\(SU(N)\)]
+    \(SU(N)\) are all the \(N \times N\) matrices with complex entries satisfying that \begin{align*}
+        U ^{\dagger} U = 1, \quad \mathrm{det}\ U = 1
+    \end{align*}
+\end{definition}
+The defining representation is defined by being furnished by complex vectors with \(N\) entires. Unitary matrices preserve inner products of the type \(v ^{\dagger} w\), since 
+\begin{align*}
+    v^{\prime \dagger} w^{\prime} = \left( U v \right) ^{\dagger} \left( U w \right) = v ^{\dagger} U ^{\dagger} U w = v^{\dagger} w
+\end{align*} 
+Also, we see that \begin{align*}
+    1 = \mathrm{det} U ^{\dagger} U = \mathrm{det} U ^{\dagger} \mathrm{det} U = \mathrm{det} U ^{\ast} \mathrm{det} U = \left| \mathrm{det} U \right| ^{2} 
+\end{align*}
+which implies that \(\mathrm{det} U = e^{i \theta }\). We choose by convention that \(\mathrm{det}  U = 1\) as defined above. 
+
+It turns out that \(SU(2)\) describes both fermions (spin) as well as weak interactinos (isospin). It is also the case that \(SU(3)\) describes QCD (quark interactions). The really cool idea is that (with coupling constants), the standard model is described by \begin{align*}
+    SU(3) \otimes SU(2) \otimes U(1)
+\end{align*}
+
+Since \begin{align*}
+    SU(3) \otimes SU(2) \otimes U(1) \subset SU(5)
+\end{align*}
+an attempt was made at a "Great Unified Theory" based on the symmetries of this group, but it hasn't worked out (and probably won't). 
+
+One can also do expansions in \(SU(N)\) like:
+\begin{align*}
+    \left\langle O \right\rangle = O_0 + \frac{1}{N^{2} } O_1 + \frac{1}{N_4} O_2 + \cdots 
+\end{align*}
+
+\subsubsection{\(SU(N)\) as a Lie Group with Lie Algebra (\(su(N)\))}
+To be a Lie Group, we should be able to expand our group element as an exponential map around the identity\begin{align*}
+    g = \exp \left( i \sum_{a} \theta  ^a  T^ a\right) 
+\end{align*}
+where \(\theta ^a\) are the infinitesimal parameters, and \(T^a\) are the generators.
+
+The Lie Bracket of the Algebra is a bilinear, antisymmetric product which needs to satisfy that \begin{align*}
+    \left[ T^a, T^b \right] = i f^{abc} T^c
+\end{align*}
+as well as the Jacobi Identity.
+
+Taking an element in our group, \(U = g = e^{i \epsilon h}\), we find that \begin{align*}
+    1 = U^{\dagger} U = \left( 1 - i \epsilon h ^{\dagger} + O(\epsilon ^{2} ) \right)\left( 1 + i \epsilon h ^{\dagger} + O(\epsilon ^{2} ) \right) = 1 + i \epsilon (h - h ^{\dagger} + O(\epsilon ^{2} ))
+\end{align*} 
+By equating terms of like order, we see that our generators need to be Hermitian\begin{align*}
+    h = h^{\dagger} 
+\end{align*}
+
+We see that \begin{align*}
+    \det(U) = 
+    \begin{vmatrix}
+    1 + i \epsilon h_{11} &  i \epsilon h_{12}  & \cdots & i \epsilon h_{1n} \\
+    i \epsilon h_{21} & 1 + i \epsilon h_{22}  & \cdots &  \\
+    \vdots & \vdots & \ddots & \vdots \\
+     &   & \cdots & 1 + i \epsilon h_{nn}
+    \end{vmatrix}
+\end{align*}
+Keeping only the terms of first order in \(\epsilon\), we obtain \begin{align*}
+    \det(U) = 1 + i \epsilon Tr(h) + O(\epsilon ^{2} )
+\end{align*} 
+which forces \(Tr(h) = 0\) 
+\textred{Review this!}
+
+Counting the number of generators in \(SU(N)\), we have \(N^{2} \) complex and \(N^{2} \) real components. But \(h ^{\dagger}  = h\) enforces a constraint, and the \(Tr(h) = 0\) also removes a single free component. Thus we have \begin{align*}
+    N^{2} -1
+\end{align*}
+generators in \(SU(N)\).
+
+\begin{example}
+    \(su(3)\) has 8 generators written in terms of the Gell-mann Matrices \(\lambda ^1, \lambda ^2, \dots, \lambda ^8\). \begin{align*}
+        T^a = \frac{\lambda ^a}{2}
+    \end{align*}
+    while we have \begin{align*}
+        \left[ T^a, T^b \right] = i f^{abc} T^c
+    \end{align*}
+\end{example}
+
+\subsection{Tensors for \(SU(N)\)}
+In the defining repr., we have \begin{align*}
+    v ^i \to (v^{\prime} )^i = U^i _j v^j
+\end{align*}
+Now, we find that the tensor representation will look like \begin{align*}
+    T^{ij} \to \left( T ^{\prime}  \right) ^{i j} = U ^i _k U^j _l T^{kl}
+\end{align*}
+
+Or, higher rank: \begin{align*}
+    T^{i_1 \dots i_n} \to \left( T^{\prime}  \right) ^{i_1 \dots i_n} = U^{i_1} _ {j_1} \cdots U^{i_n} _ {j_n} T^{j_1 \dots j_n}
+\end{align*}
+If we can find non-trivial subspaces in the product representation (which is furnished by these tensors), then the tensor repr. is reducible. This is equivalent to our tensors having specific symmetry properties. We find that \begin{align*}
+    T^{ii} \to \left( T^{\prime}  \right) ^{ii} = U^i _k U^i _l T^{k l} = \left( U^T \right) ^k _i \left( U \right) ^i _ l T^{kl} 
+\end{align*}
+Thus unlike \(SO(N)\), the trace doesn't furnish an irreducible representation in \(SU(N)\), since \(U^T U \neq 1\) . Any two-rank tensor can thus be decomposed into two parts (constrast to three):
+\begin{align*}
+    T^{ij} = \frac{1}{2}\left( T^{ij} + T^{ji}  \right) + \frac{1}{2} \left( T^{ij} - T^{ji}   \right) 
+\end{align*}
+
+\subsection{The Conjugate Representation}
+From a repr. \(D(g)\) we know that \(D^{\ast} (g)\) is a repr. as well (the conjugated repr.).
+
+Now, consider \begin{align*}
+ \left( v^i \right) ^{\ast} \to \left( U ^i _j \right)^{\ast} \left( v^j \right)^{\ast} = \left( U^{\dagger}  \right) ^j _i  \left( v^j \right) ^{\ast} 
+\end{align*}
+We now define an object that carries the conjugated repr. as an object that transforms like this \begin{align*}
+    w_i \to \left( U^{\dagger}  \right) ^j _i w_j = w_j \left( U ^{\dagger}  \right) ^j _i
+\end{align*}
+where we use the lower index to denote these types of objects. The last equality is a reordering (these are components) to remind us that we want the matching indicies (upper and lower). We see that the \textit{components} of the vectors in the adjoint representation transforms like the basis vectors themselves in the defining representation. 
+
+In \(SO(N)\), our components transform like \begin{align*}
+    v^i \to R^i _j v^j
+\end{align*}
+whereas the basis vectors transform like \begin{align*}
+    e^i \to R^j _ i v^j
+\end{align*}
+
+In the adjoint repr., the components transform like the basis vectors in \(SO(N)\)!
+
+We then get \begin{align*}
+    T_{i_1 \dots i_ n} \to T^{\prime} _{i_1 \dots i_n} = T_{j_1 \dots j_n} U^{\dagger j_1}_{i_1} \cdots U^{\dagger j_n}_{i_n} 
+\end{align*}
+
+And we can also combine!\begin{align*}
+    T^{j_1 j_2}_{i_1 i_2} \to U^{j_1}_{l_1} U^{j_2} _{l_2} T^{l_1 l_2} _{k_1 k_2} U^{\dagger k_1}_{i_{1} } U^{\dagger k_2}_{i_2}  
+\end{align*}
+
+We can now take a generalized trace, which \textit{will} be invariant under an \(SU(N)\) transformation: \begin{align*}
+    T^i _ i \to \left( T^{\prime}  \right) ^i _i = U^i _k T ^k _ l U^{\dagger l }_ i = \left( U^{\dagger} \right)^l _ i U ^i _k T^k _l = \delta_{kl} T ^k _ l = T^k _ k  
+\end{align*}
+An invariant traceeeeeee!
+
+We can thus decompose \begin{align*}
+    T^i _j = \underbrace{T^i _j - \frac{1}{N}\delta^i _ j T^k _k}_{irreducible} + \frac{1}{N}\delta ^i _ j T ^k _ k 
+\end{align*}
+
+Irreducible tensors: Specific symmetries in upper and lower indicies seperately. And they are traceless.
+
+\begin{remark}
+    One might think: "Where's the symmetric and antisymmetric part like in \begin{align*}
+        T^{ij} = \frac{1}{2}\left( T^{ij} + T^{ji}  \right) + \frac{1}{2} \left( T^{ij} - T^{ji}   \right) ?
+    \end{align*}
+
+    Well, it doesn't make sense to talk about symmetries between upper and lower indicies. They are separate things. It only makes sense to compare them separately!
+\end{remark}
+
+For \(SU(N)\), we have both \(\epsilon _{i_1 \dots i_n}\) and \(\epsilon ^{i_1 \dots i_n}\). These are separate objects!
+
+Consider for example \begin{align*}
+    \epsilon _{abm}T^{abc} _{de} = \tilde{T}^c _{d e m }
+\end{align*}
+or \begin{align*}
+    \epsilon ^{dem} T^{abc} _{de} = \tilde{T}^{abcm}
+\end{align*}
+
+We get this nice identity
+\begin{align*}
+    \epsilon _{ijk}\epsilon ^{ijl} = 2 \delta^{l}_k
+\end{align*}
+if \(i, j, k = 1, 2, 3\).
+
+From last time, we also have the special case that \(su(2) \cong so(3)\) (since their Lie Bracket is the same). But our irreducible repr. in \(so(3)\) split into two distinct types: \begin{align*}
+    &so(3): \quad 2j + 1, j = 0, \frac{1}{2}, 1, \dots\\
+    &so(3): \quad 2j + 1, j = 0, 1, 2, \dots
+\end{align*}
+(yes, they overlap)
+
+whereas we have \begin{align*}
+    SU(2): \quad 2j + 1, j = 0, \frac{1}{2}, 1
+\end{align*}
+
+For \(SU(2)\): Only necessary to consider symmetric tensors with upper indicies!
+\begin{enumerate}
+    \item Bring all indicies up:\begin{align*}
+        T^{i_1  \dots i_l}_{j_1 \dots j_n} \to \epsilon ^{k_1 j_1} \epsilon ^{k_2 j_2}
+    \end{align*}
+\end{enumerate}
+
